@@ -234,36 +234,24 @@ function timeToMinutes(t) {
         );
       }
 
+      // 候補店（複数店舗があるイベント）も同じチップ形式で並べる
+      if (hasOptions) {
+        ev.options.forEach((opt) => {
+          pinCount += 1;
+          const num = pinCount;
+          const href = opt.mapUrl || `https://www.google.com/maps?q=${opt.lat},${opt.lng}`;
+          metaParts.push(
+            `<a class="gmap-link" href="${href}" target="_blank" rel="noopener" title="Googleマップで開く">${iconFor("📍")} ${num}. ${opt.name} <span class="gmap-ext">↗</span></a>`
+          );
+        });
+      }
+
       // 写真（手書きキャプション付き）
       const photoHtml = ev.image
         ? `<figure class="timeline-photo">
              <img src="${ev.image}" alt="${ev.spot ? ev.spot.name : ev.title}" loading="lazy">
              ${ev.caption ? `<figcaption>${ev.caption}</figcaption>` : ""}
            </figure>`
-        : "";
-
-      // 候補店（複数店舗から選べるイベント）
-      const choiceKey = `hiroshima-choice-${day.id}-${evIdx}`;
-      const savedChoice = hasOptions ? localStorage.getItem(choiceKey) : null;
-      const optionMarkers = [];
-      const optionsHtml = hasOptions
-        ? `<div class="option-list">${ev.options
-            .map((opt, optIdx) => {
-              pinCount += 1;
-              const num = pinCount;
-              const isChosen = savedChoice === opt.name;
-              const href = opt.mapUrl || `https://www.google.com/maps?q=${opt.lat},${opt.lng}`;
-              return `
-                <div class="option-item${isChosen ? " chosen" : ""}" data-option-idx="${optIdx}">
-                  <button type="button" class="option-select" title="この店にする">
-                    <span class="option-num">${num}</span>
-                    <span class="option-name">${opt.name}</span>
-                    <span class="option-genre">${opt.genre || ""}</span>
-                  </button>
-                  <a class="gmap-link" href="${href}" target="_blank" rel="noopener" title="Googleマップで開く">${iconFor("📍")} 地図 <span class="gmap-ext">↗</span></a>
-                </div>`;
-            })
-            .join("")}</div>`
         : "";
 
       li.innerHTML = `
@@ -274,7 +262,6 @@ function timeToMinutes(t) {
             <div class="timeline-title">${ev.title}</div>
             ${ev.description ? `<div class="timeline-desc">${ev.description}</div>` : ""}
             ${metaParts.length ? `<div class="timeline-meta">${metaParts.join("")}</div>` : ""}
-            ${optionsHtml}
           </div>
           ${photoHtml}
         </div>`;
@@ -294,7 +281,7 @@ function timeToMinutes(t) {
 
         // タイムライン → 地図
         li.querySelector(".timeline-text").addEventListener("click", (e) => {
-          if (e.target.closest(".gmap-link") || e.target.closest(".option-item")) return;
+          if (e.target.closest(".gmap-link")) return;
           selectItem(li);
           map.flyTo([ev.spot.lat, ev.spot.lng], 14, { duration: 0.8 });
           marker.openPopup();
@@ -309,9 +296,9 @@ function timeToMinutes(t) {
         });
       }
 
-      // 候補店それぞれに地図ピンを配置 ＋ 選択操作
+      // 候補店それぞれに地図ピンを配置（通常のスポットと同じ扱い）
       if (hasOptions) {
-        const optionEls = [...li.querySelectorAll(".option-item")];
+        const optionPoints = [];
         ev.options.forEach((opt, optIdx) => {
           const num = pinCount - ev.options.length + optIdx + 1;
           const marker = L.marker([opt.lat, opt.lng], { icon: makePin(num) }).addTo(markerLayer);
@@ -319,30 +306,20 @@ function timeToMinutes(t) {
             `<div class="popup-time">${ev.time}</div><div class="popup-name">${opt.name}</div>`
           );
           routePoints.push([opt.lat, opt.lng]);
-          optionMarkers.push(marker);
-
-          const optionEl = optionEls[optIdx];
-          const selectBtn = optionEl.querySelector(".option-select");
-
-          function chooseThis() {
-            optionEls.forEach((el) => el.classList.remove("chosen"));
-            optionEl.classList.add("chosen");
-            localStorage.setItem(choiceKey, opt.name);
-            selectItem(li);
-          }
-
-          selectBtn.addEventListener("click", () => {
-            chooseThis();
-            map.flyTo([opt.lat, opt.lng], 15, { duration: 0.8 });
-            marker.openPopup();
-            if (isMobile()) openMapSheet();
-          });
+          optionPoints.push([opt.lat, opt.lng]);
 
           marker.on("click", () => {
-            chooseThis();
+            selectItem(li);
             if (isMobile()) closeMapSheet();
             li.scrollIntoView({ behavior: "smooth", block: "center" });
           });
+        });
+
+        li.querySelector(".timeline-text").addEventListener("click", (e) => {
+          if (e.target.closest(".gmap-link")) return;
+          selectItem(li);
+          map.flyToBounds(optionPoints, { padding: [60, 60], maxZoom: 15, duration: 0.8 });
+          if (isMobile()) openMapSheet();
         });
       }
 
