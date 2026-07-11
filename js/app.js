@@ -289,7 +289,6 @@ function selectItem(li) {
 function renderHeader() {
   document.getElementById("site-title").textContent = data.title;
   document.getElementById("site-subtitle").textContent = data.subtitle;
-  document.getElementById("site-note").textContent = data.note;
   document.title = `${data.title} ${data.subtitle}`;
 
   startDate = parseDate(data.startDate);

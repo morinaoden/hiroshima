@@ -115,18 +115,6 @@ body {
   animation: fadeUp 1s 0.3s ease both;
 }
 
-.hero-note {
-  display: inline-block;
-  margin-top: 1.3rem;
-  font-size: 0.82rem;
-  letter-spacing: 0.2em;
-  text-indent: 0.2em;
-  padding: 0.3em 1.2em;
-  border: 1px solid rgba(247, 242, 232, 0.55);
-  border-radius: 999px;
-  animation: fadeUp 1s 0.45s ease both;
-}
-
 .hero-countdown {
   display: block;
   margin: 1.1rem auto 0;
