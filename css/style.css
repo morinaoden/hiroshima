@@ -1,0 +1,505 @@
+/* ============================================
+   広島・宮島 旅のしおり
+   和モダン × エディトリアル
+   ============================================ */
+
+:root {
+  /* 広島の色 */
+  --shu: #c8401f;          /* 朱 — 大鳥居 */
+  --shu-deep: #a02f13;     /* 深朱 */
+  --seto: #1d5f68;         /* 瀬戸内の海 */
+  --seto-deep: #123f46;
+  --momiji: #d98e32;       /* 紅葉・もみじ饅頭 */
+  --washi: #f7f2e8;        /* 和紙 */
+  --washi-deep: #efe7d6;
+  --sumi: #2c2620;         /* 墨 */
+  --sumi-soft: #5c5347;
+  --kin: #b78b3e;          /* 金 */
+
+  --font-display: "Shippori Mincho B1", serif;
+  --font-body: "Zen Kaku Gothic New", sans-serif;
+  --font-latin: "Cormorant Garamond", serif;
+
+  --radius: 14px;
+  --shadow: 0 6px 24px rgba(44, 38, 32, 0.09);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--washi);
+  color: var(--sumi);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  /* 和紙の質感 */
+  background-image:
+    radial-gradient(rgba(183, 139, 62, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(44, 38, 32, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px, 44px 44px;
+  background-position: 0 0, 14px 14px;
+}
+
+/* ============ ヒーロー ============ */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(168deg, var(--shu) 0%, var(--shu-deep) 62%, #7e230c 100%);
+  color: var(--washi);
+  text-align: center;
+  padding: clamp(4rem, 10vw, 7rem) 1.5rem clamp(5rem, 11vw, 8rem);
+}
+
+/* 青海波パターン */
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.10;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.4'%3E%3Ccircle cx='0' cy='40' r='38'/%3E%3Ccircle cx='0' cy='40' r='28'/%3E%3Ccircle cx='0' cy='40' r='18'/%3E%3Ccircle cx='80' cy='40' r='38'/%3E%3Ccircle cx='80' cy='40' r='28'/%3E%3Ccircle cx='80' cy='40' r='18'/%3E%3Ccircle cx='40' cy='60' r='38'/%3E%3Ccircle cx='40' cy='60' r='28'/%3E%3Ccircle cx='40' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 40px;
+}
+
+.hero-inner { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-family: var(--font-latin);
+  font-style: italic;
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: rgba(247, 242, 232, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  animation: fadeDown 0.9s ease both;
+}
+
+.hero-line {
+  display: inline-block;
+  width: clamp(28px, 6vw, 64px);
+  height: 1px;
+  background: rgba(247, 242, 232, 0.5);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 11vw, 6.5rem);
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
+  margin: 0.4em 0 0.1em;
+  text-shadow: 0 3px 30px rgba(0, 0, 0, 0.25);
+  animation: fadeUp 1s 0.15s ease both;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 3vw, 1.6rem);
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  animation: fadeUp 1s 0.3s ease both;
+}
+
+.hero-note {
+  display: inline-block;
+  margin-top: 1.3rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  padding: 0.3em 1.2em;
+  border: 1px solid rgba(247, 242, 232, 0.55);
+  border-radius: 999px;
+  animation: fadeUp 1s 0.45s ease both;
+}
+
+.hero-torii {
+  width: clamp(64px, 10vw, 100px);
+  margin: 2.2rem auto 0;
+  color: rgba(247, 242, 232, 0.9);
+  animation: fadeUp 1s 0.6s ease both;
+}
+
+.hero-torii svg { width: 100%; height: auto; display: block; }
+
+/* 波形の境界 */
+.hero-wave {
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 46px;
+  background: var(--washi);
+  clip-path: polygon(0 60%, 4% 48%, 9% 62%, 15% 45%, 21% 60%, 28% 42%, 34% 58%, 41% 44%, 48% 62%, 55% 46%, 62% 60%, 69% 44%, 76% 58%, 83% 46%, 90% 60%, 96% 48%, 100% 58%, 100% 100%, 0 100%);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ セクション共通 ============ */
+
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(2.6rem, 6vw, 4.5rem) clamp(1.1rem, 4vw, 2.5rem);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: clamp(1.6rem, 4vw, 2.6rem);
+}
+
+.section-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--washi);
+  background: var(--seto);
+  width: 2.4em; height: 2.4em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transform: translateY(0.35em);
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  letter-spacing: 0.1em;
+  border-bottom: 3px double var(--kin);
+  padding-bottom: 0.35em;
+  flex: 1;
+}
+
+/* ============ 基本情報カード ============ */
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 1.2rem;
+}
+
+.info-card {
+  background: #fffdf8;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.6rem 1.5rem 1.5rem;
+  border-top: 4px solid var(--shu);
+  position: relative;
+}
+
+.info-card:nth-child(2) { border-top-color: var(--seto); }
+.info-card:nth-child(3) { border-top-color: var(--momiji); }
+
+.info-card-icon { font-size: 1.9rem; line-height: 1; }
+
+.info-card-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.08rem;
+  letter-spacing: 0.12em;
+  margin: 0.55rem 0 0.35rem;
+}
+
+.info-card-text {
+  font-size: 0.92rem;
+  color: var(--sumi-soft);
+}
+
+/* ============ 日タブ ============ */
+
+.day-tabs {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.day-tab {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+  letter-spacing: 0.14em;
+  padding: 0.55em 1.6em;
+  border: 1.5px solid var(--sumi);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sumi);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.day-tab:hover { background: var(--washi-deep); transform: translateY(-2px); }
+
+.day-tab.active {
+  background: var(--sumi);
+  color: var(--washi);
+  border-color: var(--sumi);
+  box-shadow: 0 6px 16px rgba(44, 38, 32, 0.28);
+}
+
+.day-theme {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+  letter-spacing: 0.06em;
+  color: var(--seto-deep);
+  margin-bottom: 1.4rem;
+  padding-left: 0.9rem;
+  border-left: 4px solid var(--shu);
+}
+
+/* ============ レイアウト（タイムライン + 地図） ============ */
+
+.itinerary-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.88fr);
+  gap: clamp(1.4rem, 3vw, 2.4rem);
+  align-items: start;
+}
+
+.map-pane {
+  position: sticky;
+  top: 1.2rem;
+}
+
+.map-frame {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(44, 38, 32, 0.12);
+}
+
+#map {
+  height: min(72vh, 640px);
+  min-height: 380px;
+  background: var(--washi-deep);
+}
+
+.map-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--sumi-soft);
+  margin-top: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+/* ============ タイムライン ============ */
+
+.timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 0.4rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: calc(0.4rem + 17px);
+  top: 14px; bottom: 14px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--kin) 0 6px,
+    transparent 6px 12px
+  );
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 1.1rem 3.1rem;
+  animation: fadeUp 0.5s ease both;
+}
+
+.timeline-item:nth-child(1)  { animation-delay: 0.03s; }
+.timeline-item:nth-child(2)  { animation-delay: 0.06s; }
+.timeline-item:nth-child(3)  { animation-delay: 0.09s; }
+.timeline-item:nth-child(4)  { animation-delay: 0.12s; }
+.timeline-item:nth-child(5)  { animation-delay: 0.15s; }
+.timeline-item:nth-child(6)  { animation-delay: 0.18s; }
+.timeline-item:nth-child(7)  { animation-delay: 0.21s; }
+.timeline-item:nth-child(8)  { animation-delay: 0.24s; }
+.timeline-item:nth-child(9)  { animation-delay: 0.27s; }
+.timeline-item:nth-child(10) { animation-delay: 0.30s; }
+.timeline-item:nth-child(n+11) { animation-delay: 0.33s; }
+
+.timeline-dot {
+  position: absolute;
+  left: 0; top: 2px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: #fffdf8;
+  border: 2px solid var(--kin);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  z-index: 1;
+}
+
+.timeline-item.has-spot .timeline-dot { border-color: var(--shu); }
+
+.timeline-card {
+  background: #fffdf8;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(44, 38, 32, 0.07);
+  padding: 0.9rem 1.15rem;
+  border: 1px solid rgba(44, 38, 32, 0.07);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.timeline-item.has-spot .timeline-card { cursor: pointer; }
+
+.timeline-item.has-spot .timeline-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 22px rgba(200, 64, 31, 0.16);
+  border-color: rgba(200, 64, 31, 0.35);
+}
+
+.timeline-item.selected .timeline-card {
+  border-color: var(--shu);
+  box-shadow: 0 8px 22px rgba(200, 64, 31, 0.2);
+}
+
+.timeline-time {
+  font-family: var(--font-latin);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.06rem;
+  color: var(--shu);
+  letter-spacing: 0.06em;
+}
+
+.timeline-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: 0.03em;
+  line-height: 1.55;
+  margin-top: 0.1rem;
+}
+
+.timeline-desc {
+  font-size: 0.87rem;
+  color: var(--sumi-soft);
+  margin-top: 0.4rem;
+}
+
+.timeline-pin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 0.5rem;
+  font-size: 0.76rem;
+  color: var(--seto);
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(29, 95, 104, 0.35);
+  border-radius: 999px;
+  padding: 0.12em 0.85em;
+}
+
+/* ============ 地図マーカー ============ */
+
+.pin-marker {
+  background: none;
+  border: none;
+}
+
+.pin-marker .pin-inner {
+  width: 30px; height: 30px;
+  border-radius: 50% 50% 50% 4px;
+  transform: rotate(-45deg);
+  background: var(--shu);
+  border: 2.5px solid #fffdf8;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pin-marker .pin-inner span {
+  transform: rotate(45deg);
+  color: #fffdf8;
+  font-family: var(--font-latin);
+  font-weight: 500;
+  font-size: 0.86rem;
+}
+
+.leaflet-popup-content-wrapper {
+  font-family: var(--font-body);
+  border-radius: 10px;
+}
+
+.popup-time {
+  font-family: var(--font-latin);
+  font-style: italic;
+  color: var(--shu);
+  font-size: 0.95rem;
+}
+
+.popup-name { font-weight: 700; font-size: 0.95rem; }
+
+/* ============ フッター ============ */
+
+.footer {
+  background: var(--sumi);
+  color: rgba(247, 242, 232, 0.85);
+  text-align: center;
+  padding: 3rem 1.5rem;
+  margin-top: 3rem;
+  letter-spacing: 0.12em;
+  font-size: 0.88rem;
+}
+
+.footer-mark { font-size: 1.8rem; margin-bottom: 0.6rem; }
+
+.footer-small {
+  margin-top: 0.9rem;
+  font-size: 0.74rem;
+  color: rgba(247, 242, 232, 0.5);
+}
+
+.footer-small code {
+  background: rgba(247, 242, 232, 0.12);
+  padding: 0.1em 0.5em;
+  border-radius: 4px;
+}
+
+/* ============ レスポンシブ ============ */
+
+@media (max-width: 880px) {
+  .itinerary-layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* モバイルでは地図を先に（sticky解除） */
+  .map-pane {
+    position: static;
+    order: -1;
+  }
+
+  #map {
+    height: 46vh;
+    min-height: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

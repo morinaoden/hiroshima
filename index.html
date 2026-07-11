@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>広島・宮島 2泊3日 旅のしおり</title>
+  <meta name="description" content="広島・宮島 2泊3日 家族旅行プラン。旅程と地図つきの旅のしおり。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛩️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ヘッダー / ヒーロー -->
+  <header class="hero">
+    <div class="hero-pattern" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow"><span class="hero-line"></span>FAMILY TRIP — SETOUCHI<span class="hero-line"></span></p>
+      <h1 class="hero-title" id="site-title">広島・宮島</h1>
+      <p class="hero-subtitle" id="site-subtitle">2泊3日 満喫旅行プラン</p>
+      <p class="hero-note" id="site-note">夕食外食アレンジ版</p>
+      <div class="hero-torii" aria-hidden="true">
+        <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 14 C 40 22, 80 22, 116 14 L 113 26 L 7 26 Z" fill="currentColor"/>
+          <rect x="14" y="34" width="92" height="7" fill="currentColor"/>
+          <rect x="57" y="26" width="6" height="8" fill="currentColor"/>
+          <rect x="24" y="26" width="8" height="60" fill="currentColor" transform="rotate(-2 28 56)"/>
+          <rect x="88" y="26" width="8" height="60" fill="currentColor" transform="rotate(2 92 56)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-wave" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <!-- 基本情報 -->
+    <section class="section basic-info" aria-labelledby="basic-info-title">
+      <div class="section-head">
+        <span class="section-num">壱</span>
+        <h2 id="basic-info-title">旅の基本情報・ルール</h2>
+      </div>
+      <div class="info-cards" id="info-cards"></div>
+    </section>
+
+    <!-- 旅程 + 地図 -->
+    <section class="section itinerary-section" aria-labelledby="itinerary-title">
+      <div class="section-head">
+        <span class="section-num">弐</span>
+        <h2 id="itinerary-title">旅程と地図</h2>
+      </div>
+
+      <nav class="day-tabs" id="day-tabs" aria-label="日程の選択"></nav>
+
+      <div class="itinerary-layout">
+        <div class="timeline-pane">
+          <p class="day-theme" id="day-theme"></p>
+          <ol class="timeline" id="timeline"></ol>
+        </div>
+        <div class="map-pane">
+          <div class="map-frame">
+            <div id="map" role="application" aria-label="旅程の地図"></div>
+          </div>
+          <p class="map-hint">タイムラインの項目をタップすると地図が移動します</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-mark">⛩️</p>
+    <p>広島・宮島 家族旅行のしおり</p>
+    <p class="footer-small">旅程の変更は <code>data/itinerary.json</code> を編集</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
