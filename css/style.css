@@ -1,27 +1,31 @@
 /* ============================================
    広島・宮島 旅のしおり
-   和モダン × エディトリアル
+   和モダン × フラットデザイン
+   （影・グラデーションなし、ソリッドカラー構成）
    ============================================ */
 
 :root {
   /* 広島の色 */
   --shu: #c8401f;          /* 朱 — 大鳥居 */
   --shu-deep: #a02f13;     /* 深朱 */
+  --shu-pale: #f8e3dc;     /* 朱の淡色 */
   --seto: #1d5f68;         /* 瀬戸内の海 */
   --seto-deep: #123f46;
+  --seto-pale: #dcebe9;
   --momiji: #d98e32;       /* 紅葉・もみじ饅頭 */
   --washi: #f7f2e8;        /* 和紙 */
   --washi-deep: #efe7d6;
   --sumi: #2c2620;         /* 墨 */
   --sumi-soft: #5c5347;
   --kin: #b78b3e;          /* 金 */
+  --card: #fffdf8;
+  --line: #e2d8c3;
 
   --font-display: "Shippori Mincho B1", serif;
   --font-body: "Zen Kaku Gothic New", sans-serif;
   --font-latin: "Cormorant Garamond", serif;
 
-  --radius: 14px;
-  --shadow: 0 6px 24px rgba(44, 38, 32, 0.09);
+  --radius: 8px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,12 +38,6 @@ body {
   color: var(--sumi);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
-  /* 和紙の質感 */
-  background-image:
-    radial-gradient(rgba(183, 139, 62, 0.05) 1px, transparent 1px),
-    radial-gradient(rgba(44, 38, 32, 0.03) 1px, transparent 1px);
-  background-size: 28px 28px, 44px 44px;
-  background-position: 0 0, 14px 14px;
 }
 
 /* ============ ヒーロー ============ */
@@ -47,7 +45,7 @@ body {
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(168deg, var(--shu) 0%, var(--shu-deep) 62%, #7e230c 100%);
+  background: var(--shu);
   color: var(--washi);
   text-align: center;
   padding: clamp(4rem, 10vw, 7rem) 1.5rem clamp(5rem, 11vw, 8rem);
@@ -92,7 +90,6 @@ body {
   letter-spacing: 0.14em;
   text-indent: 0.14em;
   margin: 0.4em 0 0.1em;
-  text-shadow: 0 3px 30px rgba(0, 0, 0, 0.25);
   animation: fadeUp 1s 0.15s ease both;
 }
 
@@ -120,7 +117,7 @@ body {
 .hero-torii {
   width: clamp(64px, 10vw, 100px);
   margin: 2.2rem auto 0;
-  color: rgba(247, 242, 232, 0.9);
+  color: var(--washi);
   animation: fadeUp 1s 0.6s ease both;
 }
 
@@ -193,18 +190,24 @@ body {
 }
 
 .info-card {
-  background: #fffdf8;
+  background: var(--card);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1.6rem 1.5rem 1.5rem;
+  border: 1.5px solid var(--line);
   border-top: 4px solid var(--shu);
-  position: relative;
+  padding: 1.6rem 1.5rem 1.5rem;
 }
 
+.info-card:nth-child(1) .info-card-icon { color: var(--shu); }
 .info-card:nth-child(2) { border-top-color: var(--seto); }
+.info-card:nth-child(2) .info-card-icon { color: var(--seto); }
 .info-card:nth-child(3) { border-top-color: var(--momiji); }
+.info-card:nth-child(3) .info-card-icon { color: var(--momiji); }
 
-.info-card-icon { font-size: 1.9rem; line-height: 1; }
+.info-card-icon svg {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
 
 .info-card-label {
   font-family: var(--font-display);
@@ -239,16 +242,15 @@ body {
   background: transparent;
   color: var(--sumi);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.day-tab:hover { background: var(--washi-deep); transform: translateY(-2px); }
+.day-tab:hover { background: var(--washi-deep); }
 
 .day-tab.active {
   background: var(--sumi);
   color: var(--washi);
   border-color: var(--sumi);
-  box-shadow: 0 6px 16px rgba(44, 38, 32, 0.28);
 }
 
 .day-theme {
@@ -279,8 +281,7 @@ body {
 .map-frame {
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(44, 38, 32, 0.12);
+  border: 1.5px solid var(--line);
 }
 
 #map {
@@ -341,37 +342,40 @@ body {
   left: 0; top: 2px;
   width: 36px; height: 36px;
   border-radius: 50%;
-  background: #fffdf8;
-  border: 2px solid var(--kin);
+  background: var(--kin);
+  color: var(--card);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.05rem;
   z-index: 1;
 }
 
-.timeline-item.has-spot .timeline-dot { border-color: var(--shu); }
+.timeline-dot svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.timeline-item.has-spot .timeline-dot { background: var(--shu); }
 
 .timeline-card {
-  background: #fffdf8;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(44, 38, 32, 0.07);
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--line);
   padding: 0.9rem 1.15rem;
-  border: 1px solid rgba(44, 38, 32, 0.07);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .timeline-item.has-spot .timeline-card { cursor: pointer; }
 
 .timeline-item.has-spot .timeline-card:hover {
-  transform: translateX(5px);
-  box-shadow: 0 8px 22px rgba(200, 64, 31, 0.16);
-  border-color: rgba(200, 64, 31, 0.35);
+  border-color: var(--shu);
+  background: var(--shu-pale);
 }
 
 .timeline-item.selected .timeline-card {
   border-color: var(--shu);
-  box-shadow: 0 8px 22px rgba(200, 64, 31, 0.2);
+  background: var(--shu-pale);
 }
 
 .timeline-time {
@@ -401,14 +405,20 @@ body {
 .timeline-pin {
   display: inline-flex;
   align-items: center;
-  gap: 0.3em;
+  gap: 0.35em;
   margin-top: 0.5rem;
   font-size: 0.76rem;
   color: var(--seto);
   letter-spacing: 0.05em;
-  border: 1px solid rgba(29, 95, 104, 0.35);
+  background: var(--seto-pale);
   border-radius: 999px;
-  padding: 0.12em 0.85em;
+  padding: 0.16em 0.9em;
+}
+
+.timeline-pin svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }
 
 /* ============ 地図マーカー ============ */
@@ -423,8 +433,7 @@ body {
   border-radius: 50% 50% 50% 4px;
   transform: rotate(-45deg);
   background: var(--shu);
-  border: 2.5px solid #fffdf8;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  border: 2.5px solid var(--card);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -432,7 +441,7 @@ body {
 
 .pin-marker .pin-inner span {
   transform: rotate(45deg);
-  color: #fffdf8;
+  color: var(--card);
   font-family: var(--font-latin);
   font-weight: 500;
   font-size: 0.86rem;
@@ -440,8 +449,12 @@ body {
 
 .leaflet-popup-content-wrapper {
   font-family: var(--font-body);
-  border-radius: 10px;
+  border-radius: var(--radius);
+  box-shadow: none;
+  border: 1.5px solid var(--line);
 }
+
+.leaflet-popup-tip { box-shadow: none; }
 
 .popup-time {
   font-family: var(--font-latin);
@@ -464,7 +477,16 @@ body {
   font-size: 0.88rem;
 }
 
-.footer-mark { font-size: 1.8rem; margin-bottom: 0.6rem; }
+.footer-mark {
+  color: var(--washi);
+  margin-bottom: 0.6rem;
+}
+
+.footer-mark svg {
+  width: 34px;
+  height: 34px;
+  display: inline-block;
+}
 
 .footer-small {
   margin-top: 0.9rem;
