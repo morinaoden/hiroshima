@@ -551,6 +551,7 @@ editToggle.addEventListener("click", () => {
   editToggle.setAttribute("aria-pressed", editMode ? "true" : "false");
   editToggleLabel.textContent = editMode ? "編集を終了" : "編集";
   document.body.classList.toggle("editing", editMode);
+  if (!editMode) hideUndoToast();
   renderDay();
 });
 
@@ -571,6 +572,12 @@ const undoBtn = document.getElementById("undo-btn");
 let undoState = null;
 let undoTimer = null;
 
+function hideUndoToast() {
+  undoToast.hidden = true;
+  undoState = null;
+  clearTimeout(undoTimer);
+}
+
 async function deleteEvent(dayIdx, evIdx) {
   const events = data.days[dayIdx].events;
   const [removed] = events.splice(evIdx, 1);
@@ -578,7 +585,7 @@ async function deleteEvent(dayIdx, evIdx) {
   undoMessage.textContent = `「${removed.title}」を削除しました`;
   undoToast.hidden = false;
   clearTimeout(undoTimer);
-  undoTimer = setTimeout(() => { undoToast.hidden = true; undoState = null; }, 6000);
+  undoTimer = setTimeout(hideUndoToast, 6000);
   renderDay();
   await saveTrip();
 }
@@ -587,9 +594,7 @@ undoBtn.addEventListener("click", async () => {
   if (!undoState) return;
   const { dayIdx, evIdx, removed } = undoState;
   data.days[dayIdx].events.splice(Math.min(evIdx, data.days[dayIdx].events.length), 0, removed);
-  undoState = null;
-  undoToast.hidden = true;
-  clearTimeout(undoTimer);
+  hideUndoToast();
   renderDay();
   await saveTrip();
 });
