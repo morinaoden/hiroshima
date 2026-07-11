@@ -73,10 +73,25 @@
         {
           "time": "19:00",
           "icon": "🍽️",
-          "title": "街中の人気イタリアン「MORETHAN」などでディナー（外食）",
-          "description": "広島中心部（大手町）にある、海外のようなスタイリッシュでお洒落な空間のイタリアンへ。瀬戸内の新鮮な食材を活かした絶品パスタやピザを、落ち着いた雰囲気の中でゆっくり味わいます。",
-          "spot": { "name": "MORETHAN（大手町）", "lat": 34.3898, "lng": 132.4517 },
-          "badge": "予約推奨"
+          "title": "ホテル周辺でディナー（外食）",
+          "description": "広島中心部のお洒落な店から、その日の気分でお店をセレクト。",
+          "badge": "予約推奨",
+          "options": [
+            {
+              "name": "MORETHAN 広島",
+              "genre": "イタリアン",
+              "lat": 34.3898,
+              "lng": 132.4517,
+              "mapUrl": "https://maps.app.goo.gl/nePjpjwVa75uL3G76"
+            },
+            {
+              "name": "ひろしまテッパン HIROSHIMA TEPPAN",
+              "genre": "お好み焼き・鉄板焼き",
+              "lat": 34.3917,
+              "lng": 132.4581,
+              "mapUrl": "https://maps.app.goo.gl/QgVuQodVzRRv7pQ48"
+            }
+          ]
         }
       ]
     },

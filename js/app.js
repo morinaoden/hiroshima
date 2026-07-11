@@ -214,7 +214,8 @@ function timeToMinutes(t) {
 
     day.events.forEach((ev, evIdx) => {
       const li = document.createElement("li");
-      li.className = "timeline-item" + (ev.spot ? " has-spot" : "");
+      const hasOptions = Array.isArray(ev.options) && ev.options.length > 0;
+      li.className = "timeline-item" + (ev.spot || hasOptions ? " has-spot" : "");
       if (evIdx === nowIdx) { li.classList.add("is-now"); nowLi = li; }
 
       // バッジ類
@@ -227,8 +228,9 @@ function timeToMinutes(t) {
       if (ev.spot) {
         pinCount += 1;
         pinNumber = pinCount;
+        const href = ev.spot.mapUrl || `https://www.google.com/maps?q=${ev.spot.lat},${ev.spot.lng}`;
         metaParts.push(
-          `<a class="gmap-link" href="https://www.google.com/maps?q=${ev.spot.lat},${ev.spot.lng}" target="_blank" rel="noopener" title="Googleマップで開く">${iconFor("📍")} ${pinNumber}. ${ev.spot.name} <span class="gmap-ext">↗</span></a>`
+          `<a class="gmap-link" href="${href}" target="_blank" rel="noopener" title="Googleマップで開く">${iconFor("📍")} ${pinNumber}. ${ev.spot.name} <span class="gmap-ext">↗</span></a>`
         );
       }
 
@@ -240,6 +242,30 @@ function timeToMinutes(t) {
            </figure>`
         : "";
 
+      // 候補店（複数店舗から選べるイベント）
+      const choiceKey = `hiroshima-choice-${day.id}-${evIdx}`;
+      const savedChoice = hasOptions ? localStorage.getItem(choiceKey) : null;
+      const optionMarkers = [];
+      const optionsHtml = hasOptions
+        ? `<div class="option-list">${ev.options
+            .map((opt, optIdx) => {
+              pinCount += 1;
+              const num = pinCount;
+              const isChosen = savedChoice === opt.name;
+              const href = opt.mapUrl || `https://www.google.com/maps?q=${opt.lat},${opt.lng}`;
+              return `
+                <div class="option-item${isChosen ? " chosen" : ""}" data-option-idx="${optIdx}">
+                  <button type="button" class="option-select" title="この店にする">
+                    <span class="option-num">${num}</span>
+                    <span class="option-name">${opt.name}</span>
+                    <span class="option-genre">${opt.genre || ""}</span>
+                  </button>
+                  <a class="gmap-link" href="${href}" target="_blank" rel="noopener" title="Googleマップで開く">${iconFor("📍")} 地図 <span class="gmap-ext">↗</span></a>
+                </div>`;
+            })
+            .join("")}</div>`
+        : "";
+
       li.innerHTML = `
         <span class="timeline-time">${ev.time}</span>
         <div class="timeline-dot">${iconFor(ev.icon)}</div>
@@ -248,6 +274,7 @@ function timeToMinutes(t) {
             <div class="timeline-title">${ev.title}</div>
             ${ev.description ? `<div class="timeline-desc">${ev.description}</div>` : ""}
             ${metaParts.length ? `<div class="timeline-meta">${metaParts.join("")}</div>` : ""}
+            ${optionsHtml}
           </div>
           ${photoHtml}
         </div>`;
@@ -267,7 +294,7 @@ function timeToMinutes(t) {
 
         // タイムライン → 地図
         li.querySelector(".timeline-text").addEventListener("click", (e) => {
-          if (e.target.closest(".gmap-link")) return; // 外部リンクは素通し
+          if (e.target.closest(".gmap-link") || e.target.closest(".option-item")) return;
           selectItem(li);
           map.flyTo([ev.spot.lat, ev.spot.lng], 14, { duration: 0.8 });
           marker.openPopup();
@@ -279,6 +306,43 @@ function timeToMinutes(t) {
           selectItem(li);
           if (isMobile()) closeMapSheet();
           li.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+
+      // 候補店それぞれに地図ピンを配置 ＋ 選択操作
+      if (hasOptions) {
+        const optionEls = [...li.querySelectorAll(".option-item")];
+        ev.options.forEach((opt, optIdx) => {
+          const num = pinCount - ev.options.length + optIdx + 1;
+          const marker = L.marker([opt.lat, opt.lng], { icon: makePin(num) }).addTo(markerLayer);
+          marker.bindPopup(
+            `<div class="popup-time">${ev.time}</div><div class="popup-name">${opt.name}</div>`
+          );
+          routePoints.push([opt.lat, opt.lng]);
+          optionMarkers.push(marker);
+
+          const optionEl = optionEls[optIdx];
+          const selectBtn = optionEl.querySelector(".option-select");
+
+          function chooseThis() {
+            optionEls.forEach((el) => el.classList.remove("chosen"));
+            optionEl.classList.add("chosen");
+            localStorage.setItem(choiceKey, opt.name);
+            selectItem(li);
+          }
+
+          selectBtn.addEventListener("click", () => {
+            chooseThis();
+            map.flyTo([opt.lat, opt.lng], 15, { duration: 0.8 });
+            marker.openPopup();
+            if (isMobile()) openMapSheet();
+          });
+
+          marker.on("click", () => {
+            chooseThis();
+            if (isMobile()) closeMapSheet();
+            li.scrollIntoView({ behavior: "smooth", block: "center" });
+          });
         });
       }
 
