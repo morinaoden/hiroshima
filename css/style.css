@@ -905,6 +905,13 @@ body {
 
 /* ============ 編集フォームシート ============ */
 
+/* シート表示中の背面スクロール固定（位置はJSで保存・復元） */
+body.sheet-locked {
+  position: fixed;
+  left: 0; right: 0;
+  width: 100%;
+}
+
 .edit-sheet {
   position: fixed;
   left: 50%; bottom: 0;
@@ -912,6 +919,7 @@ body {
   width: min(100%, 560px);
   max-height: 88vh;
   overflow-y: auto;
+  overscroll-behavior: contain;
   z-index: 1300;
   background: var(--washi);
   border: 2px solid var(--line);

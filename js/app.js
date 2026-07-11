@@ -631,6 +631,20 @@ Object.entries(ICON_LABELS).forEach(([emoji, label]) => {
 // フォームの一時状態
 let formState = null; // { dayIdx, evIdx(null=新規), insertAt, coords: {lat,lng}|null, image: string|null, pendingUpload: dataUrl|null }
 
+// シート表示中は背面ページのスクロールを固定する
+// （モーダルの内側スクロールが背面に伝わって画面がガタつくのを防ぐ）
+let lockScrollY = 0;
+function lockBody() {
+  lockScrollY = window.scrollY;
+  document.body.style.top = `-${lockScrollY}px`;
+  document.body.classList.add("sheet-locked");
+}
+function unlockBody() {
+  document.body.classList.remove("sheet-locked");
+  document.body.style.top = "";
+  window.scrollTo({ top: lockScrollY, behavior: "instant" });
+}
+
 function openEditForm(dayIdx, evIdx, insertAt = null) {
   const isNew = evIdx === null;
   const ev = isNew
@@ -681,6 +695,7 @@ function openEditForm(dayIdx, evIdx, insertAt = null) {
   fDay.value = dayIdx;
 
   editSheet.hidden = false;
+  lockBody();
   requestAnimationFrame(() => editSheet.classList.add("open"));
 }
 
@@ -688,6 +703,7 @@ function closeEditForm() {
   editSheet.classList.remove("open");
   setTimeout(() => { editSheet.hidden = true; }, 300);
   if (picking) cancelPick();
+  unlockBody();
   formState = null;
 }
 
