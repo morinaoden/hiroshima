@@ -157,6 +157,9 @@ async function resolveImage(imgEl, src) {
     return;
   }
   const id = src.slice(3);
+  // データURLはネットワークコストがないため lazy を外す
+  // （detached要素にlazy+data URLを設定すると読み込まれないブラウザ挙動への対策も兼ねる）
+  imgEl.loading = "eager";
   if (imageCache.has(id)) {
     imgEl.src = imageCache.get(id);
     return;
