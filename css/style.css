@@ -918,6 +918,7 @@ body.sheet-locked {
   transform: translate(-50%, 105%);
   width: min(100%, 560px);
   max-height: 88vh;
+  max-height: 85dvh; /* iOS Safariのツールバー分を考慮した動的ビューポート */
   overflow-y: auto;
   overscroll-behavior: contain;
   z-index: 1300;
@@ -925,7 +926,7 @@ body.sheet-locked {
   border: 2px solid var(--line);
   border-bottom: none;
   border-radius: 16px 16px 0 0;
-  padding: 0.5rem 1.1rem 1.2rem;
+  padding: 0 1.1rem 1.2rem;
   transition: transform 0.3s ease;
 }
 
@@ -937,13 +938,19 @@ body.sheet-locked {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  padding: 0.5rem 0 0.7rem;
+  /* フォームをスクロールしても✕ボタンが常に見えるようシート上部に固定 */
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--washi);
+  margin: 0 -1.1rem 0.3rem;
+  padding: 1rem 1.1rem 0.7rem;
+  border-bottom: 1.5px solid var(--line);
 }
 
 .edit-sheet-head .map-sheet-handle {
   position: absolute;
-  top: 0.2rem; left: 50%;
+  top: 0.4rem; left: 50%;
   transform: translateX(-50%);
   display: block;
   width: 44px; height: 4px;
@@ -961,7 +968,7 @@ body.sheet-locked {
 
 .edit-sheet-head .map-close {
   position: absolute;
-  right: 0; top: 0.5rem;
+  right: 1.1rem; top: 0.9rem;
   border: none;
   background: var(--washi-deep);
   color: var(--sumi);

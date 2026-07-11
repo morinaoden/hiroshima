@@ -696,7 +696,8 @@ function openEditForm(dayIdx, evIdx, insertAt = null) {
 
   editSheet.hidden = false;
   lockBody();
-  requestAnimationFrame(() => editSheet.classList.add("open"));
+  editSheet.offsetHeight; // リフローを挟んでtransitionを確実に発火させる
+  editSheet.classList.add("open");
 }
 
 function closeEditForm() {
