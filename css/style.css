@@ -37,12 +37,21 @@
 
 html { scroll-behavior: smooth; }
 
+/* 横方向のはみ出し防止（回転写真・画面外ボトムシートなどの
+   transform要素が実機で横スクロール領域を作るのを遮断する。
+   clip はスクロールコンテナを作らないため sticky と共存できる） */
+html, body {
+  overflow-x: hidden; /* clip 未対応の古いブラウザ用フォールバック */
+  overflow-x: clip;
+}
+
 body {
   font-family: var(--font-body);
   background: var(--washi);
   color: var(--sumi);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
+  min-width: 0;
 }
 
 /* ============ ヒーロー ============ */
