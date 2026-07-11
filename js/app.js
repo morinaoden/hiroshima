@@ -50,12 +50,39 @@ const FLAT_ICONS = {
   "🛍️": `<svg ${SVG_ATTRS}><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
   // 地図ピン
   "📍": `<svg ${SVG_ATTRS}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  // 削除（×）
+  "✕": `<svg ${SVG_ATTRS}><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`,
 };
 
 // 絵文字をフラットSVGへ（未登録の絵文字はそのまま表示）
 function iconFor(emoji) {
   const key = (emoji || "").trim();
   return FLAT_ICONS[key] || FLAT_ICONS[key.replace(/️/g, "")] || key;
+}
+
+// ---- 日付ユーティリティ ----
+const WEEKDAYS = ["日", "月", "火", "水", "木", "金", "土"];
+
+function parseDate(str) {
+  if (!str) return null;
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(str.trim());
+  if (!m) return null;
+  return new Date(+m[1], +m[2] - 1, +m[3]);
+}
+
+function dayDiff(from, to) {
+  const a = new Date(from.getFullYear(), from.getMonth(), from.getDate());
+  const b = new Date(to.getFullYear(), to.getMonth(), to.getDate());
+  return Math.round((b - a) / 86400000);
+}
+
+function formatDate(d) {
+  return `${d.getMonth() + 1}/${d.getDate()}(${WEEKDAYS[d.getDay()]})`;
+}
+
+function timeToMinutes(t) {
+  const m = /^(\d{1,2}):(\d{2})$/.exec((t || "").trim());
+  return m ? +m[1] * 60 + +m[2] : null;
 }
 
 (async function () {
@@ -68,17 +95,23 @@ function iconFor(emoji) {
   document.getElementById("site-note").textContent = data.note;
   document.title = `${data.title} ${data.subtitle}`;
 
-  // ---- 基本情報カード ----
-  const infoCards = document.getElementById("info-cards");
-  data.basicInfo.forEach((info) => {
-    const card = document.createElement("div");
-    card.className = "info-card";
-    card.innerHTML = `
-      <div class="info-card-icon">${iconFor(info.icon)}</div>
-      <div class="info-card-label">${info.label}</div>
-      <div class="info-card-text">${info.text}</div>`;
-    infoCards.appendChild(card);
-  });
+  // ---- 旅行日の計算（カウントダウン & いまここ） ----
+  const startDate = parseDate(data.startDate);
+  const today = new Date();
+  // 旅行何日目か（1始まり）。旅行前は0以下、旅行後はdays数超え
+  const tripDayIndex = startDate ? dayDiff(startDate, today) : null; // 0 = 1日目
+
+  const countdownEl = document.getElementById("hero-countdown");
+  if (startDate) {
+    const diff = dayDiff(today, startDate);
+    if (diff > 0) {
+      countdownEl.textContent = `出発まで あと ${diff} 日`;
+      countdownEl.hidden = false;
+    } else if (tripDayIndex >= 0 && tripDayIndex < data.days.length) {
+      countdownEl.textContent = `旅行 ${tripDayIndex + 1} 日目！`;
+      countdownEl.hidden = false;
+    }
+  }
 
   // ---- 地図の初期化 ----
   const map = L.map("map", { scrollWheelZoom: true });
@@ -87,8 +120,8 @@ function iconFor(emoji) {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
-  let markerLayer = L.layerGroup().addTo(map);
-  let currentMarkers = [];
+  const markerLayer = L.layerGroup().addTo(map);
+  const routeLayer = L.layerGroup().addTo(map);
 
   function makePin(number) {
     return L.divIcon({
@@ -100,12 +133,38 @@ function iconFor(emoji) {
     });
   }
 
+  // ---- モバイル用ボトムシート ----
+  const mapPane = document.getElementById("map-pane");
+  const mapToggle = document.getElementById("map-toggle");
+  const mapClose = document.getElementById("map-close");
+  const isMobile = () => window.matchMedia("(max-width: 880px)").matches;
+
+  function openMapSheet() {
+    mapPane.classList.add("open");
+    mapToggle.setAttribute("aria-expanded", "true");
+    setTimeout(() => map.invalidateSize(), 350);
+  }
+  function closeMapSheet() {
+    mapPane.classList.remove("open");
+    mapToggle.setAttribute("aria-expanded", "false");
+  }
+  mapToggle.addEventListener("click", () =>
+    mapPane.classList.contains("open") ? closeMapSheet() : openMapSheet()
+  );
+  mapClose.addEventListener("click", closeMapSheet);
+
   // ---- 日タブ ----
   const tabsEl = document.getElementById("day-tabs");
   data.days.forEach((day, i) => {
     const btn = document.createElement("button");
     btn.className = "day-tab";
-    btn.textContent = day.label;
+    let label = day.label;
+    if (startDate) {
+      const d = new Date(startDate);
+      d.setDate(d.getDate() + i);
+      label += `<small>${formatDate(d)}</small>`;
+    }
+    btn.innerHTML = label;
     btn.setAttribute("aria-pressed", "false");
     btn.addEventListener("click", () => renderDay(i));
     tabsEl.appendChild(btn);
@@ -115,10 +174,16 @@ function iconFor(emoji) {
   const themeEl = document.getElementById("day-theme");
   const timelineEl = document.getElementById("timeline");
 
+  function selectItem(li) {
+    document
+      .querySelectorAll(".timeline-item.selected")
+      .forEach((el) => el.classList.remove("selected"));
+    li.classList.add("selected");
+  }
+
   function renderDay(index) {
     const day = data.days[index];
 
-    // タブの状態
     [...tabsEl.children].forEach((b, i) => {
       b.classList.toggle("active", i === index);
       b.setAttribute("aria-pressed", i === index ? "true" : "false");
@@ -126,34 +191,70 @@ function iconFor(emoji) {
 
     themeEl.textContent = day.theme;
 
-    // タイムライン
     timelineEl.innerHTML = "";
     markerLayer.clearLayers();
-    currentMarkers = [];
+    routeLayer.clearLayers();
+
+    // 「いまここ」判定（この日が旅行当日のときだけ）
+    let nowIdx = -1;
+    let nextIdx = -1;
+    if (tripDayIndex === index) {
+      const nowMin = today.getHours() * 60 + today.getMinutes();
+      day.events.forEach((ev, i) => {
+        const t = timeToMinutes(ev.time);
+        if (t !== null && t <= nowMin) nowIdx = i;
+      });
+      if (nowIdx + 1 < day.events.length) nextIdx = nowIdx + 1;
+      if (nowIdx === -1) { nextIdx = 0; }
+    }
 
     let pinCount = 0;
-    const bounds = [];
+    const routePoints = [];
+    let nowLi = null;
 
-    day.events.forEach((ev) => {
+    day.events.forEach((ev, evIdx) => {
       const li = document.createElement("li");
       li.className = "timeline-item" + (ev.spot ? " has-spot" : "");
+      if (evIdx === nowIdx) { li.classList.add("is-now"); nowLi = li; }
 
-      let pinBadge = "";
+      // バッジ類
+      const metaParts = [];
+      if (evIdx === nowIdx) metaParts.push(`<span class="badge-now">いまここ</span>`);
+      if (evIdx === nextIdx) metaParts.push(`<span class="badge-next">つぎ</span>`);
+      if (ev.badge) metaParts.push(`<span class="badge-note">${ev.badge}</span>`);
+
       let pinNumber = null;
       if (ev.spot) {
         pinCount += 1;
         pinNumber = pinCount;
-        pinBadge = `<span class="timeline-pin">${iconFor("📍")} ${pinNumber}. ${ev.spot.name}</span>`;
+        metaParts.push(
+          `<a class="gmap-link" href="https://www.google.com/maps?q=${ev.spot.lat},${ev.spot.lng}" target="_blank" rel="noopener" title="Googleマップで開く">${iconFor("📍")} ${pinNumber}. ${ev.spot.name} <span class="gmap-ext">↗</span></a>`
+        );
       }
 
+      // 写真（手書きキャプション付き）
+      const photoHtml = ev.image
+        ? `<figure class="timeline-photo">
+             <img src="${ev.image}" alt="${ev.spot ? ev.spot.name : ev.title}" loading="lazy">
+             ${ev.caption ? `<figcaption>${ev.caption}</figcaption>` : ""}
+           </figure>`
+        : "";
+
       li.innerHTML = `
+        <span class="timeline-time">${ev.time}</span>
         <div class="timeline-dot">${iconFor(ev.icon)}</div>
-        <div class="timeline-card">
-          <span class="timeline-time">${ev.time}</span>
-          <div class="timeline-title">${ev.title}</div>
-          ${ev.description ? `<div class="timeline-desc">${ev.description}</div>` : ""}
-          ${pinBadge}
+        <div class="timeline-body">
+          <div class="timeline-text">
+            <div class="timeline-title">${ev.title}</div>
+            ${ev.description ? `<div class="timeline-desc">${ev.description}</div>` : ""}
+            ${metaParts.length ? `<div class="timeline-meta">${metaParts.join("")}</div>` : ""}
+          </div>
+          ${photoHtml}
         </div>`;
+
+      // 画像の読み込み失敗時は写真ごと非表示
+      const img = li.querySelector(".timeline-photo img");
+      if (img) img.addEventListener("error", () => img.closest(".timeline-photo").remove());
 
       if (ev.spot) {
         const marker = L.marker([ev.spot.lat, ev.spot.lng], {
@@ -162,32 +263,136 @@ function iconFor(emoji) {
         marker.bindPopup(
           `<div class="popup-time">${ev.time}</div><div class="popup-name">${ev.spot.name}</div>`
         );
-        bounds.push([ev.spot.lat, ev.spot.lng]);
-        currentMarkers.push(marker);
+        routePoints.push([ev.spot.lat, ev.spot.lng]);
 
-        li.querySelector(".timeline-card").addEventListener("click", () => {
-          document
-            .querySelectorAll(".timeline-item.selected")
-            .forEach((el) => el.classList.remove("selected"));
-          li.classList.add("selected");
+        // タイムライン → 地図
+        li.querySelector(".timeline-text").addEventListener("click", (e) => {
+          if (e.target.closest(".gmap-link")) return; // 外部リンクは素通し
+          selectItem(li);
           map.flyTo([ev.spot.lat, ev.spot.lng], 14, { duration: 0.8 });
           marker.openPopup();
-          // モバイルでは地図が上にあるのでスクロール
-          if (window.matchMedia("(max-width: 880px)").matches) {
-            document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" });
-          }
+          if (isMobile()) openMapSheet();
+        });
+
+        // 地図 → タイムライン（逆連動）
+        marker.on("click", () => {
+          selectItem(li);
+          if (isMobile()) closeMapSheet();
+          li.scrollIntoView({ behavior: "smooth", block: "center" });
         });
       }
 
       timelineEl.appendChild(li);
+
+      // 移動情報（イベント間の隙間に表示）
+      if (ev.travelAfter && evIdx < day.events.length - 1) {
+        const travelLi = document.createElement("li");
+        travelLi.className = "timeline-travel";
+        travelLi.setAttribute("aria-label", "移動");
+        travelLi.innerHTML = `<span class="travel-chip">${iconFor(ev.travelAfter.icon)} ${ev.travelAfter.text}</span>`;
+        timelineEl.appendChild(travelLi);
+      }
     });
 
-    if (bounds.length > 0) {
-      map.fitBounds(bounds, { padding: [46, 46], maxZoom: 13 });
+    // ルート線（その日の動線）
+    if (routePoints.length > 1) {
+      L.polyline(routePoints, {
+        color: "#c8401f",
+        weight: 3,
+        opacity: 0.7,
+        dashArray: "6 9",
+        lineCap: "round",
+      }).addTo(routeLayer);
+    }
+
+    if (routePoints.length > 0) {
+      map.fitBounds(routePoints, { padding: [46, 46], maxZoom: 13 });
+    }
+
+    // 旅行当日は「いまここ」へスクロール
+    if (nowLi) {
+      setTimeout(() => nowLi.scrollIntoView({ behavior: "smooth", block: "center" }), 400);
     }
   }
 
-  renderDay(0);
+  // 旅行当日はその日のタブを最初に表示
+  const initialDay =
+    tripDayIndex !== null && tripDayIndex >= 0 && tripDayIndex < data.days.length
+      ? tripDayIndex
+      : 0;
+  renderDay(initialDay);
+
+  // ---- 持ち物チェックリスト（localStorage保存） ----
+  const STORAGE_KEY = "hiroshima-packing-v1";
+
+  function loadPacking() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { checked: {}, custom: [] };
+    } catch {
+      return { checked: {}, custom: [] };
+    }
+  }
+  function savePacking(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  const packingState = loadPacking();
+  const packingListEl = document.getElementById("packing-list");
+  const packingForm = document.getElementById("packing-form");
+  const packingInput = document.getElementById("packing-input");
+
+  function renderPacking() {
+    packingListEl.innerHTML = "";
+    const baseItems = data.packingList || [];
+    const allItems = [
+      ...baseItems.map((name) => ({ name, custom: false })),
+      ...packingState.custom.map((name) => ({ name, custom: true })),
+    ];
+
+    allItems.forEach(({ name, custom }, i) => {
+      const checked = !!packingState.checked[name];
+      const li = document.createElement("li");
+      li.className = "packing-item" + (checked ? " checked" : "");
+      const id = `pack-${i}`;
+      li.innerHTML = `
+        <input type="checkbox" id="${id}" ${checked ? "checked" : ""}>
+        <label for="${id}"></label>
+        ${custom ? `<button type="button" class="packing-remove" aria-label="削除">${iconFor("✕")}</button>` : ""}`;
+      li.querySelector("label").textContent = name;
+
+      li.querySelector("input").addEventListener("change", (e) => {
+        packingState.checked[name] = e.target.checked;
+        savePacking(packingState);
+        li.classList.toggle("checked", e.target.checked);
+      });
+
+      const removeBtn = li.querySelector(".packing-remove");
+      if (removeBtn) {
+        removeBtn.addEventListener("click", () => {
+          packingState.custom = packingState.custom.filter((n) => n !== name);
+          delete packingState.checked[name];
+          savePacking(packingState);
+          renderPacking();
+        });
+      }
+
+      packingListEl.appendChild(li);
+    });
+  }
+
+  packingForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = packingInput.value.trim();
+    if (!name) return;
+    if (!packingState.custom.includes(name) && !(data.packingList || []).includes(name)) {
+      packingState.custom.push(name);
+      savePacking(packingState);
+      renderPacking();
+    }
+    packingInput.value = "";
+  });
+
+  renderPacking();
 })().catch((err) => {
   console.error("旅程データの読み込みに失敗しました:", err);
   document.getElementById("timeline").innerHTML =

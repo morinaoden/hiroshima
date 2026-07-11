@@ -8,7 +8,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛩️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,500&family=Yomogi&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -22,6 +22,7 @@
       <h1 class="hero-title" id="site-title">広島・宮島</h1>
       <p class="hero-subtitle" id="site-subtitle">2泊3日 満喫旅行プラン</p>
       <p class="hero-note" id="site-note">夕食外食アレンジ版</p>
+      <p class="hero-countdown" id="hero-countdown" hidden></p>
       <div class="hero-torii" aria-hidden="true">
         <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 14 C 40 22, 80 22, 116 14 L 113 26 L 7 26 Z" fill="currentColor"/>
@@ -36,19 +37,10 @@
   </header>
 
   <main>
-    <!-- 基本情報 -->
-    <section class="section basic-info" aria-labelledby="basic-info-title">
-      <div class="section-head">
-        <span class="section-num">壱</span>
-        <h2 id="basic-info-title">旅の基本情報・ルール</h2>
-      </div>
-      <div class="info-cards" id="info-cards"></div>
-    </section>
-
     <!-- 旅程 + 地図 -->
     <section class="section itinerary-section" aria-labelledby="itinerary-title">
       <div class="section-head">
-        <span class="section-num">弐</span>
+        <span class="section-num">壱</span>
         <h2 id="itinerary-title">旅程と地図</h2>
       </div>
 
@@ -59,13 +51,38 @@
           <p class="day-theme" id="day-theme"></p>
           <ol class="timeline" id="timeline"></ol>
         </div>
-        <div class="map-pane">
+        <div class="map-pane" id="map-pane">
+          <div class="map-sheet-head">
+            <span class="map-sheet-handle" aria-hidden="true"></span>
+            <button class="map-close" id="map-close" aria-label="地図を閉じる">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+          </div>
           <div class="map-frame">
             <div id="map" role="application" aria-label="旅程の地図"></div>
           </div>
-          <p class="map-hint">タイムラインの項目をタップすると地図が移動します</p>
+          <p class="map-hint">ピンをタップすると旅程がハイライトされます</p>
         </div>
       </div>
+
+      <button class="map-toggle" id="map-toggle" aria-expanded="false" aria-controls="map-pane">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.1 6.1 9.9 4 4.6 6.1a1 1 0 0 0-.6.9v11.5a1 1 0 0 0 1.4.9L9.9 17.5l4.2 2.1 5.3-2.1a1 1 0 0 0 .6-.9V5.1a1 1 0 0 0-1.4-.9L14.1 6.1Z"/><path d="M9.9 4v13.5"/><path d="M14.1 6.1v13.5"/></svg>
+        地図
+      </button>
+    </section>
+
+    <!-- 持ち物チェック -->
+    <section class="section packing-section" aria-labelledby="packing-title">
+      <div class="section-head">
+        <span class="section-num">弐</span>
+        <h2 id="packing-title">持ち物チェック</h2>
+      </div>
+      <ul class="packing-list" id="packing-list"></ul>
+      <form class="packing-form" id="packing-form">
+        <input type="text" id="packing-input" placeholder="持ち物を追加…" maxlength="40" aria-label="持ち物を追加">
+        <button type="submit">追加</button>
+      </form>
+      <p class="packing-hint">チェック状態はこの端末に保存されます</p>
     </section>
   </main>
 
@@ -74,7 +91,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c2.7.7 5.3 1 8 1s5.3-.3 8-1"/><path d="M4.5 5.2 5 9"/><path d="M19.5 5.2 19 9"/><path d="M5 9h14"/><path d="M6 9l.7 12"/><path d="M18 9l-.7 12"/><path d="M12 6v3"/><path d="M5.6 13.5h12.8"/></svg>
     </p>
     <p>広島・宮島 家族旅行のしおり</p>
-    <p class="footer-small">旅程の変更は <code>data/itinerary.json</code> を編集</p>
+    <p class="footer-small">旅程の変更は <code>data/itinerary.json</code> を編集 ／ 写真: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a></p>
   </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
