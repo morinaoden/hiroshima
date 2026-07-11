@@ -651,6 +651,8 @@ body {
 
 .packing-form input {
   flex: 1;
+  min-width: 0; /* flexアイテムのデフォルト(min-width:auto)だと
+                   inputの実装依存の最小幅より縮まず、はみ出す原因になる */
   font-family: var(--font-body);
   font-size: 0.95rem;
   padding: 0.55em 1em;
@@ -664,6 +666,8 @@ body {
 .packing-form input:focus { border-color: var(--seto); }
 
 .packing-form button {
+  flex-shrink: 0;
+  white-space: nowrap;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.92rem;
