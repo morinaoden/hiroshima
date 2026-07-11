@@ -42,6 +42,10 @@
       <div class="section-head">
         <span class="section-num">壱</span>
         <h2 id="itinerary-title">旅程と地図</h2>
+        <button class="edit-toggle" id="edit-toggle" hidden aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+          <span id="edit-toggle-label">編集</span>
+        </button>
       </div>
 
       <nav class="day-tabs" id="day-tabs" aria-label="日程の選択"></nav>
@@ -59,6 +63,7 @@
             </button>
           </div>
           <div class="map-frame">
+            <div class="map-pick-banner" id="map-pick-banner" hidden>地図をタップして位置を指定</div>
             <div id="map" role="application" aria-label="旅程の地図"></div>
           </div>
           <p class="map-hint">ピンをタップすると旅程がハイライトされます</p>
@@ -86,15 +91,109 @@
     </section>
   </main>
 
+  <!-- 予定の編集フォーム（下からせり上がるシート） -->
+  <div class="edit-sheet" id="edit-sheet" hidden role="dialog" aria-labelledby="edit-sheet-title" aria-modal="false">
+    <div class="edit-sheet-head">
+      <span class="map-sheet-handle" aria-hidden="true"></span>
+      <span class="edit-sheet-title" id="edit-sheet-title">予定を編集</span>
+      <button class="map-close" id="edit-close" aria-label="閉じる">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <form id="edit-form" class="edit-form">
+      <div class="form-grid two">
+        <label class="form-field">時刻
+          <input type="time" id="f-time" required>
+        </label>
+        <label class="form-field">アイコン
+          <select id="f-icon"></select>
+        </label>
+      </div>
+      <label class="form-field">タイトル
+        <input type="text" id="f-title" required maxlength="80" placeholder="予定のタイトル">
+      </label>
+      <label class="form-field">説明・メモ
+        <textarea id="f-desc" rows="2" placeholder="補足があれば"></textarea>
+      </label>
+      <div class="form-grid two">
+        <label class="form-field">日（変えると移動します）
+          <select id="f-day"></select>
+        </label>
+        <label class="form-field">注意バッジ
+          <input type="text" id="f-badge" maxlength="20" placeholder="要予約 など">
+        </label>
+      </div>
+
+      <fieldset class="form-fieldset">
+        <legend>場所（地図ピン）</legend>
+        <label class="form-field">場所名
+          <input type="text" id="f-spot-name" maxlength="60" placeholder="スポット名">
+        </label>
+        <div class="form-pick-row">
+          <span class="form-coords" id="f-coords">未設定</span>
+          <button type="button" class="form-btn" id="f-pick">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            地図でピン指定
+          </button>
+          <label class="form-check"><input type="checkbox" id="f-no-spot">ピンなし</label>
+        </div>
+        <label class="form-field">Googleマップリンク（共有リンク）
+          <input type="url" id="f-mapurl" placeholder="https://maps.app.goo.gl/…">
+        </label>
+      </fieldset>
+
+      <fieldset class="form-fieldset">
+        <legend>この予定のあとの移動情報</legend>
+        <div class="form-grid travel">
+          <select id="f-travel-icon" aria-label="移動手段">
+            <option value="">（なし）</option>
+            <option value="🚗">車</option>
+            <option value="🚢">フェリー</option>
+            <option value="🚡">ロープウェー</option>
+          </select>
+          <input type="text" id="f-travel-text" maxlength="40" placeholder="車で約50分 など">
+        </div>
+      </fieldset>
+
+      <fieldset class="form-fieldset">
+        <legend>写真</legend>
+        <div class="form-photo-row">
+          <img id="f-photo-preview" alt="" hidden>
+          <div class="form-photo-controls">
+            <label class="form-btn form-file-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg>
+              写真をアップロード
+              <input type="file" id="f-photo-file" accept="image/*" hidden>
+            </label>
+            <input type="url" id="f-photo-url" placeholder="または画像URLを貼り付け">
+            <button type="button" class="form-btn danger" id="f-photo-remove" hidden>写真を外す</button>
+          </div>
+        </div>
+        <p class="form-note" id="f-photo-status"></p>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" class="form-btn primary" id="f-save">保存する</button>
+        <button type="button" class="form-btn" id="f-cancel">キャンセル</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 削除の元に戻すトースト -->
+  <div class="undo-toast" id="undo-toast" hidden>
+    <span id="undo-message">削除しました</span>
+    <button type="button" id="undo-btn">元に戻す</button>
+  </div>
+
   <footer class="footer">
     <p class="footer-mark" aria-hidden="true">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c2.7.7 5.3 1 8 1s5.3-.3 8-1"/><path d="M4.5 5.2 5 9"/><path d="M19.5 5.2 19 9"/><path d="M5 9h14"/><path d="M6 9l.7 12"/><path d="M18 9l-.7 12"/><path d="M12 6v3"/><path d="M5.6 13.5h12.8"/></svg>
     </p>
     <p>広島・宮島 家族旅行のしおり</p>
-    <p class="footer-small">旅程の変更は <code>data/itinerary.json</code> を編集 ／ 写真: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a></p>
+    <p class="footer-small">写真: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a></p>
   </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="js/app.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

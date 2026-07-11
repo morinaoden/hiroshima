@@ -4,6 +4,14 @@
 
 🔗 **サイト:** https://morinaoden.github.io/hiroshima/
 
+## データ管理（Firebase編集モード）
+
+旅程データの本体は **Firebase Firestore** です。サイト内の「編集」ボタンから予定の追加・変更・並べ替え・日またぎ移動・削除ができ、保存すると**家族全員の画面に数秒で自動反映**されます。
+
+- 有効化の手順：[SETUP-FIREBASE.md](SETUP-FIREBASE.md)（約30分・カード登録不要）
+- 接続設定：[js/firebase-config.js](js/firebase-config.js)（`null` のままだと従来どおり `data/itinerary.json` を表示し、編集モードは無効）
+- `data/itinerary.json` は**初回シード＋接続失敗時のフォールバック**として残しています
+
 ## 主な機能
 
 - 📅 日ごとのタイムライン（sticky タブで切替、日付・曜日表示）
