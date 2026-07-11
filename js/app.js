@@ -629,7 +629,8 @@ Object.entries(ICON_LABELS).forEach(([emoji, label]) => {
 });
 
 // フォームの一時状態
-let formState = null; // { dayIdx, evIdx(null=新規), insertAt, coords: {lat,lng}|null, image: string|null, pendingUpload: dataUrl|null }
+let formState = null; // { dayIdx, evIdx(null=新規), insertAt, coords, image, pendingUpload, options: [] }
+let pickTarget = "spot"; // "spot" | 候補スポットのindex
 
 // シート表示中は背面ページのスクロールを固定する
 // （モーダルの内側スクロールが背面に伝わって画面がガタつくのを防ぐ）
@@ -658,7 +659,9 @@ function openEditForm(dayIdx, evIdx, insertAt = null) {
     coords: ev.spot ? { lat: ev.spot.lat, lng: ev.spot.lng } : null,
     image: ev.image || null,
     pendingUpload: null,
+    options: Array.isArray(ev.options) ? JSON.parse(JSON.stringify(ev.options)) : [],
   };
+  pickTarget = "spot";
 
   document.getElementById("edit-sheet-title").textContent = isNew ? "予定を追加" : "予定を編集";
   fTime.value = ev.time || "12:00";
@@ -683,6 +686,7 @@ function openEditForm(dayIdx, evIdx, insertAt = null) {
   fPhotoStatus.textContent = "";
   updateCoordsLabel();
   updatePhotoPreview();
+  renderFormOptions();
 
   // 日の選択肢
   fDay.innerHTML = "";
@@ -770,18 +774,88 @@ fPhotoRemove.addEventListener("click", () => {
   updatePhotoPreview();
 });
 
-// ---- 地図でピン指定 ----
+// ---- 候補スポットの編集UI ----
+const fOptions = document.getElementById("f-options");
+
+function renderFormOptions() {
+  fOptions.innerHTML = "";
+  if (!formState) return;
+  formState.options.forEach((opt, i) => {
+    const row = document.createElement("div");
+    row.className = "option-edit";
+    row.innerHTML = `
+      <div class="form-grid two">
+        <label class="form-field">店名
+          <input type="text" class="fo-name" maxlength="60" placeholder="店名">
+        </label>
+        <label class="form-field">ジャンル
+          <input type="text" class="fo-genre" maxlength="30" placeholder="イタリアン など">
+        </label>
+      </div>
+      <label class="form-field">Googleマップリンク（共有リンク）
+        <input type="url" class="fo-mapurl" placeholder="https://maps.app.goo.gl/…">
+      </label>
+      <div class="form-pick-row">
+        <span class="form-coords fo-coords"></span>
+        <button type="button" class="form-btn fo-pick">
+          ${iconFor("📍")} 地図でピン指定
+        </button>
+        <button type="button" class="form-btn danger fo-remove">削除</button>
+      </div>`;
+
+    const nameEl = row.querySelector(".fo-name");
+    const genreEl = row.querySelector(".fo-genre");
+    const mapUrlEl = row.querySelector(".fo-mapurl");
+    const coordsEl = row.querySelector(".fo-coords");
+
+    nameEl.value = opt.name || "";
+    genreEl.value = opt.genre || "";
+    mapUrlEl.value = opt.mapUrl || "";
+    if (opt.lat != null && opt.lng != null) {
+      coordsEl.textContent = `${(+opt.lat).toFixed(4)}, ${(+opt.lng).toFixed(4)}`;
+      coordsEl.classList.add("set");
+    } else {
+      coordsEl.textContent = "未設定";
+    }
+
+    nameEl.addEventListener("input", () => { opt.name = nameEl.value; });
+    genreEl.addEventListener("input", () => { opt.genre = genreEl.value; });
+    mapUrlEl.addEventListener("input", () => { opt.mapUrl = mapUrlEl.value.trim(); });
+
+    row.querySelector(".fo-pick").addEventListener("click", () => startPick(i, opt));
+    row.querySelector(".fo-remove").addEventListener("click", () => {
+      formState.options.splice(i, 1);
+      renderFormOptions();
+    });
+
+    fOptions.appendChild(row);
+  });
+}
+
+document.getElementById("f-option-add").addEventListener("click", () => {
+  if (!formState) return;
+  formState.options.push({ name: "", genre: "", mapUrl: "" });
+  renderFormOptions();
+});
+
+// ---- 地図でピン指定（メイン場所・候補スポット共用） ----
 let picking = false;
 const pickBanner = document.getElementById("map-pick-banner");
 
-fPick.addEventListener("click", () => {
+function startPick(target, existing) {
   if (!formState) return;
+  pickTarget = target;
   picking = true;
   pickBanner.hidden = false;
-  fNoSpot.checked = false;
   editSheet.classList.add("picking"); // シートを一時的に引っ込める
   if (isMobile()) openMapSheet();
-  if (formState.coords) map.flyTo([formState.coords.lat, formState.coords.lng], 14);
+  const cur = target === "spot" ? formState.coords : existing;
+  if (cur && cur.lat != null) map.flyTo([cur.lat, cur.lng], 14);
+}
+
+fPick.addEventListener("click", () => {
+  fNoSpot.checked = false;
+  startPick("spot", formState ? formState.coords : null);
 });
 
 function cancelPick() {
@@ -792,12 +866,17 @@ function cancelPick() {
 
 map.on("click", (e) => {
   if (!picking || !formState) return;
-  formState.coords = {
-    lat: Math.round(e.latlng.lat * 10000) / 10000,
-    lng: Math.round(e.latlng.lng * 10000) / 10000,
-  };
+  const lat = Math.round(e.latlng.lat * 10000) / 10000;
+  const lng = Math.round(e.latlng.lng * 10000) / 10000;
+  if (pickTarget === "spot") {
+    formState.coords = { lat, lng };
+    updateCoordsLabel();
+  } else if (formState.options[pickTarget]) {
+    formState.options[pickTarget].lat = lat;
+    formState.options[pickTarget].lng = lng;
+    renderFormOptions();
+  }
   cancelPick();
-  updateCoordsLabel();
   if (isMobile()) closeMapSheet();
 });
 
@@ -843,6 +922,24 @@ editForm.addEventListener("submit", async (e) => {
       ev.travelAfter = { icon: fTravelIcon.value || "🚗", text: fTravelText.value.trim() };
     } else {
       delete ev.travelAfter;
+    }
+
+    // 候補スポット: 店名入りのみ採用。位置未設定はエラーで保存中断
+    const validOptions = formState.options.filter((o) => (o.name || "").trim());
+    const noCoords = validOptions.find((o) => o.lat == null || o.lng == null);
+    if (noCoords) {
+      fPhotoStatus.textContent = `候補「${noCoords.name}」の位置が未設定です。「地図でピン指定」でピンを打ってください。`;
+      saveBtn.disabled = false;
+      return;
+    }
+    if (validOptions.length > 0) {
+      ev.options = validOptions.map((o) => {
+        const out = { name: o.name.trim(), genre: (o.genre || "").trim(), lat: o.lat, lng: o.lng };
+        if ((o.mapUrl || "").trim()) out.mapUrl = o.mapUrl.trim();
+        return out;
+      });
+    } else {
+      delete ev.options;
     }
 
     if (image) ev.image = image;
