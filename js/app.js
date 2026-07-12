@@ -987,6 +987,141 @@ function insertByTime(events, ev) {
 }
 
 // ============================================================
+// お土産: 紹介カタログ ＋ 買い物リスト（端末ごとのlocalStorage保存）
+// ============================================================
+
+const SOUVENIRS = [
+  {
+    name: "もみじ饅頭",
+    desc: "広島みやげの王様。定番のこしあんのほか、チーズ・チョコ・揚げもみじも人気。",
+    place: "表参道商店街・広島空港",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Momiji_manju_of_Yamadaya_variants.jpg/500px-Momiji_manju_of_Yamadaya_variants.jpg",
+  },
+  {
+    name: "宮島しゃもじ",
+    desc: "「幸せをめしとる」縁起物。名入れをしてくれるお店もあり、贈り物にぴったり。",
+    place: "宮島 表参道商店街",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Miyajima_Spatula_Giant.JPG/500px-Miyajima_Spatula_Giant.JPG",
+  },
+  {
+    name: "牡蠣の加工品",
+    desc: "牡蠣のオイル漬け・燻製・佃煮など。日持ちするのでお土産向き。お酒好きに喜ばれる。",
+    place: "宮島・広島空港",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Grilled_oysters_Food_in_Miyajima_-_DSC02189.JPG/500px-Grilled_oysters_Food_in_Miyajima_-_DSC02189.JPG",
+  },
+  {
+    name: "あなごめし弁当（うえの）",
+    desc: "明治から続く名店の折詰。冷めても美味しいので帰りの飛行機やお土産に。要事前予約。",
+    place: "宮島口「うえの」",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Anagomeshi_Hiroshima_Miyajima.JPG/500px-Anagomeshi_Hiroshima_Miyajima.JPG",
+  },
+  {
+    name: "瀬戸内レモンのお菓子",
+    desc: "レモンケーキやはっさくゼリーなど、瀬戸内の柑橘を使った爽やかな銘菓たち。",
+    place: "広島駅・広島空港",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Lemon_cake_-_Hello_My_Moon_2024-04-07.jpg/500px-Lemon_cake_-_Hello_My_Moon_2024-04-07.jpg",
+  },
+  {
+    name: "熊野筆",
+    desc: "広島県熊野町の伝統工芸。特に化粧筆は世界的に有名で、上質な贈り物として人気。",
+    place: "広島市内・広島空港",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/FUDE_NO_SATO_KOBO.jpg/500px-FUDE_NO_SATO_KOBO.jpg",
+  },
+];
+
+const SHOPPING_KEY = "hiroshima-shopping-v1";
+
+function loadShopping() {
+  try {
+    return JSON.parse(localStorage.getItem(SHOPPING_KEY)) || { checked: {}, items: [] };
+  } catch {
+    return { checked: {}, items: [] };
+  }
+}
+function saveShopping(state) {
+  localStorage.setItem(SHOPPING_KEY, JSON.stringify(state));
+}
+
+const shoppingState = loadShopping();
+const souvenirGrid = document.getElementById("souvenir-grid");
+const shoppingListEl = document.getElementById("shopping-list");
+const shoppingEmpty = document.getElementById("shopping-empty");
+const shoppingForm = document.getElementById("shopping-form");
+const shoppingInput = document.getElementById("shopping-input");
+
+function addShoppingItem(name) {
+  if (!name || shoppingState.items.includes(name)) return;
+  shoppingState.items.push(name);
+  saveShopping(shoppingState);
+  renderShopping();
+  renderSouvenirCatalog();
+}
+
+function renderSouvenirCatalog() {
+  souvenirGrid.innerHTML = "";
+  SOUVENIRS.forEach((s) => {
+    const inList = shoppingState.items.includes(s.name);
+    const card = document.createElement("div");
+    card.className = "souvenir-card";
+    card.innerHTML = `
+      <img src="${s.image}" alt="${s.name}" loading="lazy">
+      <div class="souvenir-body">
+        <div class="souvenir-name">${s.name}</div>
+        <p class="souvenir-desc">${s.desc}</p>
+        <span class="souvenir-place">${iconFor("📍")} ${s.place}</span>
+        <button type="button" class="souvenir-add" ${inList ? "disabled" : ""}>
+          ${inList ? "追加済み ✓" : "＋ リストに追加"}
+        </button>
+      </div>`;
+    card.querySelector("img").addEventListener("error", (e) => e.target.remove());
+    card.querySelector(".souvenir-add").addEventListener("click", () => addShoppingItem(s.name));
+    souvenirGrid.appendChild(card);
+  });
+}
+
+function renderShopping() {
+  shoppingListEl.innerHTML = "";
+  shoppingEmpty.hidden = shoppingState.items.length > 0;
+
+  shoppingState.items.forEach((name, i) => {
+    const checked = !!shoppingState.checked[name];
+    const li = document.createElement("li");
+    li.className = "packing-item" + (checked ? " checked" : "");
+    const id = `shop-${i}`;
+    li.innerHTML = `
+      <input type="checkbox" id="${id}" ${checked ? "checked" : ""}>
+      <label for="${id}"></label>
+      <button type="button" class="packing-remove" aria-label="削除">${iconFor("✕")}</button>`;
+    li.querySelector("label").textContent = name;
+
+    li.querySelector("input").addEventListener("change", (e) => {
+      shoppingState.checked[name] = e.target.checked;
+      saveShopping(shoppingState);
+      li.classList.toggle("checked", e.target.checked);
+    });
+
+    li.querySelector(".packing-remove").addEventListener("click", () => {
+      shoppingState.items = shoppingState.items.filter((n) => n !== name);
+      delete shoppingState.checked[name];
+      saveShopping(shoppingState);
+      renderShopping();
+      renderSouvenirCatalog();
+    });
+
+    shoppingListEl.appendChild(li);
+  });
+}
+
+shoppingForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  addShoppingItem(shoppingInput.value.trim());
+  shoppingInput.value = "";
+});
+
+renderSouvenirCatalog();
+renderShopping();
+
+// ============================================================
 // 持ち物チェックリスト（端末ごとのlocalStorage保存）
 // ============================================================
 

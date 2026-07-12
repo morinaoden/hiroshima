@@ -75,10 +75,29 @@
       </button>
     </section>
 
+    <!-- お土産 -->
+    <section class="section souvenir-section" aria-labelledby="souvenir-title">
+      <div class="section-head">
+        <span class="section-num">弐</span>
+        <h2 id="souvenir-title">お土産</h2>
+      </div>
+      <p class="souvenir-lead">広島・宮島の定番みやげ。気になるものは「リストに追加」で自分の買い物リストへ。</p>
+      <div class="souvenir-grid" id="souvenir-grid"></div>
+
+      <h3 class="souvenir-sub" id="shopping-title">わたしの買い物リスト</h3>
+      <ul class="packing-list" id="shopping-list"></ul>
+      <p class="packing-empty" id="shopping-empty">まだ何も入っていません。上のカードか、下の入力欄から追加できます。</p>
+      <form class="packing-form" id="shopping-form">
+        <input type="text" id="shopping-input" placeholder="買う物を追加…（例: もみじ饅頭 ◯◯用）" maxlength="60" aria-label="買う物を追加">
+        <button type="submit">追加</button>
+      </form>
+      <p class="packing-hint">買い物リストはこの端末に保存されます</p>
+    </section>
+
     <!-- 持ち物チェック -->
     <section class="section packing-section" aria-labelledby="packing-title">
       <div class="section-head">
-        <span class="section-num">弐</span>
+        <span class="section-num">参</span>
         <h2 id="packing-title">持ち物チェック</h2>
       </div>
       <ul class="packing-list" id="packing-list"></ul>
