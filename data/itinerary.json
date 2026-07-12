@@ -200,7 +200,7 @@
     {
       "id": 3,
       "label": "3日目",
-      "theme": "平和記念公園でじっくり歴史学習 ➔ 空港グルメで締めくくり",
+      "theme": "平和記念公園 ＆ おりづるタワー ➔ 尾道・しまなみ海道ドライブ",
       "events": [
         {
           "time": "09:00",
@@ -210,54 +210,61 @@
           "spot": null
         },
         {
-          "time": "09:30",
+          "time": "09:15",
           "icon": "🕊️",
-          "title": "平和記念公園・原爆ドームを見学",
-          "description": "所要：約2.5時間。資料館の展示や遺品をじっくり巡り、歴史を深く学びます。",
+          "title": "平和記念公園・原爆ドーム ＆ 平和記念資料館を見学",
+          "description": "所要：約1.5時間。原爆ドームと資料館の展示・遺品をじっくり巡り、歴史を深く学びます。",
           "spot": { "name": "平和記念公園・原爆ドーム", "lat": 34.3955, "lng": 132.4536 },
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/A-Bomb_Dome.jpg/500px-A-Bomb_Dome.jpg",
-          "caption": "世界遺産を心に刻む"
+          "caption": "世界遺産を心に刻む",
+          "travelAfter": { "icon": "🚶", "text": "徒歩約5分" }
         },
         {
-          "time": "12:15",
-          "icon": "🥢",
-          "title": "お好み焼きランチ",
-          "description": "「お好み村」や、焼き手の技術が光る名店で本場のお好み焼きを堪能。",
-          "spot": { "name": "お好み村", "lat": 34.3917, "lng": 132.4632 },
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Okonomiyaki_of_Hiroshima_02.jpg/500px-Okonomiyaki_of_Hiroshima_02.jpg",
-          "caption": "鉄板アツアツ、本場の味！"
+          "time": "10:45",
+          "icon": "🗼",
+          "title": "おりづるタワーで景色を楽しむ",
+          "description": "原爆ドームのすぐ隣。展望台からの広島市街と瀬戸内海の眺めを楽しみます。",
+          "spot": { "name": "おりづるタワー", "lat": 34.3957, "lng": 132.4547 },
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/View_to_the_west_from_the_Hiroshima_Orizuru_Tower.jpg/500px-View_to_the_west_from_the_Hiroshima_Orizuru_Tower.jpg",
+          "caption": "頂上から瀬戸内海を一望",
+          "travelAfter": { "icon": "🚗", "text": "尾道へ 車で約1時間10分" }
         },
         {
-          "time": "13:45",
-          "icon": "🛍️",
-          "title": "本通り商店街でお土産さがし",
-          "description": "もみじ饅頭や熊野筆など、買い忘れたお土産をまとめてチェック。",
-          "spot": { "name": "本通り商店街", "lat": 34.3924, "lng": 132.4593 }
+          "time": "13:00",
+          "icon": "🍜",
+          "title": "尾道ラーメンでランチ",
+          "description": "尾道駅周辺の名店で、瀬戸内の煮干し出汁が香る尾道ラーメンを堪能。",
+          "spot": { "name": "尾道駅周辺（尾道ラーメン）", "lat": 34.4048, "lng": 133.1931 },
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Onomichi_ramen_and_Karaage.jpg/500px-Onomichi_ramen_and_Karaage.jpg",
+          "caption": "背脂とろける尾道の名物",
+          "travelAfter": { "icon": "🚗", "text": "しまなみ海道で瀬戸田へ 車で約35分" }
         },
         {
-          "time": "16:00",
-          "icon": "🚗",
-          "title": "広島空港へ向けて出発",
-          "description": "",
-          "spot": null,
-          "travelAfter": { "icon": "🚗", "text": "市内から山陽道経由で約50分" }
+          "time": "14:15",
+          "icon": "🍨",
+          "title": "しまなみドルチェ 瀬戸田本店でジェラート休憩",
+          "description": "生口島・瀬戸田にある人気ジェラート店。瀬戸内レモンなど地元素材のフレーバーが名物。",
+          "spot": { "name": "しまなみドルチェ 瀬戸田本店（生口島）", "lat": 34.3062, "lng": 133.0892, "mapUrl": "https://maps.app.goo.gl/6oZ9x2nGh4vQxKcz9" },
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Shimanami_Kaido_5.jpg/500px-Shimanami_Kaido_5.jpg",
+          "caption": "しまなみ海道を渡って生口島へ",
+          "travelAfter": { "icon": "🚗", "text": "広島空港へ 車で約1時間10分" }
         },
         {
-          "time": "17:15",
+          "time": "16:45",
           "icon": "⛽",
           "title": "空港近くでガソリン給油・レンタカー返却",
           "description": "",
           "spot": null
         },
         {
-          "time": "18:00",
+          "time": "17:20",
           "icon": "🧳",
           "title": "広島空港に到着・チェックイン",
           "description": "トランクからすべての荷物を回収し、飛行機の搭乗手続きを済ませて身軽になります。",
           "spot": { "name": "広島空港", "lat": 34.4361, "lng": 132.9195 }
         },
         {
-          "time": "18:45",
+          "time": "18:00",
           "icon": "🥢",
           "title": "広島空港内で旅の締めくくりディナー",
           "description": "3階のレストランフロアへ。「みっちゃん」や「五エ門」でお好み焼き、または「OYSTER FARM」で最後の広島牡蠣を堪能！",
