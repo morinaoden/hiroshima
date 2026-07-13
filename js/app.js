@@ -1199,6 +1199,71 @@ packingForm.addEventListener("submit", (e) => {
 });
 
 // ============================================================
+// ページ切り替えタブ（旅程 / お土産 / 持ち物）
+// ============================================================
+
+const pageTabsEl = document.getElementById("page-tabs");
+const PANEL_IDS = ["itinerary", "souvenir", "packing"];
+
+function switchPanel(key, { updateHash = true } = {}) {
+  if (!PANEL_IDS.includes(key)) key = "itinerary";
+
+  // 旅程タブを離れるとき、編集シート・ピン指定が開いたままにならないようにする
+  if (key !== "itinerary") {
+    if (picking) cancelPick();
+    if (!editSheet.hidden) closeEditForm();
+  }
+
+  PANEL_IDS.forEach((id) => {
+    document.getElementById(`panel-${id}`).hidden = id !== key;
+  });
+  pageTabsEl.querySelectorAll(".page-tab").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.panel === key);
+    btn.setAttribute("aria-pressed", String(btn.dataset.panel === key));
+  });
+
+  if (key === "itinerary") {
+    // 非表示中にサイズ計算が狂うので再計算
+    map.invalidateSize();
+  } else if (mapPane.classList.contains("open")) {
+    closeMapSheet();
+  }
+
+  if (updateHash) {
+    // location.hash 代入だと同名要素へスクロールする恐れがあるため replaceState
+    history.replaceState(null, "", key === "itinerary" ? location.pathname + location.search : `#${key}`);
+  }
+  window.scrollTo({ top: 0 });
+}
+
+pageTabsEl.addEventListener("click", (e) => {
+  const btn = e.target.closest(".page-tab");
+  if (btn) switchPanel(btn.dataset.panel);
+});
+
+// stickyオフセット用にタブナビの実測高さをCSS変数へ反映
+function syncPageTabsHeight() {
+  document.documentElement.style.setProperty(
+    "--page-tabs-h",
+    `${pageTabsEl.offsetHeight}px`
+  );
+}
+window.addEventListener("resize", syncPageTabsHeight);
+syncPageTabsHeight();
+
+// #souvenir / #packing 付きURLで直接そのタブを開ける
+function applyPanelFromHash() {
+  const key = location.hash.replace("#", "");
+  switchPanel(PANEL_IDS.includes(key) ? key : "itinerary", { updateHash: false });
+}
+// タブ切り替えは replaceState を使うため hashchange は発火しない
+// （外部からのハッシュ付き遷移・ブラウザ操作のみ拾う）
+window.addEventListener("hashchange", applyPanelFromHash);
+if (PANEL_IDS.includes(location.hash.replace("#", ""))) {
+  applyPanelFromHash();
+}
+
+// ============================================================
 // 起動
 // ============================================================
 

@@ -156,6 +156,68 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ============ ページ切り替えタブ ============ */
+
+/* --page-tabs-h は app.js が実測値で上書きする（stickyオフセット用） */
+:root { --page-tabs-h: 4.2rem; }
+
+/* 下線タイプのシンプルなタブ。3タブを1/3ずつの均等幅にし、
+   選択中はラベル下に章色のバーを敷く（旅程=朱 / お土産=紅葉 / 持ち物=瀬戸内） */
+.page-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 800; /* day-tabs(700)より上、ボトムシート(1200)より下 */
+  display: flex;
+  background: var(--washi);
+  border-bottom: 1.5px solid var(--line);
+}
+
+.page-tab {
+  --tab-c: var(--shu);
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+  letter-spacing: 0.12em;
+  padding: 0.9em 0 0;
+  border: none;
+  background: none;
+  color: var(--sumi-soft);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.page-tab[data-panel="souvenir"] { --tab-c: var(--momiji); }
+.page-tab[data-panel="packing"]  { --tab-c: var(--seto); }
+
+.page-tab-label {
+  display: inline-block;
+  position: relative;
+  padding: 0 0.25em 0.65em;
+}
+
+.page-tab-label::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--tab-c);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.page-tab:hover { color: var(--sumi); }
+
+.page-tab.active {
+  color: var(--tab-c);
+}
+
+.page-tab.active .page-tab-label::after { opacity: 1; }
+
+.page-tab:focus-visible { outline: 2px solid var(--seto); outline-offset: -2px; }
+
 /* ============ セクション共通 ============ */
 
 .section {
@@ -186,6 +248,11 @@ body {
   transform: translateY(0.35em);
 }
 
+/* 章番号の色は栞タブの章色と揃える（旅程=朱 / お土産=紅葉 / 持ち物=瀬戸内） */
+.itinerary-section .section-num { background: var(--shu); }
+.souvenir-section  .section-num { background: var(--momiji); }
+.packing-section   .section-num { background: var(--seto); }
+
 .section-head h2 {
   font-family: var(--font-display);
   font-weight: 800;
@@ -200,7 +267,7 @@ body {
 
 .day-tabs {
   position: sticky;
-  top: 0;
+  top: var(--page-tabs-h); /* ページタブの下に追従 */
   z-index: 700;
   display: flex;
   gap: 0.7rem;
@@ -263,7 +330,7 @@ body {
 
 .map-pane {
   position: sticky;
-  top: 4.6rem; /* stickyタブの下 */
+  top: calc(var(--page-tabs-h) + 4.6rem); /* ページタブ＋日タブの下 */
 }
 
 .map-sheet-head { display: none; }

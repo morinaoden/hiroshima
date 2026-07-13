@@ -35,9 +35,16 @@
     <div class="hero-wave" aria-hidden="true"></div>
   </header>
 
+  <!-- ページ切り替えタブ -->
+  <nav class="page-tabs" id="page-tabs" aria-label="ページの切り替え">
+    <button class="page-tab active" data-panel="itinerary" aria-pressed="true"><span class="page-tab-label">旅程</span></button>
+    <button class="page-tab" data-panel="souvenir" aria-pressed="false"><span class="page-tab-label">お土産</span></button>
+    <button class="page-tab" data-panel="packing" aria-pressed="false"><span class="page-tab-label">持ち物</span></button>
+  </nav>
+
   <main>
     <!-- 旅程 + 地図 -->
-    <section class="section itinerary-section" aria-labelledby="itinerary-title">
+    <section class="section itinerary-section" id="panel-itinerary" aria-labelledby="itinerary-title">
       <div class="section-head">
         <span class="section-num">壱</span>
         <h2 id="itinerary-title">旅程と地図</h2>
@@ -76,7 +83,7 @@
     </section>
 
     <!-- お土産 -->
-    <section class="section souvenir-section" aria-labelledby="souvenir-title">
+    <section class="section souvenir-section" id="panel-souvenir" aria-labelledby="souvenir-title" hidden>
       <div class="section-head">
         <span class="section-num">弐</span>
         <h2 id="souvenir-title">お土産</h2>
@@ -95,7 +102,7 @@
     </section>
 
     <!-- 持ち物チェック -->
-    <section class="section packing-section" aria-labelledby="packing-title">
+    <section class="section packing-section" id="panel-packing" aria-labelledby="packing-title" hidden>
       <div class="section-head">
         <span class="section-num">参</span>
         <h2 id="packing-title">持ち物チェック</h2>
