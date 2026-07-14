@@ -37,6 +37,10 @@ const FLAT_ICONS = {
   "🗼": `<svg ${SVG_ATTRS}><path d="M12 2 8 22h8L12 2Z"/><path d="M9.3 9h5.4"/><path d="M8 15h8"/><path d="M12 2v4"/></svg>`,
   "🍜": `<svg ${SVG_ATTRS}><path d="M4 12h16a8 6 0 0 1-16 0Z"/><path d="M3 12h18"/><path d="M12 12V7c0-1.5 1-2 1-3.5"/><path d="M9 7c0-1 .5-1.5.5-2.5"/></svg>`,
   "🍨": `<svg ${SVG_ATTRS}><path d="M8 10a4 4 0 0 1 8 0"/><path d="M6 10h12l-1.2 3H7.2Z"/><path d="M9.5 13 12 22l2.5-9"/></svg>`,
+  "🖼️": `<svg ${SVG_ATTRS}><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m4 18 5-5 3.5 3.5L18 11l3 3"/></svg>`,
+  "🐠": `<svg ${SVG_ATTRS}><path d="M18 12c0-3-4-6-9-6-2 0-3.5 1-4.5 2.2C3.5 9.3 2 10 2 12s1.5 2.7 2.5 3.8C5.5 17 7 18 9 18c5 0 9-3 9-6Z"/><path d="M18 12c1.5-1 3-1.5 4-1-.5 1-.5 2 0 2-1-.5-2.5 0-4-1Z"/><circle cx="7" cy="11" r="1"/></svg>`,
+  "🦪": `<svg ${SVG_ATTRS}><path d="M12 3c3 3 8 7 8 12a8 5 0 0 1-16 0c0-5 5-9 8-12Z"/><path d="M12 8v10"/></svg>`,
+  "🛋️": `<svg ${SVG_ATTRS}><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M4 11a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h1"/><path d="M20 11a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1h-1"/><path d="M4 15h16"/><path d="M5 17v3"/><path d="M19 17v3"/></svg>`,
 };
 
 const EDIT_ICONS = {
