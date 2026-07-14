@@ -131,14 +131,29 @@
           "caption": "朝の静けさは格別"
         },
         {
-          "time": "08:00",
+          "time": "07:30",
           "icon": "🍳",
-          "title": "ホテルで朝食・チェックアウト",
+          "title": "ホテルで朝食",
           "description": "",
           "spot": null
         },
         {
-          "time": "09:15",
+          "time": "08:30",
+          "icon": "🛋️",
+          "title": "ホテルでゆったり自由時間",
+          "description": "湯上がりにもう一風呂、売店でお土産チェックなど、チェックアウトまで思い思いに。",
+          "spot": null
+        },
+        {
+          "time": "10:00",
+          "icon": "🧳",
+          "title": "チェックアウト（サブバッグはフロントに預けて身軽に）",
+          "description": "",
+          "spot": null,
+          "travelAfter": { "icon": "🚶", "text": "紅葉谷公園経由で徒歩約20分" }
+        },
+        {
+          "time": "10:20",
           "icon": "🚡",
           "title": "弥山（みせん）ロープウエーで絶景空中散歩",
           "description": "往復＋山頂の獅子岩展望台散策で2時間強。瀬戸内海の素晴らしい多島美を一望。",
@@ -147,14 +162,14 @@
           "caption": "瀬戸内の多島美を一望！"
         },
         {
-          "time": "12:00",
+          "time": "12:45",
           "icon": "🥢",
           "title": "あなごめしランチ（まめたぬき候補）",
-          "description": "陶器で蒸す「まめたぬき」など、宮島名物のあなごめしを堪能。混雑時は待ち時間あり。",
+          "description": "陶器で蒸す「まめたぬき」など、宮島名物のあなごめしを堪能。混雑時は待ち時間あり。食後にフロントで荷物を回収。",
           "spot": { "name": "表参道商店街", "lat": 34.2975, "lng": 132.3207 }
         },
         {
-          "time": "13:00",
+          "time": "13:45",
           "icon": "🚢",
           "title": "フェリーで宮島口へ・車を回収",
           "description": "",
@@ -162,44 +177,36 @@
           "travelAfter": { "icon": "🚗", "text": "広島市内へ 車で約1時間" }
         },
         {
-          "time": "14:30",
+          "time": "15:00",
           "icon": "🕊️",
-          "title": "平和記念公園・原爆ドームを見学",
-          "description": "所要：約2時間15分。原爆ドームと資料館の展示・遺品をじっくり巡り、歴史を深く学びます。",
+          "title": "平和記念公園・原爆ドーム ＆ 平和記念資料館",
+          "description": "所要：約2時間10分。原爆ドームと資料館の展示・遺品をじっくり巡り、歴史を深く学びます。",
           "spot": { "name": "平和記念公園・原爆ドーム", "lat": 34.3955, "lng": 132.4536 },
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/A-Bomb_Dome.jpg/500px-A-Bomb_Dome.jpg",
           "caption": "世界遺産を心に刻む",
           "travelAfter": { "icon": "🚶", "text": "徒歩約5分" }
         },
         {
-          "time": "16:50",
+          "time": "17:15",
           "icon": "🗼",
           "title": "おりづるタワーで景色を楽しむ",
           "description": "原爆ドームのすぐ隣。展望台からの広島市街と瀬戸内海の眺めを楽しみます。",
           "spot": { "name": "おりづるタワー", "lat": 34.3957, "lng": 132.4547 },
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/View_to_the_west_from_the_Hiroshima_Orizuru_Tower.jpg/500px-View_to_the_west_from_the_Hiroshima_Orizuru_Tower.jpg",
           "caption": "頂上から瀬戸内海を一望",
-          "travelAfter": { "icon": "🚶", "text": "徒歩約15分" }
-        },
-        {
-          "time": "17:50",
-          "icon": "🏯",
-          "title": "広島城",
-          "description": "毛利輝元が築いた名城（復元天守）。内部は歴史博物館で、天守閣からの展望も見事。",
-          "spot": { "name": "広島城", "lat": 34.4026, "lng": 132.4594 },
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Keep%2C_Hiroshima_Castle%2C_South_view_20190417_2.jpg/500px-Keep%2C_Hiroshima_Castle%2C_South_view_20190417_2.jpg",
-          "caption": "別名は「鯉城」",
+          "badge": "最終入場18:00に注意",
           "travelAfter": { "icon": "🚶", "text": "徒歩約10分" }
         },
         {
-          "time": "18:45",
+          "time": "18:10",
           "icon": "🐠",
           "title": "広島もとまち水族館",
           "description": "基町のパセーラ7Fにある都市型水族館。水と森とアートが融合した空間。",
-          "spot": { "name": "広島もとまち水族館", "lat": 34.3967, "lng": 132.4570 }
+          "spot": { "name": "広島もとまち水族館", "lat": 34.3967, "lng": 132.4570 },
+          "badge": "最終入場18:30に注意"
         },
         {
-          "time": "19:45",
+          "time": "19:20",
           "icon": "🏨",
           "title": "ヒルトン広島へチェックイン",
           "description": "荷物を置いてディナーへ。",
@@ -240,10 +247,20 @@
           "title": "ヒルトン広島 チェックアウト",
           "description": "スーツケースはすべて車のトランクへ。",
           "spot": null,
+          "travelAfter": { "icon": "🚗", "text": "広島城へ 車で約10分" }
+        },
+        {
+          "time": "10:15",
+          "icon": "🏯",
+          "title": "広島城",
+          "description": "毛利輝元が築いた名城（復元天守）。内部は歴史博物館で、天守閣からの展望も見事。朝イチの空いている時間に。",
+          "spot": { "name": "広島城", "lat": 34.4026, "lng": 132.4594 },
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Keep%2C_Hiroshima_Castle%2C_South_view_20190417_2.jpg/500px-Keep%2C_Hiroshima_Castle%2C_South_view_20190417_2.jpg",
+          "caption": "別名は「鯉城」",
           "travelAfter": { "icon": "🚗", "text": "尾道へ 車で約1時間10分" }
         },
         {
-          "time": "11:10",
+          "time": "12:15",
           "icon": "🍜",
           "title": "しょうや飯店で尾道ラーメン",
           "description": "尾道駅から徒歩5分。継ぎ足しの熟成醤油が決め手の尾道ラーメンをさっと堪能（散策なし）。",
@@ -253,7 +270,7 @@
           "travelAfter": { "icon": "🚗", "text": "しまなみ海道で瀬戸田へ 車で約35分" }
         },
         {
-          "time": "12:20",
+          "time": "13:30",
           "icon": "🍨",
           "title": "しまなみドルチェ 瀬戸田本店でジェラート休憩",
           "description": "生口島・瀬戸田にある人気ジェラート店。瀬戸内レモンなど地元素材のフレーバーが名物。",
@@ -263,10 +280,10 @@
           "travelAfter": { "icon": "🚶", "text": "徒歩約10分" }
         },
         {
-          "time": "13:00",
+          "time": "14:10",
           "icon": "⛩️",
           "title": "耕三寺・未来心の丘",
-          "description": "実業家が母への感謝を込めて建てた寺院。大理石だけで作られた白亜の庭園「未来心の丘」から瀬戸内海を一望。返却時刻に余裕ができたのでゆったり滞在。",
+          "description": "実業家が母への感謝を込めて建てた寺院。大理石だけで作られた白亜の庭園「未来心の丘」から瀬戸内海を一望。",
           "spot": { "name": "耕三寺・未来心の丘", "lat": 34.3040, "lng": 133.0904 },
           "travelAfter": { "icon": "🚗", "text": "徒歩で港へ戻り、広島空港へ 車で約1時間10分（安全マージン込み）" }
         },
@@ -279,20 +296,21 @@
         },
         {
           "time": "17:30",
-          "icon": "🦪",
-          "title": "OYSTER FARM",
-          "description": "最後の最後まで広島の生牡蠣・焼き牡蠣と地酒で乾杯。空港内オイスターバー。",
-          "spot": { "name": "OYSTER FARM（空港内）", "lat": 34.4361, "lng": 132.9195, "mapUrl": "https://maps.app.goo.gl/Bn8vSUC1r8mywkne9" }
-        },
-        {
-          "time": "18:20",
           "icon": "🛍️",
           "title": "お土産ハント（空港2階フロア）",
           "description": "にしき堂の「生もみじ」や八天堂のクリームパンなど、定番みやげが手ぶらで揃います。",
           "spot": null
         },
         {
-          "time": "18:50",
+          "time": "18:10",
+          "icon": "🦪",
+          "title": "OYSTER FARMでディナー",
+          "description": "最後の最後まで広島の生牡蠣・焼き牡蠣と地酒で乾杯。空港内オイスターバー。",
+          "spot": { "name": "OYSTER FARM（空港内）", "lat": 34.4361, "lng": 132.9195, "mapUrl": "https://maps.app.goo.gl/Bn8vSUC1r8mywkne9" },
+          "badge": "L.O.時刻に注意"
+        },
+        {
+          "time": "19:10",
           "icon": "🛋️",
           "title": "空港内 自由時間",
           "description": "ラウンジで一息、追加のお土産探しなど、搭乗まで思い思いに。",
