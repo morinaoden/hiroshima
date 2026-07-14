@@ -623,6 +623,7 @@ const fPhotoFile = document.getElementById("f-photo-file");
 const fPhotoUrl = document.getElementById("f-photo-url");
 const fPhotoRemove = document.getElementById("f-photo-remove");
 const fPhotoStatus = document.getElementById("f-photo-status");
+const fPhotoCaption = document.getElementById("f-photo-caption");
 
 // アイコン選択肢を構築
 Object.entries(ICON_LABELS).forEach(([emoji, label]) => {
@@ -687,6 +688,7 @@ function openEditForm(dayIdx, evIdx, insertAt = null) {
   fTravelIcon.value = ev.travelAfter ? ev.travelAfter.icon || "" : "";
   fTravelText.value = ev.travelAfter ? ev.travelAfter.text || "" : "";
   fPhotoUrl.value = ev.image && !ev.image.startsWith("fs:") ? ev.image : "";
+  fPhotoCaption.value = ev.caption || "";
   fPhotoStatus.textContent = "";
   updateCoordsLabel();
   updatePhotoPreview();
@@ -946,8 +948,14 @@ editForm.addEventListener("submit", async (e) => {
       delete ev.options;
     }
 
-    if (image) ev.image = image;
-    else delete ev.image;
+    if (image) {
+      ev.image = image;
+      if (fPhotoCaption.value.trim()) ev.caption = fPhotoCaption.value.trim();
+      else delete ev.caption;
+    } else {
+      delete ev.image;
+      delete ev.caption;
+    }
 
     const targetDay = +fDay.value;
 
