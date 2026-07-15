@@ -1182,7 +1182,7 @@ const LODGING = [
 ];
 
 const EMERGENCY_CONTACTS = [
-  { category: "レンタカー会社", name: "TBD（未入力）", phone: "TBD（未入力）", note: "事故・故障時のロードサービス番号" },
+  { category: "レンタカー会社", name: "トヨタレンタカー広島空港", phone: "0800-7000-111", hours: "貸出 10:00 ／ 返却 19:00", note: "事故・故障時のロードサービス番号" },
 ];
 
 const TRANSIT_LINKS = [
@@ -1241,6 +1241,7 @@ function renderEmergencyContacts() {
       <div class="contact-category">${c.category}</div>
       <div class="contact-name">${c.name}</div>
       ${phoneHtml}
+      ${c.hours ? `<p class="contact-hours">${c.hours}</p>` : ""}
       ${c.note ? `<p class="contact-note">${c.note}</p>` : ""}`;
     el.appendChild(card);
   });

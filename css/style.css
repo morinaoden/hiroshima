@@ -858,6 +858,11 @@ body {
 }
 a.contact-phone:hover { text-decoration: underline; }
 .contact-phone svg { width: 13px; height: 13px; flex-shrink: 0; }
+.contact-hours {
+  font-size: 0.78rem;
+  color: var(--seto-deep);
+  margin-top: 0.4rem;
+}
 .contact-note {
   font-size: 0.78rem;
   color: var(--sumi-soft);
