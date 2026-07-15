@@ -1148,8 +1148,8 @@ const LODGING = [
   {
     day: "1日目〜2日目",
     name: "ホテル宮島別荘",
-    address: "TBD（未入力）",
-    phone: "TBD（未入力）",
+    address: "〒739-0505 広島県廿日市市宮島町1165",
+    phone: "0829-44-1180",
     confirmationNumber: "TBD（未入力）",
     checkIn: "14:45",
     checkOut: "10:00",
@@ -1161,8 +1161,8 @@ const LODGING = [
   {
     day: "2日目〜3日目",
     name: "ヒルトン広島",
-    address: "TBD（未入力）",
-    phone: "TBD（未入力）",
+    address: "〒730-0043 広島県広島市中区富士見町11-12",
+    phone: "082-243-2700",
     confirmationNumber: "TBD（未入力）",
     checkIn: "19:20",
     checkOut: "10:00",
@@ -1203,12 +1203,12 @@ function renderLodging() {
           <h4 class="lodging-name">${lo.name}</h4>
         </div>
         <dl class="lodging-fields">
-          <div><dt>${iconFor("📍")} 住所</dt><dd>${fieldOrTbd(lo.address)}</dd></div>
-          <div><dt>${iconFor("📞")} 電話</dt><dd>${fieldOrTbd(lo.phone)}</dd></div>
-          <div><dt>予約番号</dt><dd>${fieldOrTbd(lo.confirmationNumber)}</dd></div>
-          <div><dt>チェックイン</dt><dd>${fieldOrTbd(lo.checkIn)}</dd></div>
-          <div><dt>チェックアウト</dt><dd>${fieldOrTbd(lo.checkOut)}</dd></div>
-          <div><dt>${iconFor("📶")} Wi-Fi</dt><dd>${fieldOrTbd(lo.wifi.ssid)} / ${fieldOrTbd(lo.wifi.password)}</dd></div>
+          <dt>${iconFor("📍")} 住所</dt><dd>${fieldOrTbd(lo.address)}</dd>
+          <dt>${iconFor("📞")} 電話</dt><dd>${lo.phone && !lo.phone.startsWith("TBD") ? `<a class="tel-link" href="tel:${lo.phone.replace(/[^\d]/g, "")}">${lo.phone}</a>` : fieldOrTbd(lo.phone)}</dd>
+          <dt>予約番号</dt><dd>${fieldOrTbd(lo.confirmationNumber)}</dd>
+          <dt>チェックイン</dt><dd>${fieldOrTbd(lo.checkIn)}</dd>
+          <dt>チェックアウト</dt><dd>${fieldOrTbd(lo.checkOut)}</dd>
+          <dt>${iconFor("📶")} Wi-Fi</dt><dd>${fieldOrTbd(lo.wifi.ssid)} / ${fieldOrTbd(lo.wifi.password)}</dd>
         </dl>
         ${lo.notes ? `<p class="lodging-notes">${lo.notes}</p>` : ""}
         <a class="gmap-link" href="https://www.google.com/maps?q=${lo.spot.lat},${lo.spot.lng}" target="_blank" rel="noopener">${iconFor("📍")} 地図で開く</a>

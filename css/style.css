@@ -190,6 +190,7 @@ body {
 
 .page-tab[data-panel="souvenir"] { --tab-c: var(--momiji); }
 .page-tab[data-panel="packing"]  { --tab-c: var(--seto); }
+.page-tab[data-panel="info"]     { --tab-c: var(--kin); }
 
 .page-tab-label {
   display: inline-block;
@@ -805,7 +806,10 @@ body {
 
 .lodging-fields {
   display: grid;
-  gap: 0.4rem;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.9rem;
+  row-gap: 0.5rem;
+  align-items: start;
   font-size: 0.86rem;
   margin-bottom: 0.6rem;
 }
@@ -815,7 +819,7 @@ body {
   gap: 0.3em;
   color: var(--sumi-soft);
   font-size: 0.74rem;
-  margin-bottom: 0.1em;
+  white-space: nowrap;
 }
 .lodging-fields dt svg {
   width: 12px;
@@ -823,6 +827,8 @@ body {
   flex-shrink: 0;
 }
 .lodging-fields dd { color: var(--sumi); }
+.lodging-fields dd .tel-link { color: var(--shu-deep); font-weight: 700; text-decoration: none; }
+.lodging-fields dd .tel-link:hover { text-decoration: underline; }
 
 .lodging-notes {
   font-size: 0.82rem;
