@@ -590,7 +590,7 @@ function hideUndoToast() {
 async function deleteEvent(dayIdx, evIdx) {
   const events = data.days[dayIdx].events;
   const [removed] = events.splice(evIdx, 1);
-  undoState = { dayIdx, evIdx, removed };
+  undoState = { type: "event", dayIdx, evIdx, removed };
   undoMessage.textContent = `「${removed.title}」を削除しました`;
   undoToast.hidden = false;
   clearTimeout(undoTimer);
@@ -601,6 +601,14 @@ async function deleteEvent(dayIdx, evIdx) {
 
 undoBtn.addEventListener("click", async () => {
   if (!undoState) return;
+  if (undoState.type === "packing") {
+    const { index, removed } = undoState;
+    data.packingList.splice(Math.min(index, data.packingList.length), 0, removed);
+    hideUndoToast();
+    renderPacking();
+    await saveTrip();
+    return;
+  }
   const { dayIdx, evIdx, removed } = undoState;
   data.days[dayIdx].events.splice(Math.min(evIdx, data.days[dayIdx].events.length), 0, removed);
   hideUndoToast();
@@ -1291,10 +1299,11 @@ function renderPacking() {
     const li = document.createElement("li");
     li.className = "packing-item" + (checked ? " checked" : "");
     const id = `pack-${i}`;
+    const showRemove = custom || canEdit;
     li.innerHTML = `
       <input type="checkbox" id="${id}" ${checked ? "checked" : ""}>
       <label for="${id}"></label>
-      ${custom ? `<button type="button" class="packing-remove" aria-label="削除">${iconFor("✕")}</button>` : ""}`;
+      ${showRemove ? `<button type="button" class="packing-remove" aria-label="削除">${iconFor("✕")}</button>` : ""}`;
     li.querySelector("label").textContent = name;
 
     li.querySelector("input").addEventListener("change", (e) => {
@@ -1306,15 +1315,34 @@ function renderPacking() {
     const removeBtn = li.querySelector(".packing-remove");
     if (removeBtn) {
       removeBtn.addEventListener("click", () => {
-        packingState.custom = packingState.custom.filter((n) => n !== name);
-        delete packingState.checked[name];
-        savePacking(packingState);
-        renderPacking();
+        if (custom) {
+          packingState.custom = packingState.custom.filter((n) => n !== name);
+          delete packingState.checked[name];
+          savePacking(packingState);
+          renderPacking();
+        } else {
+          deletePackingBaseItem(name);
+        }
       });
     }
 
     packingListEl.appendChild(li);
   });
+}
+
+async function deletePackingBaseItem(name) {
+  const index = (data.packingList || []).indexOf(name);
+  if (index === -1) return;
+  const [removed] = data.packingList.splice(index, 1);
+  delete packingState.checked[name];
+  savePacking(packingState);
+  undoState = { type: "packing", index, removed };
+  undoMessage.textContent = `「${removed}」を削除しました`;
+  undoToast.hidden = false;
+  clearTimeout(undoTimer);
+  undoTimer = setTimeout(hideUndoToast, 6000);
+  renderPacking();
+  await saveTrip();
 }
 
 packingForm.addEventListener("submit", (e) => {
