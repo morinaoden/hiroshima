@@ -793,9 +793,17 @@ body {
   margin-bottom: 0.6rem;
 }
 .lodging-fields dt {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
   color: var(--sumi-soft);
   font-size: 0.74rem;
   margin-bottom: 0.1em;
+}
+.lodging-fields dt svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }
 .lodging-fields dd { color: var(--sumi); }
 
