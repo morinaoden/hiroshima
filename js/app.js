@@ -601,14 +601,6 @@ async function deleteEvent(dayIdx, evIdx) {
 
 undoBtn.addEventListener("click", async () => {
   if (!undoState) return;
-  if (undoState.type === "packing") {
-    const { index, removed } = undoState;
-    data.packingList.splice(Math.min(index, data.packingList.length), 0, removed);
-    hideUndoToast();
-    renderPacking();
-    await saveTrip();
-    return;
-  }
   const { dayIdx, evIdx, removed } = undoState;
   data.days[dayIdx].events.splice(Math.min(evIdx, data.days[dayIdx].events.length), 0, removed);
   hideUndoToast();
@@ -1300,7 +1292,7 @@ function renderPacking() {
     const li = document.createElement("li");
     li.className = "packing-item" + (checked ? " checked" : "");
     const id = `pack-${i}`;
-    const showRemove = custom || canEdit;
+    const showRemove = custom;
     li.innerHTML = `
       <input type="checkbox" id="${id}" ${checked ? "checked" : ""}>
       <label for="${id}"></label>
@@ -1316,34 +1308,15 @@ function renderPacking() {
     const removeBtn = li.querySelector(".packing-remove");
     if (removeBtn) {
       removeBtn.addEventListener("click", () => {
-        if (custom) {
-          packingState.custom = packingState.custom.filter((n) => n !== name);
-          delete packingState.checked[name];
-          savePacking(packingState);
-          renderPacking();
-        } else {
-          deletePackingBaseItem(name);
-        }
+        packingState.custom = packingState.custom.filter((n) => n !== name);
+        delete packingState.checked[name];
+        savePacking(packingState);
+        renderPacking();
       });
     }
 
     packingListEl.appendChild(li);
   });
-}
-
-async function deletePackingBaseItem(name) {
-  const index = (data.packingList || []).indexOf(name);
-  if (index === -1) return;
-  const [removed] = data.packingList.splice(index, 1);
-  delete packingState.checked[name];
-  savePacking(packingState);
-  undoState = { type: "packing", index, removed };
-  undoMessage.textContent = `「${removed}」を削除しました`;
-  undoToast.hidden = false;
-  clearTimeout(undoTimer);
-  undoTimer = setTimeout(hideUndoToast, 6000);
-  renderPacking();
-  await saveTrip();
 }
 
 packingForm.addEventListener("submit", (e) => {
