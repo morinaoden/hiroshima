@@ -760,8 +760,25 @@ body {
   background: var(--card);
   border: 1.5px solid var(--line);
   border-radius: var(--radius);
-  padding: 1rem 1.1rem;
 }
+
+.contact-card { padding: 1rem 1.1rem; }
+
+.lodging-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.lodging-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1.5px solid var(--line);
+}
+
+.lodging-body { padding: 1rem 1.1rem; }
 
 .lodging-head {
   display: flex;

@@ -1156,6 +1156,7 @@ const LODGING = [
     wifi: { ssid: "TBD（未入力）", password: "TBD（未入力）" },
     notes: "表参道商店街まで徒歩圏。ディナービュッフェは館内。",
     spot: { name: "ホテル宮島別荘", lat: 34.3020, lng: 132.3225 },
+    image: "https://images.trvl-media.com/lodging/7000000/6140000/6133900/6133886/71d782f3.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill",
   },
   {
     day: "2日目〜3日目",
@@ -1168,16 +1169,12 @@ const LODGING = [
     wifi: { ssid: "TBD（未入力）", password: "TBD（未入力）" },
     notes: "レンタカーはホテル駐車場を利用。",
     spot: { name: "ヒルトン広島", lat: 34.3866, lng: 132.4682 },
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyCESvppgoNJ3UzYNMXAfXtqJYEgQIXpKOC1uTpjcLzA&s=10",
   },
 ];
 
 const EMERGENCY_CONTACTS = [
-  { category: "現地病院", name: "TBD（未入力）", phone: "TBD（未入力）", note: "宮島・広島市内の最寄り救急病院を事前に調べて記入" },
-  { category: "保険会社", name: "TBD（未入力）", phone: "TBD（未入力）", note: "海外/国内旅行保険の緊急連絡先・保険証券番号" },
   { category: "レンタカー会社", name: "TBD（未入力）", phone: "TBD（未入力）", note: "事故・故障時のロードサービス番号" },
-  { category: LODGING[0].name, name: LODGING[0].name, phone: LODGING[0].phone, note: "宿泊情報タブに詳細" },
-  { category: LODGING[1].name, name: LODGING[1].name, phone: LODGING[1].phone, note: "宿泊情報タブに詳細" },
-  { category: "警察・消防・救急", name: "全国共通", phone: "110（警察）／119（消防・救急）", note: "" },
 ];
 
 const TRANSIT_LINKS = [
@@ -1199,20 +1196,25 @@ function renderLodging() {
     const card = document.createElement("div");
     card.className = "lodging-card";
     card.innerHTML = `
-      <div class="lodging-head">
-        <span class="lodging-day">${lo.day}</span>
-        <h4 class="lodging-name">${lo.name}</h4>
-      </div>
-      <dl class="lodging-fields">
-        <div><dt>${iconFor("📍")} 住所</dt><dd>${fieldOrTbd(lo.address)}</dd></div>
-        <div><dt>${iconFor("📞")} 電話</dt><dd>${fieldOrTbd(lo.phone)}</dd></div>
-        <div><dt>予約番号</dt><dd>${fieldOrTbd(lo.confirmationNumber)}</dd></div>
-        <div><dt>チェックイン</dt><dd>${fieldOrTbd(lo.checkIn)}</dd></div>
-        <div><dt>チェックアウト</dt><dd>${fieldOrTbd(lo.checkOut)}</dd></div>
-        <div><dt>${iconFor("📶")} Wi-Fi</dt><dd>${fieldOrTbd(lo.wifi.ssid)} / ${fieldOrTbd(lo.wifi.password)}</dd></div>
-      </dl>
-      ${lo.notes ? `<p class="lodging-notes">${lo.notes}</p>` : ""}
-      <a class="gmap-link" href="https://www.google.com/maps?q=${lo.spot.lat},${lo.spot.lng}" target="_blank" rel="noopener">${iconFor("📍")} 地図で開く</a>`;
+      ${lo.image ? `<img src="${lo.image}" alt="${lo.name}" loading="lazy">` : ""}
+      <div class="lodging-body">
+        <div class="lodging-head">
+          <span class="lodging-day">${lo.day}</span>
+          <h4 class="lodging-name">${lo.name}</h4>
+        </div>
+        <dl class="lodging-fields">
+          <div><dt>${iconFor("📍")} 住所</dt><dd>${fieldOrTbd(lo.address)}</dd></div>
+          <div><dt>${iconFor("📞")} 電話</dt><dd>${fieldOrTbd(lo.phone)}</dd></div>
+          <div><dt>予約番号</dt><dd>${fieldOrTbd(lo.confirmationNumber)}</dd></div>
+          <div><dt>チェックイン</dt><dd>${fieldOrTbd(lo.checkIn)}</dd></div>
+          <div><dt>チェックアウト</dt><dd>${fieldOrTbd(lo.checkOut)}</dd></div>
+          <div><dt>${iconFor("📶")} Wi-Fi</dt><dd>${fieldOrTbd(lo.wifi.ssid)} / ${fieldOrTbd(lo.wifi.password)}</dd></div>
+        </dl>
+        ${lo.notes ? `<p class="lodging-notes">${lo.notes}</p>` : ""}
+        <a class="gmap-link" href="https://www.google.com/maps?q=${lo.spot.lat},${lo.spot.lng}" target="_blank" rel="noopener">${iconFor("📍")} 地図で開く</a>
+      </div>`;
+    const img = card.querySelector("img");
+    if (img) img.addEventListener("error", (e) => e.target.remove());
     el.appendChild(card);
   });
 }
