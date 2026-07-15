@@ -41,6 +41,8 @@ const FLAT_ICONS = {
   "🐠": `<svg ${SVG_ATTRS}><path d="M18 12c0-3-4-6-9-6-2 0-3.5 1-4.5 2.2C3.5 9.3 2 10 2 12s1.5 2.7 2.5 3.8C5.5 17 7 18 9 18c5 0 9-3 9-6Z"/><path d="M18 12c1.5-1 3-1.5 4-1-.5 1-.5 2 0 2-1-.5-2.5 0-4-1Z"/><circle cx="7" cy="11" r="1"/></svg>`,
   "🦪": `<svg ${SVG_ATTRS}><path d="M12 3c3 3 8 7 8 12a8 5 0 0 1-16 0c0-5 5-9 8-12Z"/><path d="M12 8v10"/></svg>`,
   "🛋️": `<svg ${SVG_ATTRS}><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M4 11a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h1"/><path d="M20 11a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1h-1"/><path d="M4 15h16"/><path d="M5 17v3"/><path d="M19 17v3"/></svg>`,
+  "📞": `<svg ${SVG_ATTRS}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>`,
+  "📶": `<svg ${SVG_ATTRS}><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 20V4"/></svg>`,
 };
 
 const EDIT_ICONS = {
@@ -1138,6 +1140,121 @@ renderSouvenirCatalog();
 renderShopping();
 
 // ============================================================
+// お役立ち情報: 宿泊 / 緊急連絡先 / 運行状況リンク
+// （静的データ・Firebase非連携。値の追記や修正はこのファイルを直接編集）
+// ============================================================
+
+const LODGING = [
+  {
+    day: "1日目〜2日目",
+    name: "ホテル宮島別荘",
+    address: "TBD（未入力）",
+    phone: "TBD（未入力）",
+    confirmationNumber: "TBD（未入力）",
+    checkIn: "14:45",
+    checkOut: "10:00",
+    wifi: { ssid: "TBD（未入力）", password: "TBD（未入力）" },
+    notes: "表参道商店街まで徒歩圏。ディナービュッフェは館内。",
+    spot: { name: "ホテル宮島別荘", lat: 34.3020, lng: 132.3225 },
+  },
+  {
+    day: "2日目〜3日目",
+    name: "ヒルトン広島",
+    address: "TBD（未入力）",
+    phone: "TBD（未入力）",
+    confirmationNumber: "TBD（未入力）",
+    checkIn: "19:20",
+    checkOut: "10:00",
+    wifi: { ssid: "TBD（未入力）", password: "TBD（未入力）" },
+    notes: "レンタカーはホテル駐車場を利用。",
+    spot: { name: "ヒルトン広島", lat: 34.3866, lng: 132.4682 },
+  },
+];
+
+const EMERGENCY_CONTACTS = [
+  { category: "現地病院", name: "TBD（未入力）", phone: "TBD（未入力）", note: "宮島・広島市内の最寄り救急病院を事前に調べて記入" },
+  { category: "保険会社", name: "TBD（未入力）", phone: "TBD（未入力）", note: "海外/国内旅行保険の緊急連絡先・保険証券番号" },
+  { category: "レンタカー会社", name: "TBD（未入力）", phone: "TBD（未入力）", note: "事故・故障時のロードサービス番号" },
+  { category: LODGING[0].name, name: LODGING[0].name, phone: LODGING[0].phone, note: "宿泊情報タブに詳細" },
+  { category: LODGING[1].name, name: LODGING[1].name, phone: LODGING[1].phone, note: "宿泊情報タブに詳細" },
+  { category: "警察・消防・救急", name: "全国共通", phone: "110（警察）／119（消防・救急）", note: "" },
+];
+
+const TRANSIT_LINKS = [
+  { icon: "🛫", label: "ANA運航状況（羽田⇄広島）", url: "https://www.ana.co.jp/other/dom/status/index.html", note: "ANA便名を入力して検索" },
+  { icon: "🚢", label: "JR西日本宮島フェリー 運航情報", url: "https://www.jr-miyajimaferry.co.jp/", note: "強風・高潮時の運休情報" },
+  { icon: "🚢", label: "宮島松大汽船 運航情報", url: "https://www.miyajima-matsudai.co.jp/", note: "" },
+];
+
+function fieldOrTbd(value) {
+  return value && !value.startsWith("TBD")
+    ? value
+    : `<span class="tbd-badge">未入力</span>`;
+}
+
+function renderLodging() {
+  const el = document.getElementById("lodging-list");
+  el.innerHTML = "";
+  LODGING.forEach((lo) => {
+    const card = document.createElement("div");
+    card.className = "lodging-card";
+    card.innerHTML = `
+      <div class="lodging-head">
+        <span class="lodging-day">${lo.day}</span>
+        <h4 class="lodging-name">${lo.name}</h4>
+      </div>
+      <dl class="lodging-fields">
+        <div><dt>${iconFor("📍")} 住所</dt><dd>${fieldOrTbd(lo.address)}</dd></div>
+        <div><dt>${iconFor("📞")} 電話</dt><dd>${fieldOrTbd(lo.phone)}</dd></div>
+        <div><dt>予約番号</dt><dd>${fieldOrTbd(lo.confirmationNumber)}</dd></div>
+        <div><dt>チェックイン</dt><dd>${fieldOrTbd(lo.checkIn)}</dd></div>
+        <div><dt>チェックアウト</dt><dd>${fieldOrTbd(lo.checkOut)}</dd></div>
+        <div><dt>${iconFor("📶")} Wi-Fi</dt><dd>${fieldOrTbd(lo.wifi.ssid)} / ${fieldOrTbd(lo.wifi.password)}</dd></div>
+      </dl>
+      ${lo.notes ? `<p class="lodging-notes">${lo.notes}</p>` : ""}
+      <a class="gmap-link" href="https://www.google.com/maps?q=${lo.spot.lat},${lo.spot.lng}" target="_blank" rel="noopener">${iconFor("📍")} 地図で開く</a>`;
+    el.appendChild(card);
+  });
+}
+
+function renderEmergencyContacts() {
+  const el = document.getElementById("emergency-list");
+  el.innerHTML = "";
+  EMERGENCY_CONTACTS.forEach((c) => {
+    const card = document.createElement("div");
+    card.className = "contact-card";
+    const isPlainPhone = !c.phone.startsWith("TBD") && !c.phone.includes("／");
+    const phoneHtml = isPlainPhone
+      ? `<a class="contact-phone" href="tel:${c.phone.replace(/[^\d]/g, "")}">${iconFor("📞")} ${c.phone}</a>`
+      : `<span class="contact-phone">${iconFor("📞")} ${fieldOrTbd(c.phone)}</span>`;
+    card.innerHTML = `
+      <div class="contact-category">${c.category}</div>
+      <div class="contact-name">${c.name}</div>
+      ${phoneHtml}
+      ${c.note ? `<p class="contact-note">${c.note}</p>` : ""}`;
+    el.appendChild(card);
+  });
+}
+
+function renderTransitLinks() {
+  const el = document.getElementById("transit-links");
+  el.innerHTML = "";
+  TRANSIT_LINKS.forEach((t) => {
+    const a = document.createElement("a");
+    a.className = "transit-link-card";
+    a.href = t.url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.innerHTML = `${iconFor(t.icon)} <span>${t.label}</span> ${t.note ? `<small>${t.note}</small>` : ""}`;
+    el.appendChild(a);
+  });
+}
+
+renderLodging();
+renderEmergencyContacts();
+renderTransitLinks();
+
+// ============================================================
 // 持ち物チェックリスト（端末ごとのlocalStorage保存）
 // ============================================================
 
@@ -1215,7 +1332,7 @@ packingForm.addEventListener("submit", (e) => {
 // ============================================================
 
 const pageTabsEl = document.getElementById("page-tabs");
-const PANEL_IDS = ["itinerary", "souvenir", "packing"];
+const PANEL_IDS = ["itinerary", "souvenir", "packing", "info"];
 
 function switchPanel(key, { updateHash = true } = {}) {
   if (!PANEL_IDS.includes(key)) key = "itinerary";

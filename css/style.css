@@ -252,6 +252,7 @@ body {
 .itinerary-section .section-num { background: var(--shu); }
 .souvenir-section  .section-num { background: var(--momiji); }
 .packing-section   .section-num { background: var(--seto); }
+.info-section      .section-num { background: var(--kin); }
 
 .section-head h2 {
   font-family: var(--font-display);
@@ -736,6 +737,130 @@ body {
 }
 
 .souvenir-add:hover:not(:disabled) { background: var(--shu); color: var(--washi); }
+
+/* ============ お役立ち情報（宿泊 / 緊急連絡先 / 運行状況リンク） ============ */
+
+.info-subhead {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--sumi);
+  margin: 2rem 0 0.9rem;
+}
+.info-subhead:first-of-type { margin-top: 0; }
+
+.lodging-list, .contact-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.lodging-card, .contact-card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+}
+
+.lodging-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.lodging-day {
+  font-size: 0.74rem;
+  color: var(--kin);
+  background: var(--washi-deep);
+  border-radius: 999px;
+  padding: 0.14em 0.8em;
+  white-space: nowrap;
+}
+
+.lodging-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--seto-deep);
+}
+
+.lodging-fields {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.86rem;
+  margin-bottom: 0.6rem;
+}
+.lodging-fields dt {
+  color: var(--sumi-soft);
+  font-size: 0.74rem;
+  margin-bottom: 0.1em;
+}
+.lodging-fields dd { color: var(--sumi); }
+
+.lodging-notes {
+  font-size: 0.82rem;
+  color: var(--sumi-soft);
+  margin-bottom: 0.6rem;
+}
+
+.contact-category {
+  font-size: 0.74rem;
+  color: var(--seto);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+.contact-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+.contact-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  color: var(--shu-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+a.contact-phone:hover { text-decoration: underline; }
+.contact-phone svg { width: 13px; height: 13px; flex-shrink: 0; }
+.contact-note {
+  font-size: 0.78rem;
+  color: var(--sumi-soft);
+  margin-top: 0.4rem;
+}
+
+.tbd-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--shu-deep);
+  background: var(--shu-pale);
+  border: 1px dashed var(--shu);
+  border-radius: 4px;
+  padding: 0.05em 0.6em;
+}
+
+.transit-links { display: grid; gap: 0.7rem; margin-bottom: 1rem; }
+.transit-link-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  color: var(--sumi);
+  text-decoration: none;
+}
+.transit-link-card:hover { border-color: var(--kin); }
+.transit-link-card svg { width: 18px; height: 18px; flex-shrink: 0; }
+.transit-link-card small { color: var(--sumi-soft); font-size: 0.76rem; margin-left: auto; }
 
 .souvenir-add:disabled {
   border-color: var(--kin);

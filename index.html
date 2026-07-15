@@ -6,6 +6,9 @@
   <title>広島・宮島 2泊3日 旅のしおり</title>
   <meta name="description" content="広島・宮島 2泊3日 家族旅行プラン。旅程と地図つきの旅のしおり。">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛩️</text></svg>">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#c8401f">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,500&family=Yomogi&display=swap" rel="stylesheet">
@@ -40,6 +43,7 @@
     <button class="page-tab active" data-panel="itinerary" aria-pressed="true"><span class="page-tab-label">旅程</span></button>
     <button class="page-tab" data-panel="souvenir" aria-pressed="false"><span class="page-tab-label">お土産</span></button>
     <button class="page-tab" data-panel="packing" aria-pressed="false"><span class="page-tab-label">持ち物</span></button>
+    <button class="page-tab" data-panel="info" aria-pressed="false"><span class="page-tab-label">お役立ち情報</span></button>
   </nav>
 
   <main>
@@ -113,6 +117,25 @@
         <button type="submit">追加</button>
       </form>
       <p class="packing-hint">チェック状態はこの端末に保存されます</p>
+    </section>
+
+    <!-- お役立ち情報: 宿泊 / 緊急連絡先 / 運行状況リンク -->
+    <section class="section info-section" id="panel-info" aria-labelledby="info-title" hidden>
+      <div class="section-head">
+        <span class="section-num">肆</span>
+        <h2 id="info-title">お役立ち情報</h2>
+      </div>
+
+      <h3 class="info-subhead">宿泊情報</h3>
+      <div class="lodging-list" id="lodging-list"></div>
+
+      <h3 class="info-subhead">緊急連絡先・保険情報</h3>
+      <div class="contact-list" id="emergency-list"></div>
+
+      <h3 class="info-subhead">運行状況リンク</h3>
+      <div class="transit-links" id="transit-links"></div>
+
+      <p class="packing-hint">未入力の項目は data/itinerary.json ではなく js/app.js 内の LODGING・EMERGENCY_CONTACTS を直接編集して追記します</p>
     </section>
   </main>
 
@@ -229,5 +252,14 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script type="module" src="js/app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch((err) => {
+          console.warn("Service worker registration failed:", err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
