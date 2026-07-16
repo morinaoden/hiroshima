@@ -901,8 +901,7 @@ a.contact-phone:hover { text-decoration: underline; }
 .ana-notice-list { display: grid; gap: 0.7rem; margin-bottom: 1rem; }
 .ana-notice-card {
   background: var(--card);
-  border: 1.5px solid var(--shu);
-  border-left: 4px solid var(--shu-deep);
+  border: 1.5px solid var(--line);
   border-radius: var(--radius);
   padding: 0.8rem 1rem;
 }
@@ -912,13 +911,13 @@ a.contact-phone:hover { text-decoration: underline; }
   gap: 0.5rem;
   margin-bottom: 0.35rem;
 }
-.ana-notice-icon { display: inline-flex; color: var(--shu-deep); flex-shrink: 0; }
+.ana-notice-icon { display: inline-flex; color: var(--seto); flex-shrink: 0; }
 .ana-notice-icon svg { width: 18px; height: 18px; }
 .ana-notice-title {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.92rem;
-  color: var(--shu-deep);
+  color: var(--sumi);
 }
 .ana-notice-body {
   font-size: 0.82rem;
