@@ -898,6 +898,33 @@ a.contact-phone:hover { text-decoration: underline; }
 .transit-link-card svg { width: 18px; height: 18px; flex-shrink: 0; }
 .transit-link-card small { color: var(--sumi-soft); font-size: 0.76rem; margin-left: auto; }
 
+.ana-notice-list { display: grid; gap: 0.7rem; margin-bottom: 1rem; }
+.ana-notice-card {
+  background: var(--card);
+  border: 1.5px solid var(--shu);
+  border-left: 4px solid var(--shu-deep);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+}
+.ana-notice-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+.ana-notice-icon { font-size: 1.05rem; line-height: 1; }
+.ana-notice-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--shu-deep);
+}
+.ana-notice-body {
+  font-size: 0.82rem;
+  color: var(--sumi-soft);
+  line-height: 1.5;
+}
+
 .souvenir-add:disabled {
   border-color: var(--kin);
   color: var(--kin);

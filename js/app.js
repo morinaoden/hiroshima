@@ -1183,6 +1183,34 @@ const TRANSIT_LINKS = [
   { icon: "🚢", label: "宮島松大汽船 運航情報", url: "https://www.miyajima-matsudai.co.jp/", note: "" },
 ];
 
+const ANA_NOTICES = [
+  {
+    icon: "🔋",
+    title: "モバイルバッテリーは必ず機内持込手荷物へ",
+    body: "モバイルバッテリー・予備電池はリチウムイオン電池のため受託手荷物（預け入れ荷物）には入れられません。スーツケースを預ける前に必ず取り出し、機内に持ち込んでください。",
+  },
+  {
+    icon: "⚡",
+    title: "容量（Wh）による制限",
+    body: "160Wh超は持込・預け入れとも不可。100Wh超〜160Wh以下は事前にANAへの申し出が必要で1人2個まで。100Wh以下は個数制限なし（自己使用の範囲）。本体にWh表示がない場合は「Wh = mAh ÷ 1000 × V」で計算して確認。",
+  },
+  {
+    icon: "🧷",
+    title: "端子のショート対策",
+    body: "むき出しの端子はテープで絶縁するか、個別のポリ袋・ケースに入れてショート・発火を防止する。",
+  },
+  {
+    icon: "🪑",
+    title: "座席のすき間に注意",
+    body: "リクライニングなどの可動部にモバイルバッテリーを挟み込むと発熱・発火の恐れがあるため、座席周りに置いたままにしない。見当たらなくなった場合はすぐ客室乗務員に申し出る。",
+  },
+  {
+    icon: "🛄",
+    title: "保安検査での提示",
+    body: "保安検査場でモバイルバッテリーの取り出しを求められる場合があるため、手荷物の取り出しやすい場所に入れておく。",
+  },
+];
+
 function fieldOrTbd(value) {
   return value && !value.startsWith("TBD")
     ? value
@@ -1253,9 +1281,26 @@ function renderTransitLinks() {
   });
 }
 
+function renderAnaNotices() {
+  const el = document.getElementById("ana-notices");
+  el.innerHTML = "";
+  ANA_NOTICES.forEach((n) => {
+    const card = document.createElement("div");
+    card.className = "ana-notice-card";
+    card.innerHTML = `
+      <div class="ana-notice-head">
+        <span class="ana-notice-icon">${n.icon}</span>
+        <h4 class="ana-notice-title">${n.title}</h4>
+      </div>
+      <p class="ana-notice-body">${n.body}</p>`;
+    el.appendChild(card);
+  });
+}
+
 renderLodging();
 renderEmergencyContacts();
 renderTransitLinks();
+renderAnaNotices();
 
 // ============================================================
 // 持ち物チェックリスト（端末ごとのlocalStorage保存）
