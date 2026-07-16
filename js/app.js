@@ -1022,22 +1022,10 @@ const SOUVENIRS = [
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Momiji_manju_of_Yamadaya_variants.jpg/500px-Momiji_manju_of_Yamadaya_variants.jpg",
   },
   {
-    name: "宮島しゃもじ",
-    desc: "「幸せをめしとる」縁起物。名入れをしてくれるお店もあり、贈り物にぴったり。",
-    place: "宮島 表参道商店街",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Miyajima_Spatula_Giant.JPG/500px-Miyajima_Spatula_Giant.JPG",
-  },
-  {
     name: "牡蠣の加工品",
     desc: "牡蠣のオイル漬け・燻製・佃煮など。日持ちするのでお土産向き。お酒好きに喜ばれる。",
     place: "宮島・広島空港",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Grilled_oysters_Food_in_Miyajima_-_DSC02189.JPG/500px-Grilled_oysters_Food_in_Miyajima_-_DSC02189.JPG",
-  },
-  {
-    name: "あなごめし弁当（うえの）",
-    desc: "明治から続く名店の折詰。冷めても美味しいので帰りの飛行機やお土産に。要事前予約。",
-    place: "宮島口「うえの」",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Anagomeshi_Hiroshima_Miyajima.JPG/500px-Anagomeshi_Hiroshima_Miyajima.JPG",
   },
   {
     name: "瀬戸内レモンのお菓子",
@@ -1046,10 +1034,70 @@ const SOUVENIRS = [
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Lemon_cake_-_Hello_My_Moon_2024-04-07.jpg/500px-Lemon_cake_-_Hello_My_Moon_2024-04-07.jpg",
   },
   {
-    name: "熊野筆",
-    desc: "広島県熊野町の伝統工芸。特に化粧筆は世界的に有名で、上質な贈り物として人気。",
+    name: "桐葉菓（やまだ屋）",
+    desc: "小豆あんを求肥入りの生地で包んで焼き上げた銘菓。緑茶によく合う上品な甘さ。",
+    place: "広島市内・宮島・広島空港",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_02.jpg",
+  },
+  {
+    name: "生もみじ（にしき堂）",
+    desc: "もみじ饅頭を生菓子仕立てにした人気商品。県産の餅粉と米粉を使ったもちもち食感。",
     place: "広島市内・広島空港",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/FUDE_NO_SATO_KOBO.jpg/500px-FUDE_NO_SATO_KOBO.jpg",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_03.jpg",
+  },
+  {
+    name: "川通り餅（亀屋）",
+    desc: "求肥にきな粉をまぶしくるみを加えた素朴な味わいの生菓子。江戸時代から続く銘菓。",
+    place: "広島市内",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_04.jpg",
+  },
+  {
+    name: "元祖はっさく大福（かしはら）",
+    desc: "みかん練り込みの餅で、まるごとのはっさくと白あんを包んだ人気大福。季節限定販売。",
+    place: "尾道",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_05.jpg",
+  },
+  {
+    name: "からす麦の焼きたてクッキー（バッケンモーツアルト）",
+    desc: "からす麦・アーモンド・和三盆を使い、モンドセレクション最高金賞を受賞したクッキー。",
+    place: "広島市内・広島空港",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_06.jpg",
+  },
+  {
+    name: "レモスコ（ヤマトフーズ）",
+    desc: "瀬戸内レモンの果汁・皮と青唐辛子を合わせた万能調味料。揚げ物やパスタにも。",
+    place: "広島空港・道の駅",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_07.jpg",
+  },
+  {
+    name: "ゆかり（三島食品）",
+    desc: "赤しそを使った混ぜご飯の素のロングセラー商品。軽くて配りやすいお土産の定番。",
+    place: "スーパー・広島空港",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_08.jpg",
+  },
+  {
+    name: "花瑠＆花星（倉崎海産）",
+    desc: "広島湾産の焼き牡蠣を醤油漬けにした逸品。ご飯のお供にもお酒のあてにも。",
+    place: "宮島・広島空港",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_09.jpg",
+  },
+  {
+    name: "広島の地酒（賀茂鶴・蓬莱鶴など）",
+    desc: "酒どころ西条をはじめとする広島の地酒。香り豊かでバランスの良い大吟醸が揃う。",
+    place: "西条・広島空港",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_10.jpg",
+  },
+  {
+    name: "くりーむパン（八天堂）",
+    desc: "冷やして食べる新食感のクリームパン。純正クリームを使った上品な甘さが人気。",
+    place: "広島空港・広島駅",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_14.jpg",
+  },
+  {
+    name: "瀬戸田レモンケーキ（島ごころ）",
+    desc: "瀬戸田産レモンを使った看板商品。累計販売300万個を突破したしまなみ土産の定番。",
+    place: "瀬戸田・広島空港",
+    image: "https://image.dive-hiroshima.com/wp-content/uploads/2022/01/souvenir_img_15.jpg",
   },
 ];
 
