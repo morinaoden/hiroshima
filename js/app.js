@@ -567,6 +567,7 @@ editToggle.addEventListener("click", () => {
   document.body.classList.toggle("editing", editMode);
   if (!editMode) hideUndoToast();
   renderDay();
+  if (data) renderLodging();
 });
 
 // ---- 並べ替え ----
@@ -1146,16 +1147,18 @@ renderShopping();
 
 // ============================================================
 // お役立ち情報: 宿泊 / 緊急連絡先 / 運行状況リンク
-// （静的データ・Firebase非連携。値の追記や修正はこのファイルを直接編集）
+// （宿泊情報の部屋番号・Wi-FiのみFirebase連携で編集可。それ以外は静的データで
+//   値の追記や修正はこのファイルを直接編集）
 // ============================================================
 
-const LODGING = [
+// data.lodging が未設定（初回シード前のFirestoreドキュメントなど）の場合のフォールバック
+const DEFAULT_LODGING = [
   {
     day: "1日目〜2日目",
     name: "ホテル宮島別荘",
     address: "〒739-0505 広島県廿日市市宮島町1165",
     phone: "0829-44-1180",
-    confirmationNumber: "TBD（未入力）",
+    roomNumber: "TBD（未入力）",
     checkIn: "14:45",
     checkOut: "10:00",
     wifi: { ssid: "TBD（未入力）", password: "TBD（未入力）" },
@@ -1168,7 +1171,7 @@ const LODGING = [
     name: "ヒルトン広島",
     address: "〒730-0043 広島県広島市中区富士見町11-12",
     phone: "082-243-2700",
-    confirmationNumber: "TBD（未入力）",
+    roomNumber: "TBD（未入力）",
     checkIn: "19:20",
     checkOut: "10:00",
     wifi: { ssid: "TBD（未入力）", password: "TBD（未入力）" },
@@ -1205,7 +1208,7 @@ function fieldOrTbd(value) {
 function renderLodging() {
   const el = document.getElementById("lodging-list");
   el.innerHTML = "";
-  LODGING.forEach((lo) => {
+  (data.lodging || []).forEach((lo, idx) => {
     const card = document.createElement("div");
     card.className = "lodging-card";
     card.innerHTML = `
@@ -1214,11 +1217,12 @@ function renderLodging() {
         <div class="lodging-head">
           <span class="lodging-day">${lo.day}</span>
           <h4 class="lodging-name">${lo.name}</h4>
+          ${editMode ? `<button type="button" class="ec-btn lodging-edit-btn" title="編集">${EDIT_ICONS.edit}</button>` : ""}
         </div>
         <dl class="lodging-fields">
           <dt>${iconFor("📍")} 住所</dt><dd>${fieldOrTbd(lo.address)}</dd>
           <dt>${iconFor("📞")} 電話</dt><dd>${lo.phone && !lo.phone.startsWith("TBD") ? `<a class="tel-link" href="tel:${lo.phone.replace(/[^\d]/g, "")}">${lo.phone}</a>` : fieldOrTbd(lo.phone)}</dd>
-          <dt>予約番号</dt><dd>${fieldOrTbd(lo.confirmationNumber)}</dd>
+          <dt>部屋番号</dt><dd>${fieldOrTbd(lo.roomNumber)}</dd>
           <dt>チェックイン</dt><dd>${fieldOrTbd(lo.checkIn)}</dd>
           <dt>チェックアウト</dt><dd>${fieldOrTbd(lo.checkOut)}</dd>
           <dt>${iconFor("📶")} Wi-Fi</dt><dd>${fieldOrTbd(lo.wifi.ssid)} / ${fieldOrTbd(lo.wifi.password)}</dd>
@@ -1228,9 +1232,54 @@ function renderLodging() {
       </div>`;
     const img = card.querySelector("img");
     if (img) img.addEventListener("error", (e) => e.target.remove());
+    const editBtn = card.querySelector(".lodging-edit-btn");
+    if (editBtn) editBtn.addEventListener("click", () => openLodgingEditForm(idx));
     el.appendChild(card);
   });
 }
+
+// ---- 宿泊情報の編集フォーム（部屋番号・Wi-Fiのみ。当日にならないと分からない項目） ----
+const lodgingEditSheet = document.getElementById("lodging-edit-sheet");
+const lodgingEditForm = document.getElementById("lodging-edit-form");
+const lfRoom = document.getElementById("lf-room");
+const lfWifiSsid = document.getElementById("lf-wifi-ssid");
+const lfWifiPass = document.getElementById("lf-wifi-pass");
+let lodgingEditIdx = null;
+
+function openLodgingEditForm(idx) {
+  const lo = data.lodging[idx];
+  lodgingEditIdx = idx;
+  document.getElementById("lodging-edit-title").textContent = `${lo.name} を編集`;
+  lfRoom.value = lo.roomNumber && !lo.roomNumber.startsWith("TBD") ? lo.roomNumber : "";
+  lfWifiSsid.value = lo.wifi.ssid && !lo.wifi.ssid.startsWith("TBD") ? lo.wifi.ssid : "";
+  lfWifiPass.value = lo.wifi.password && !lo.wifi.password.startsWith("TBD") ? lo.wifi.password : "";
+  lodgingEditSheet.hidden = false;
+  lockBody();
+  lodgingEditSheet.offsetHeight;
+  lodgingEditSheet.classList.add("open");
+}
+
+function closeLodgingEditForm() {
+  lodgingEditSheet.classList.remove("open");
+  setTimeout(() => { lodgingEditSheet.hidden = true; }, 300);
+  unlockBody();
+  lodgingEditIdx = null;
+}
+
+lodgingEditForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (lodgingEditIdx === null) return;
+  const lo = data.lodging[lodgingEditIdx];
+  lo.roomNumber = lfRoom.value.trim() || "TBD（未入力）";
+  lo.wifi.ssid = lfWifiSsid.value.trim() || "TBD（未入力）";
+  lo.wifi.password = lfWifiPass.value.trim() || "TBD（未入力）";
+  closeLodgingEditForm();
+  renderLodging();
+  await saveTrip();
+});
+
+document.getElementById("lodging-edit-close").addEventListener("click", closeLodgingEditForm);
+document.getElementById("lf-cancel").addEventListener("click", closeLodgingEditForm);
 
 function renderEmergencyContacts() {
   const el = document.getElementById("emergency-list");
@@ -1282,7 +1331,6 @@ function renderAnaNotices() {
   });
 }
 
-renderLodging();
 renderEmergencyContacts();
 renderTransitLinks();
 renderAnaNotices();
@@ -1376,6 +1424,7 @@ function switchPanel(key, { updateHash = true } = {}) {
     if (picking) cancelPick();
     if (!editSheet.hidden) closeEditForm();
   }
+  if (key !== "info" && !lodgingEditSheet.hidden) closeLodgingEditForm();
 
   PANEL_IDS.forEach((id) => {
     document.getElementById(`panel-${id}`).hidden = id !== key;
@@ -1434,6 +1483,7 @@ let firstLoad = true;
 
 initDataLayer((newData) => {
   data = newData;
+  if (!Array.isArray(data.lodging)) data.lodging = JSON.parse(JSON.stringify(DEFAULT_LODGING));
   renderHeader();
 
   if (firstLoad) {
@@ -1451,6 +1501,7 @@ initDataLayer((newData) => {
   renderTabs();
   renderDay();
   renderPacking();
+  renderLodging();
 }).catch((err) => {
   console.error("旅程データの読み込みに失敗しました:", err);
   timelineEl.innerHTML =

@@ -15,6 +15,34 @@
     "エコバッグ（お土産用）",
     "歩きやすい靴（弥山散策用）"
   ],
+  "lodging": [
+    {
+      "day": "1日目〜2日目",
+      "name": "ホテル宮島別荘",
+      "address": "〒739-0505 広島県廿日市市宮島町1165",
+      "phone": "0829-44-1180",
+      "roomNumber": "TBD（未入力）",
+      "checkIn": "14:45",
+      "checkOut": "10:00",
+      "wifi": { "ssid": "TBD（未入力）", "password": "TBD（未入力）" },
+      "notes": "表参道商店街まで徒歩圏。ディナービュッフェは館内。",
+      "spot": { "name": "ホテル宮島別荘", "lat": 34.3020, "lng": 132.3225 },
+      "image": "https://images.trvl-media.com/lodging/7000000/6140000/6133900/6133886/71d782f3.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill"
+    },
+    {
+      "day": "2日目〜3日目",
+      "name": "ヒルトン広島",
+      "address": "〒730-0043 広島県広島市中区富士見町11-12",
+      "phone": "082-243-2700",
+      "roomNumber": "TBD（未入力）",
+      "checkIn": "19:20",
+      "checkOut": "10:00",
+      "wifi": { "ssid": "TBD（未入力）", "password": "TBD（未入力）" },
+      "notes": "レンタカーはホテル駐車場を利用。",
+      "spot": { "name": "ヒルトン広島", "lat": 34.3866, "lng": 132.4682 },
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyCESvppgoNJ3UzYNMXAfXtqJYEgQIXpKOC1uTpjcLzA&s=10"
+    }
+  ],
   "days": [
     {
       "id": 1,

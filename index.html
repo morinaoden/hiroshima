@@ -138,7 +138,7 @@
       <h3 class="info-subhead">ANA搭乗にあたっての注意事項</h3>
       <div class="ana-notice-list" id="ana-notices"></div>
 
-      <p class="packing-hint">未入力の項目は data/itinerary.json ではなく js/app.js 内の LODGING・EMERGENCY_CONTACTS を直接編集して追記します</p>
+      <p class="packing-hint">宿泊情報の部屋番号・Wi-Fiは、旅程タブ右上の「編集」をオンにするとカードに✎ボタンが表示され入力できます。それ以外の未入力項目は data/itinerary.json ではなく js/app.js 内の EMERGENCY_CONTACTS を直接編集して追記します</p>
     </section>
   </main>
 
@@ -235,6 +235,34 @@
       <div class="form-actions">
         <button type="submit" class="form-btn primary" id="f-save">保存する</button>
         <button type="button" class="form-btn" id="f-cancel">キャンセル</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 宿泊情報の編集フォーム（部屋番号・Wi-Fiなど当日判明する項目） -->
+  <div class="edit-sheet" id="lodging-edit-sheet" hidden role="dialog" aria-labelledby="lodging-edit-title" aria-modal="false">
+    <div class="edit-sheet-head">
+      <span class="map-sheet-handle" aria-hidden="true"></span>
+      <span class="edit-sheet-title" id="lodging-edit-title">宿泊情報を編集</span>
+      <button class="map-close" id="lodging-edit-close" aria-label="閉じる">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <form id="lodging-edit-form" class="edit-form">
+      <label class="form-field">部屋番号
+        <input type="text" id="lf-room" maxlength="30" placeholder="例: 812号室">
+      </label>
+      <div class="form-grid two">
+        <label class="form-field">Wi-Fi SSID
+          <input type="text" id="lf-wifi-ssid" maxlength="60">
+        </label>
+        <label class="form-field">Wi-Fi パスワード
+          <input type="text" id="lf-wifi-pass" maxlength="60">
+        </label>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="form-btn primary" id="lf-save">保存する</button>
+        <button type="button" class="form-btn" id="lf-cancel">キャンセル</button>
       </div>
     </form>
   </div>

@@ -802,7 +802,16 @@ body {
   font-weight: 600;
   font-size: 1.05rem;
   color: var(--seto-deep);
+  flex: 1;
 }
+
+.ec-btn.lodging-edit-btn {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+}
+.ec-btn.lodging-edit-btn svg { width: 14px; height: 14px; }
 
 .lodging-fields {
   display: grid;
