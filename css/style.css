@@ -912,7 +912,8 @@ a.contact-phone:hover { text-decoration: underline; }
   gap: 0.5rem;
   margin-bottom: 0.35rem;
 }
-.ana-notice-icon { font-size: 1.05rem; line-height: 1; }
+.ana-notice-icon { display: inline-flex; color: var(--shu-deep); flex-shrink: 0; }
+.ana-notice-icon svg { width: 18px; height: 18px; }
 .ana-notice-title {
   font-family: var(--font-display);
   font-weight: 700;

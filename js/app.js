@@ -43,6 +43,11 @@ const FLAT_ICONS = {
   "🛋️": `<svg ${SVG_ATTRS}><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M4 11a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h1"/><path d="M20 11a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1h-1"/><path d="M4 15h16"/><path d="M5 17v3"/><path d="M19 17v3"/></svg>`,
   "📞": `<svg ${SVG_ATTRS}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>`,
   "📶": `<svg ${SVG_ATTRS}><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 20V4"/></svg>`,
+  "🔋": `<svg ${SVG_ATTRS}><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 10v4"/><path d="M6 11v2"/><path d="M10 11v2"/></svg>`,
+  "⚡": `<svg ${SVG_ATTRS}><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>`,
+  "🧷": `<svg ${SVG_ATTRS}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>`,
+  "🪑": `<svg ${SVG_ATTRS}><path d="M6 10V6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4"/><rect x="3" y="10" width="18" height="7" rx="1.5"/><path d="M5 17v3"/><path d="M19 17v3"/></svg>`,
+  "🛄": `<svg ${SVG_ATTRS}><circle cx="10" cy="10" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
 };
 
 const EDIT_ICONS = {
@@ -1289,7 +1294,7 @@ function renderAnaNotices() {
     card.className = "ana-notice-card";
     card.innerHTML = `
       <div class="ana-notice-head">
-        <span class="ana-notice-icon">${n.icon}</span>
+        <span class="ana-notice-icon">${iconFor(n.icon)}</span>
         <h4 class="ana-notice-title">${n.title}</h4>
       </div>
       <p class="ana-notice-body">${n.body}</p>`;
