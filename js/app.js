@@ -48,6 +48,9 @@ const FLAT_ICONS = {
   "🧷": `<svg ${SVG_ATTRS}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>`,
   "🪑": `<svg ${SVG_ATTRS}><path d="M6 10V6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4"/><rect x="3" y="10" width="18" height="7" rx="1.5"/><path d="M5 17v3"/><path d="M19 17v3"/></svg>`,
   "🛄": `<svg ${SVG_ATTRS}><circle cx="10" cy="10" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
+  "📠": `<svg ${SVG_ATTRS}><path d="M6 9V3h9l3 3v3"/><rect x="4" y="9" width="16" height="8" rx="1.5"/><path d="M8 13h4"/><rect x="7" y="17" width="10" height="4" rx="1"/></svg>`,
+  "📧": `<svg ${SVG_ATTRS}><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg>`,
+  "🌐": `<svg ${SVG_ATTRS}><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13 13 0 0 1 0 18 13 13 0 0 1 0-18Z"/></svg>`,
 };
 
 const EDIT_ICONS = {
@@ -1229,6 +1232,18 @@ const DEFAULT_LODGING = [
   },
 ];
 
+const PARKING_INFO = [
+  {
+    name: "羽田空港民間駐車場　エイトパーキング",
+    receiptNumber: "92458",
+    address: "〒210-0862 川崎市川崎区浮島町11-3",
+    tel: "044-270-4189",
+    fax: "044-270-3789",
+    email: "info@8parking.com",
+    url: "http://www.8parking.com/",
+  },
+];
+
 const EMERGENCY_CONTACTS = [
   { category: "レンタカー会社", name: "トヨタレンタカー広島空港", phone: "0800-7000-111", hours: "貸出 10:00 ／ 返却 19:00", note: "事故・故障時のロードサービス番号" },
 ];
@@ -1329,6 +1344,27 @@ lodgingEditForm.addEventListener("submit", async (e) => {
 document.getElementById("lodging-edit-close").addEventListener("click", closeLodgingEditForm);
 document.getElementById("lf-cancel").addEventListener("click", closeLodgingEditForm);
 
+function renderParkingInfo() {
+  const el = document.getElementById("parking-list");
+  el.innerHTML = "";
+  PARKING_INFO.forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "contact-card";
+    card.innerHTML = `
+      <div class="contact-category">駐車場</div>
+      <div class="contact-name">${p.name}</div>
+      ${p.receiptNumber ? `<p class="contact-hours">受付番号：${p.receiptNumber}</p>` : ""}
+      <dl class="lodging-fields">
+        <dt>${iconFor("📍")} 住所</dt><dd>${p.address}</dd>
+        <dt>${iconFor("📞")} 電話</dt><dd><a class="tel-link" href="tel:${p.tel.replace(/[^\d]/g, "")}">${p.tel}</a></dd>
+        <dt>${iconFor("📠")} FAX</dt><dd>${p.fax}</dd>
+        <dt>${iconFor("📧")} メール</dt><dd><a href="mailto:${p.email}">${p.email}</a></dd>
+      </dl>
+      <a class="gmap-link" href="${p.url}" target="_blank" rel="noopener">${iconFor("🌐")} 公式サイトを開く</a>`;
+    el.appendChild(card);
+  });
+}
+
 function renderEmergencyContacts() {
   const el = document.getElementById("emergency-list");
   el.innerHTML = "";
@@ -1379,6 +1415,7 @@ function renderAnaNotices() {
   });
 }
 
+renderParkingInfo();
 renderEmergencyContacts();
 renderTransitLinks();
 renderAnaNotices();
