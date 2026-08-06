@@ -1,7 +1,7 @@
 // Service Worker — 広島・宮島 旅のしおり
 // キャッシュ対象のURLを変更したら CACHE_VERSION を上げること（例: v1 -> v2）。
 // 古いバージョンのキャッシュは activate 時に自動削除される。
-const CACHE_VERSION = "v3";
+const CACHE_VERSION = "v4";
 const CACHE_NAME = `hiroshima-shiori-${CACHE_VERSION}`;
 
 // 自サイトの静的アセットのみ事前キャッシュ（相対パス。GitHub Pagesのサブパス配信に対応）
