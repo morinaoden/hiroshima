@@ -1298,7 +1298,7 @@ function renderLodging() {
           <dt>${iconFor("📶")} Wi-Fi</dt><dd>${fieldOrTbd(lo.wifi.ssid)} / ${fieldOrTbd(lo.wifi.password)}</dd>
         </dl>
         ${lo.notes ? `<p class="lodging-notes">${lo.notes}</p>` : ""}
-        <a class="gmap-link" href="https://www.google.com/maps?q=${lo.spot.lat},${lo.spot.lng}" target="_blank" rel="noopener">${iconFor("📍")} 地図で開く</a>
+        <a class="gmap-link" href="${lo.spot.mapUrl || `https://www.google.com/maps?q=${lo.spot.lat},${lo.spot.lng}`}" target="_blank" rel="noopener">${iconFor("📍")} 地図で開く</a>
       </div>`;
     const img = card.querySelector("img");
     if (img) img.addEventListener("error", (e) => e.target.remove());
