@@ -2,10 +2,14 @@
 
 このリポジトリで作業する際のルール。
 
-## アイコンはフラットデザインで統一する
+## アイコンは Material Symbols Rounded で統一する
 
-- 画面に表示するアイコンは絵文字をそのまま出さず、`js/app.js` 先頭の `FLAT_ICONS`（絵文字 → SVGパス）に変換した上で表示する。
-- 新しいアイコンが必要な場合は、他のエントリと同じ書式（`SVG_ATTRS` を使った 24x24 のストローク線画、`fill="none"`）で `FLAT_ICONS` に追加し、呼び出し側では `iconFor(絵文字)` 経由で参照する。
+- 画面に表示するアイコンは絵文字をそのまま出さず、`js/app.js` 先頭の `FLAT_ICONS`（絵文字 → SVG）に変換した上で表示する。
+- アイコンの出典は [Material Symbols（Roundedスタイル）](https://fonts.google.com/icons?icon.style=Rounded)。新しいアイコンが必要な場合は
+  `https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsrounded/<アイコン名>/default/24px.svg`
+  からSVGを取得し、`<svg ${SVG_ATTRS}>`（`viewBox="0 -960 960 960"`・`fill="currentColor"`）で包んだpath要素を
+  `FLAT_ICONS` に追加する（既存エントリと同じ書式。行末コメントにアイコン名を残す）。呼び出し側では `iconFor(絵文字)` 経由で参照する。
+- アイコンフォント（Web Font）は読み込まない。SVGパスの埋め込みのみ（オフラインPWA対応のため）。
 - HTML の `innerHTML` に絵文字を直接埋め込まない（例: `${n.icon}` ではなく `${iconFor(n.icon)}`）。
 
 ## data/itinerary.json を編集しても本番表示は変わらない（重要）
