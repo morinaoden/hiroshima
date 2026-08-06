@@ -51,6 +51,10 @@ const FLAT_ICONS = {
   "📠": `<svg ${SVG_ATTRS}><path d="M6 9V3h9l3 3v3"/><rect x="4" y="9" width="16" height="8" rx="1.5"/><path d="M8 13h4"/><rect x="7" y="17" width="10" height="4" rx="1"/></svg>`,
   "📧": `<svg ${SVG_ATTRS}><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg>`,
   "🌐": `<svg ${SVG_ATTRS}><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13 13 0 0 1 0 18 13 13 0 0 1 0-18Z"/></svg>`,
+  "🎫": `<svg ${SVG_ATTRS}><path d="M2 9a3 3 0 1 0 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 1 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 11v2"/><path d="M13 17v2"/></svg>`,
+  "🚌": `<svg ${SVG_ATTRS}><rect x="3" y="5" width="18" height="11" rx="2"/><path d="M3 11h18"/><path d="M7 16v3"/><path d="M17 16v3"/><circle cx="7" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>`,
+  "🏔️": `<svg ${SVG_ATTRS}><path d="m3 20 6-11 4 6 3-4 5 9Z"/><path d="m13.5 12.5-2 3"/></svg>`,
+  "🍝": `<svg ${SVG_ATTRS}><circle cx="12" cy="14" r="7"/><path d="M9 11c1 1 1 3 0 4"/><path d="M12 10c1 1 1 4 0 5"/><path d="M15 11c1 1 1 3 0 4"/><path d="M12 3v4"/><path d="M9 3v3"/><path d="M15 3v3"/></svg>`,
 };
 
 const EDIT_ICONS = {
@@ -451,7 +455,10 @@ function renderDay() {
       : "";
 
     li.innerHTML = `
-      <span class="timeline-time">${ev.time}</span>
+      <div class="timeline-time">
+        <span class="timeline-time-main">${ev.time}</span>
+        ${ev.duration ? `<span class="timeline-duration">${ev.duration}</span>` : ""}
+      </div>
       <div class="timeline-dot">${iconFor(ev.icon)}</div>
       <div class="timeline-body">
         <div class="timeline-text">
@@ -1291,7 +1298,7 @@ function renderLodging() {
           <dt>${iconFor("📶")} Wi-Fi</dt><dd>${fieldOrTbd(lo.wifi.ssid)} / ${fieldOrTbd(lo.wifi.password)}</dd>
         </dl>
         ${lo.notes ? `<p class="lodging-notes">${lo.notes}</p>` : ""}
-        <a class="gmap-link" href="https://www.google.com/maps?q=${lo.spot.lat},${lo.spot.lng}" target="_blank" rel="noopener">${iconFor("📍")} 地図で開く</a>
+        <a class="gmap-link" href="${lo.spot.mapUrl || `https://www.google.com/maps?q=${lo.spot.lat},${lo.spot.lng}`}" target="_blank" rel="noopener">${iconFor("📍")} 地図で開く</a>
       </div>`;
     const img = card.querySelector("img");
     if (img) img.addEventListener("error", (e) => e.target.remove());

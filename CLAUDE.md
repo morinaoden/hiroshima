@@ -26,3 +26,11 @@
   家族が個別に入力した実データが入っていることがあり（`itinerary.json`側は`"TBD（未入力）"`のプレース
   ホルダのまま）、これを持つ現在の値をFirestoreから一度読み出し、変更したいフィールド（例:
   `days`・`packingList`）だけを `updateMask.fieldPaths` で指定してPATCHし、他のフィールドには触れないこと。
+
+## Googleマップのリンクは地点の共有リンクを使う
+
+`spot.mapUrl`（`lodging[].spot.mapUrl` / 各イベントの `spot.mapUrl`）には、`https://www.google.com/maps?q=緯度,経度`
+のような**座標から機械的に組み立てたリンクではなく**、Googleマップで実際にその地点を検索・共有して得られる
+**共有リンク**（`https://maps.app.goo.gl/...` 形式）を使う。`mapUrl` が指定されていないスポットは
+`js/app.js` が `lat`/`lng` から座標リンクを自動生成してフォールバックするが、これはあくまで暫定表示であり、
+可能な限り共有リンクに置き換えること。
