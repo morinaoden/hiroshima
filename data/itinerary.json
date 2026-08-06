@@ -25,7 +25,7 @@
       "checkIn": "16:45",
       "checkOut": "10:00",
       "wifi": { "ssid": "TBD（未入力）", "password": "TBD（未入力）" },
-      "notes": "表参道商店街まで徒歩圏。ディナービュッフェは館内。宮島到着が15時を過ぎるため、15:20頃に一度サブバッグだけ預け、表参道散策後16:45に正式チェックイン。",
+      "notes": "表参道商店街まで徒歩圏。ディナービュッフェは館内（開始枠17:30/18:00/18:30/19:00から指定・席2時間まで）。今回はサブバッグに分けず、スーツケースごと全荷物を持ってフェリーで宮島へ渡り、桟橋からすぐのホテルに到着後すぐ荷物だけ預けます。正式チェックインは観光のあと16:45。",
       "spot": { "name": "ホテル宮島別荘", "lat": 34.3020, "lng": 132.3225 },
       "image": "https://images.trvl-media.com/lodging/7000000/6140000/6133900/6133886/71d782f3.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill"
     },
@@ -35,7 +35,7 @@
       "address": "〒730-0043 広島県広島市中区富士見町11-12",
       "phone": "082-243-2700",
       "roomNumber": "TBD（未入力）",
-      "checkIn": "17:55",
+      "checkIn": "18:15",
       "checkOut": "10:00",
       "wifi": { "ssid": "TBD（未入力）", "password": "TBD（未入力）" },
       "notes": "レンタカーはホテル駐車場を利用。",
@@ -47,7 +47,7 @@
     {
       "id": 1,
       "label": "1日目",
-      "theme": "呉ドライブ ＆ 宮島幻想ライトアップ",
+      "theme": "宮島直行 ＆ 幻想ライトアップ",
       "events": [
         {
           "time": "08:10",
@@ -66,73 +66,117 @@
         {
           "time": "10:00",
           "icon": "🚗",
-          "title": "レンタカー受け渡し（店舗オープン）",
-          "description": "スーツケースはトランクへ。",
+          "title": "レンタカー受け渡し → 宮島口へ直行",
+          "description": "スーツケースはトランクへ。呉には寄らず、山陽道経由で宮島口まで直行します。",
           "spot": null,
-          "travelAfter": { "icon": "🚗", "text": "呉へ 車で約50分" }
+          "travelAfter": { "icon": "🚗", "text": "宮島口へ 車で約55分〜1時間15分" }
         },
         {
-          "time": "11:15",
-          "icon": "⚓",
-          "title": "大和ミュージアム（てつのくじら館込み）",
-          "description": "10分の一戦艦大和の模型や貴重な歴史展示。隣の潜水艦「てつのくじら館」も。",
-          "spot": { "name": "大和ミュージアム", "lat": 34.2415, "lng": 132.5557 },
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Yamato_Museum_in_October_2008.JPG/500px-Yamato_Museum_in_October_2008.JPG",
-          "caption": "本物の潜水艦は迫力満点！"
-        },
-        {
-          "time": "12:30",
-          "icon": "☕",
-          "title": "呉でランチ",
-          "description": "窓から潜水艦を眺められる港町珈琲店で、名物カレーなどを堪能。",
-          "spot": { "name": "港町珈琲店", "lat": 34.2338, "lng": 132.5654 },
-          "image": "https://kure-trip.jp/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjQsInB1ciI6ImJsb2JfaWQifX0=--8ba2ee8c5aeda67c9e3a211707c0a32da26b75e8/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2ZpdCI6WzM4NDAsMjE2MF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--bb10f26b3f020dc198f2e5f1a63bd14918b828ac/original.jpg",
-          "caption": "港町珈琲店から見える潜水艦",
-          "travelAfter": { "icon": "🚗", "text": "宮島口へ 車で約1時間" }
-        },
-        {
-          "time": "14:30",
+          "time": "11:25",
           "icon": "🅿️",
-          "title": "宮島口（本州側）の駐車場に車を停める",
-          "description": "スーツケースはトランクに置いたまま、「1泊分の着替えを入れたサブバッグ」だけを取り出す。混雑を見込んで駐車・乗船の時間に余裕を持たせています。",
+          "title": "宮島口駐車場に到着",
+          "description": "スーツケースごと全荷物を持ってフェリーへ向かいます（サブバッグには分けません）。",
           "spot": { "name": "宮島口駐車場", "lat": 34.3122, "lng": 132.3029 },
           "travelAfter": { "icon": "🚢", "text": "フェリーで宮島へ 約15分" }
         },
         {
-          "time": "15:20",
-          "icon": "🧳",
-          "title": "宮島に到着（荷物だけ先に預けて観光へ）",
-          "description": "15時を過ぎたため、ホテルにサブバッグだけ預けてから表参道散策へ。正式なチェックインは観光のあとに。",
+          "time": "12:00",
+          "icon": "🏨",
+          "title": "宮島桟橋着 → ホテル宮島別荘へ直行",
+          "description": "桟橋からすぐのホテル宮島別荘に立ち寄り、正式チェックイン前にスーツケースだけを預けます。",
           "spot": { "name": "ホテル宮島別荘", "lat": 34.3020, "lng": 132.3225 }
         },
         {
-          "time": "15:30",
-          "icon": "🥢",
-          "title": "表参道商店街 食べ歩き",
-          "description": "焼き牡蠣、揚げもみじ、穴子まんなどのグルメ天国。店が開いている時間にゆっくり回れます。お土産探しにも。",
+          "time": "12:10",
+          "icon": "🎫",
+          "title": "まめたぬきの発券機で番号を取る",
+          "description": "徒歩3〜4分。電話・メール予約は不可で発券機のみ。発券時に電話番号を登録すると順番が近づいた際に店から着信があるので、離れた場所で待てます。",
+          "spot": { "name": "穴子と牡蠣 まめたぬき", "lat": 34.2988, "lng": 132.3212 }
+        },
+        {
+          "time": "12:15",
+          "icon": "🚶",
+          "title": "発券待ちの間、表参道で食べ歩き・散策",
+          "description": "待ち時間の実績は日曜昼で30分前後（繁忙期以外は10〜30分程度）。焼き牡蠣やもみじ饅頭を楽しみながら電話呼び出しを待ちます。",
           "spot": { "name": "表参道商店街", "lat": 34.2975, "lng": 132.3207 },
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Omote-Sando_of_Itsukushima_Shrine_2.jpg/500px-Omote-Sando_of_Itsukushima_Shrine_2.jpg",
           "caption": "宮島名物グルメが並ぶ表参道"
         },
         {
+          "time": "12:45",
+          "icon": "🥢",
+          "title": "まめたぬきであなごめしランチ",
+          "description": "電話呼び出しで入店。高温スチームの陶器で蒸したあなごめしが名物。",
+          "spot": { "name": "穴子と牡蠣 まめたぬき", "lat": 34.2988, "lng": 132.3212 },
+          "image": "https://www.miyajima-mametanuki.com/images/mametanuki.jpg",
+          "caption": "陶器蒸しのあなごめし",
+          "travelAfter": { "icon": "🚌", "text": "紅葉谷駅へ 送迎バス約10分 or 徒歩20〜25分" }
+        },
+        {
+          "time": "13:45",
+          "icon": "🚌",
+          "title": "紅葉谷駅へ移動",
+          "description": "無料送迎バス（9:50〜約20分間隔）または徒歩約20〜25分。",
+          "spot": { "name": "紅葉谷駅", "lat": 34.2954, "lng": 132.3231 },
+          "travelAfter": { "icon": "🚡", "text": "宮島ロープウエー 上り" }
+        },
+        {
+          "time": "14:15",
+          "icon": "🚡",
+          "title": "宮島ロープウエーで獅子岩へ（上り）",
+          "description": "紅葉谷線（8人乗り・1分間隔）で榧谷駅へ、獅子岩線（35人乗り）に乗り継ぎます。往復大人2,000円。9/6は要予約の特定日ではなく通常運行日。台風シーズンのため当日朝に公式サイトで運行状況を確認。",
+          "spot": { "name": "宮島ロープウエー", "lat": 34.2954, "lng": 132.3231 },
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Miyajima_Ropeway%2C_Momijidani_Line_001.jpg/500px-Miyajima_Ropeway%2C_Momijidani_Line_001.jpg",
+          "caption": "紅葉谷線から獅子岩線へ乗り継ぎ"
+        },
+        {
+          "time": "14:50",
+          "icon": "🏔️",
+          "title": "獅子岩展望台から瀬戸内海の多島美を一望",
+          "description": "標高433mの展望台から瀬戸内海に浮かぶ島々を一望できます。",
+          "spot": { "name": "獅子岩展望台", "lat": 34.2820, "lng": 132.3166 }
+        },
+        {
+          "time": "15:20",
+          "icon": "🚡",
+          "title": "ロープウエー下り乗車",
+          "description": "休日午後は下り待ちが出やすい時間帯ですが、最終16:30まで余裕あり。上り15:30までに乗車できなければ中止のガード条件つき。",
+          "spot": null,
+          "travelAfter": { "icon": "🚶", "text": "表参道へ" }
+        },
+        {
+          "time": "16:00",
+          "icon": "🚶",
+          "title": "紅葉谷駅着 → 表参道で食べ歩き＆お土産回収をしながらホテルへ",
+          "description": "17時前後に閉まる店が多いので、この日最後の表参道タイム。",
+          "spot": { "name": "表参道商店街", "lat": 34.2975, "lng": 132.3207 }
+        },
+        {
           "time": "16:45",
           "icon": "🏨",
           "title": "ホテル宮島別荘へ正式チェックイン",
-          "description": "表参道散策のあと、あらためて正式にチェックイン。",
+          "description": "この時点でディナー18:30枠を指定（もっと遅くするなら19:00枠）。",
           "spot": { "name": "ホテル宮島別荘", "lat": 34.3020, "lng": 132.3225 }
         },
         {
-          "time": "17:15",
-          "icon": "🍷",
-          "title": "ホテル宮島別荘でディナービュッフェ",
-          "description": "アルコールを含むフリードリンク（飲み放題）と一緒に、贅沢な欧風料理ブッフェを満喫。",
+          "time": "17:00",
+          "icon": "🛋️",
+          "title": "畳敷きの温泉・部屋でひと休み",
+          "description": "ディナーまでの自由時間。",
           "spot": null
         },
         {
-          "time": "20:00",
+          "time": "18:30",
+          "icon": "🍷",
+          "title": "ホテル宮島別荘でディナービュッフェ",
+          "description": "開始枠は17:30/18:00/18:30/19:00から指定・席は2時間まで。アルコールを含むフリードリンクと一緒に贅沢な欧風料理ブッフェを満喫。",
+          "spot": null
+        },
+        {
+          "time": "20:45",
           "icon": "🌙",
           "title": "静まり返った夜の厳島神社ライトアップ散策",
-          "description": "島内宿泊者だけが味わえる、幻想的で静かな大鳥居の景色をゆっくり堪能。",
+          "description": "点灯は日没約30分後〜23:00（年中無休・センサー自動点灯）。日帰り客が引いたあとの静かな時間帯に、宿泊者だけの特権で大鳥居をゆっくり堪能。",
           "spot": { "name": "厳島神社（ライトアップ）", "lat": 34.2960, "lng": 132.3198 },
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Itsukushima-jinja_torii_at_sunset%2C_Miyajima%2C_Japan%2C_20240816_1812_4144.jpg/500px-Itsukushima-jinja_torii_at_sunset%2C_Miyajima%2C_Japan%2C_20240816_1812_4144.jpg",
           "caption": "宿泊者だけの特権！"
@@ -142,7 +186,7 @@
     {
       "id": 2,
       "label": "2日目",
-      "theme": "早朝参拝・宮島さんぽ ＆ 広島市内たっぷり観光",
+      "theme": "早朝参拝・自由時間 ＆ 広島市内たっぷり観光",
       "events": [
         {
           "time": "06:30",
@@ -170,93 +214,90 @@
         {
           "time": "10:00",
           "icon": "🧳",
-          "title": "チェックアウト（サブバッグはフロントに預けて身軽に）",
-          "description": "",
+          "title": "チェックアウト（スーツケースを受け取ってフェリーへ）",
+          "description": "預けていたスーツケースを受け取り、そのまま持ってフェリーへ。",
           "spot": null
         },
         {
-          "time": "10:00",
-          "icon": "🚶",
-          "title": "宮島ぶらり散策",
-          "description": "表参道の奥や大願寺方面など、行き先は自由に。固定スポットは組まず、気ままに宮島の空気を楽しむ時間。",
-          "spot": null
-        },
-        {
-          "time": "11:00",
-          "icon": "🥢",
-          "title": "あなごめしランチ（まめたぬき候補）",
-          "description": "陶器で蒸す「まめたぬき」など、宮島名物のあなごめしを堪能。電話・メール予約は不可で順番待ち発券機のみのため、待ち時間を見込んで75分確保。食後にフロントで荷物を回収。",
-          "spot": { "name": "表参道商店街", "lat": 34.2975, "lng": 132.3207 },
-          "image": "https://imgfp.hotp.jp/IMGH/88/90/P048088890/P048088890_480.jpg",
-          "caption": "陶器蒸しのあなごめし"
-        },
-        {
-          "time": "12:30",
+          "time": "10:15",
           "icon": "🚢",
           "title": "フェリーで宮島口へ・車を回収",
-          "description": "",
+          "description": "スーツケースをトランクに積み込みます。",
           "spot": { "name": "宮島口駐車場", "lat": 34.3122, "lng": 132.3029 },
-          "travelAfter": { "icon": "🚗", "text": "広島市内へ 車で約40分" }
+          "travelAfter": { "icon": "🚗", "text": "広島市内へ 車で約28〜55分" }
         },
         {
-          "time": "13:50",
+          "time": "11:40",
+          "icon": "🅿️",
+          "title": "八丁堀近辺の駐車場に駐車",
+          "description": "以降は徒歩回遊、車は置いたままにします。",
+          "spot": { "name": "八丁堀", "lat": 34.3957, "lng": 132.4635 }
+        },
+        {
+          "time": "11:45",
+          "icon": "🍳",
+          "title": "みっちゃん総本店 八丁堀本店でお好み焼きランチ",
+          "description": "11:30開店直後の時間帯。開店時点で約10人並び・待ち約20分の実績あり。定休日は火曜（月〜金11:30〜14:30/17:30〜21:00）。",
+          "spot": { "name": "みっちゃん総本店 八丁堀本店", "lat": 34.395682, "lng": 132.463525 },
+          "image": "https://www.okonomi.co.jp/images/shop/hatchobori/main.jpg",
+          "caption": "鉄板で焼き上げる広島風お好み焼き",
+          "travelAfter": { "icon": "🚶", "text": "平和記念公園へ 徒歩15分" }
+        },
+        {
+          "time": "13:05",
           "icon": "🕊️",
           "title": "平和記念公園・原爆ドーム ＆ 平和記念資料館",
-          "description": "所要：約2時間10分。原爆ドームと資料館の展示・遺品をじっくり巡り、歴史を深く学びます。",
+          "description": "アソビューで13:00〜13:30の入館枠を事前購入し、事前購入者専用レーンで当日券列（混雑期は1時間待ちの実績も）をスキップ。指定時刻を過ぎても入館可能ですが、通常開館時間は定員上限なしのため混雑状況によっては数分〜20分の入館待ちが残ることもあります。",
           "spot": { "name": "平和記念公園・原爆ドーム", "lat": 34.3955, "lng": 132.4536 },
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/A-Bomb_Dome.jpg/500px-A-Bomb_Dome.jpg",
           "caption": "世界遺産を心に刻む",
-          "travelAfter": { "icon": "🚶", "text": "徒歩約5分" }
+          "travelAfter": { "icon": "🚶", "text": "徒歩約10分" }
         },
         {
-          "time": "16:05",
+          "time": "15:25",
+          "icon": "🐠",
+          "title": "広島もとまち水族館",
+          "description": "基町のパセーラ7Fにある都市型水族館。水と森とアートが融合した空間。最終入場18:30に余裕を持って。",
+          "spot": { "name": "広島もとまち水族館", "lat": 34.3967, "lng": 132.4570 },
+          "image": "https://hit-product-resources-public.s3.ap-northeast-1.amazonaws.com/images/4713/lGmN6ebmBcOVdPkuQSRX/original.jpg",
+          "caption": "水と森とアートが融合した都市型水族館",
+          "travelAfter": { "icon": "🚶", "text": "徒歩約8分" }
+        },
+        {
+          "time": "16:55",
           "icon": "🗼",
           "title": "おりづるタワーで景色を楽しむ",
-          "description": "原爆ドームのすぐ隣。展望台からの広島市街と瀬戸内海の眺めを楽しみます。",
+          "description": "原爆ドームのすぐ隣。7-9月は10:00-20:00・最終入場19:00。夕暮れ前の光線で広島市街と瀬戸内海を一望します。",
           "spot": { "name": "おりづるタワー", "lat": 34.3957, "lng": 132.4547 },
           "image": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmEWcZT6EexTLkAuesOgC6knbyvdVBN7TtX3av5MapGUkArWwZ0qHiQGLqKDj4Rtnyz6xTvoCOXzk7_ObfkauE-gknQ1kQmhClwv5hFJErKmW-7EPlJsq4hmzzYrjrouc3vyV8s5w=s680-w680-h510-rw",
           "caption": "頂上から瀬戸内海を一望",
           "badge": "7-9月は営業10:00-20:00・最終入場19:00",
-          "travelAfter": { "icon": "🚶", "text": "徒歩約10分" }
-        },
-        {
-          "time": "17:00",
-          "icon": "🐠",
-          "title": "広島もとまち水族館",
-          "description": "基町のパセーラ7Fにある都市型水族館。水と森とアートが融合した空間。",
-          "spot": { "name": "広島もとまち水族館", "lat": 34.3967, "lng": 132.4570 },
-          "image": "https://hit-product-resources-public.s3.ap-northeast-1.amazonaws.com/images/4713/lGmN6ebmBcOVdPkuQSRX/original.jpg",
-          "caption": "水と森とアートが融合した都市型水族館",
-          "badge": "最終入場18:30目安・要確認"
+          "travelAfter": { "icon": "🚗", "text": "ヒルトンへ 徒歩12分＋運転5分" }
         },
         {
           "time": "17:55",
-          "icon": "🏨",
-          "title": "ヒルトン広島へチェックイン",
-          "description": "身支度を整えてディナーへ。",
-          "spot": { "name": "ヒルトン広島", "lat": 34.3866, "lng": 132.4682 }
+          "icon": "🚗",
+          "title": "徒歩で駐車場へ → 車でヒルトンへ",
+          "description": "",
+          "spot": null
         },
         {
-          "time": "20:00",
-          "icon": "🍽️",
-          "title": "市内ディナー",
-          "description": "広島中心部のお洒落な店から、その日の気分でお店をセレクト。",
-          "badge": "予約推奨",
-          "options": [
-            {
-              "name": "MORETHAN 広島",
-              "genre": "イタリアン",
-              "lat": 34.3898,
-              "lng": 132.4517,
-              "mapUrl": "https://maps.app.goo.gl/nePjpjwVa75uL3G76"
-            },
-            {
-              "name": "RIVA（新天地）",
-              "genre": "和モダン懐石",
-              "lat": 34.3916,
-              "lng": 132.4627
-            }
-          ]
+          "time": "18:15",
+          "icon": "🏨",
+          "title": "ヒルトン広島チェックイン・身支度",
+          "description": "身支度を整えてディナーへ。",
+          "spot": { "name": "ヒルトン広島", "lat": 34.3866, "lng": 132.4682 },
+          "travelAfter": { "icon": "🚶", "text": "UMAMIへ 徒歩11分（タクシーなら約4分）" }
+        },
+        {
+          "time": "19:00",
+          "icon": "🍝",
+          "title": "パスタレストラン UMAMI Hiroshimaでディナー",
+          "description": "フードL.O.21:00まで最大2時間。不定休のため9/7(月)の営業状況と予約を事前に確認してください。",
+          "spot": { "name": "パスタレストラン UMAMI Hiroshima", "lat": 34.3902, "lng": 132.4583 },
+          "image": "https://oomin77.com/wp-content/uploads/2025/10/IMG_3355-e1761445174665.jpeg",
+          "caption": "出汁の効いたクリームパスタが名物",
+          "badge": "予約推奨・不定休のため要確認"
         }
       ]
     },
@@ -276,41 +317,41 @@
         {
           "time": "10:15",
           "icon": "🏯",
-          "title": "広島城",
-          "description": "毛利輝元が築いた名城（復元天守）。内部は歴史博物館で、天守閣からの展望も見事。朝イチの空いている時間に。",
+          "title": "広島城 外観鑑賞＆三の丸散策",
+          "description": "天守は2026年3月22日で閉城済みのため内部見学は不可。堀端からの天守外観と、三の丸の新しい土産店エリアを楽しみます。",
           "spot": { "name": "広島城", "lat": 34.4026, "lng": 132.4594 },
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Keep%2C_Hiroshima_Castle%2C_South_view_20190417_2.jpg/500px-Keep%2C_Hiroshima_Castle%2C_South_view_20190417_2.jpg",
           "caption": "別名は「鯉城」",
-          "travelAfter": { "icon": "🚗", "text": "尾道へ 車で約1時間30分" }
+          "travelAfter": { "icon": "🚗", "text": "尾道へ 車で約1時間35分（実測1時間33分）" }
         },
         {
-          "time": "12:30",
+          "time": "12:20",
           "icon": "🍜",
           "title": "しょうや飯店で尾道ラーメン",
-          "description": "尾道駅から徒歩5分。継ぎ足しの熟成醤油が決め手の尾道ラーメンをゆっくり堪能。",
+          "description": "尾道駅から徒歩5分。継ぎ足しの熟成醤油が決め手の尾道ラーメンをゆっくり堪能。無休。",
           "spot": { "name": "しょうや飯店（尾道）", "lat": 34.4066, "lng": 133.1989 },
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Onomichi_ramen_and_Karaage.jpg/500px-Onomichi_ramen_and_Karaage.jpg",
           "caption": "背脂とろける尾道の名物",
           "travelAfter": { "icon": "🚗", "text": "しまなみ海道で瀬戸田へ 車で約40分" }
         },
         {
-          "time": "13:50",
+          "time": "13:40",
           "icon": "⛩️",
           "title": "耕三寺・未来心の丘",
-          "description": "実業家が母への感謝を込めて建てた寺院。大理石だけで作られた白亜の庭園「未来心の丘」から瀬戸内海を一望。拝観9:00〜17:00（入館16:30まで）、拝観料大人1,800円。",
+          "description": "実業家が母への感謝を込めて建てた寺院。大理石だけで作られた白亜の庭園「未来心の丘」から瀬戸内海を一望。丘まで境内奥へ徒歩10〜15分あり、境内＋未来心の丘＋金剛館で所要1〜1.5時間が実勢。拝観9:00〜17:00（入館16:30まで）、拝観料大人1,800円。",
           "spot": { "name": "耕三寺・未来心の丘", "lat": 34.3040, "lng": 133.0904 },
           "image": "https://image.dive-hiroshima.com/wp-content/uploads/2026/02/52738058135_a52dc45b4f_c.jpg",
           "caption": "大理石の白亜の庭園「未来心の丘」"
         },
         {
-          "time": "14:50",
+          "time": "15:05",
           "icon": "🍨",
           "title": "しまなみドルチェ 瀬戸田本店でジェラート休憩",
-          "description": "生口島・瀬戸田にある人気ジェラート店。瀬戸内レモンなど地元素材のフレーバーが名物。営業10:00〜17:00、年中無休。",
+          "description": "耕三寺のすぐ近く、生口島・瀬戸田にある人気ジェラート店。瀬戸内レモンなど地元素材のフレーバーが名物。営業10:00〜17:00、年中無休。",
           "spot": { "name": "しまなみドルチェ 瀬戸田本店（生口島）", "lat": 34.3062, "lng": 133.0892, "mapUrl": "https://maps.app.goo.gl/Myarbkx55CcR2STaA" },
           "image": "https://www.setoda-dolce.com/menu/gelato/gelato-slide-1.jpg",
           "caption": "しまなみ海道を渡って生口島へ",
-          "travelAfter": { "icon": "🚗", "text": "広島空港へ 車で約1時間10分（安全マージン込み）" }
+          "travelAfter": { "icon": "🚗", "text": "広島空港へ 車で約53分（安全マージン込みで見積り約1時間10分）" }
         },
         {
           "time": "17:00",
