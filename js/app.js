@@ -455,7 +455,10 @@ function renderDay() {
       : "";
 
     li.innerHTML = `
-      <span class="timeline-time">${ev.time}</span>
+      <div class="timeline-time">
+        <span class="timeline-time-main">${ev.time}</span>
+        ${ev.duration ? `<span class="timeline-duration">${ev.duration}</span>` : ""}
+      </div>
       <div class="timeline-dot">${iconFor(ev.icon)}</div>
       <div class="timeline-body">
         <div class="timeline-text">
