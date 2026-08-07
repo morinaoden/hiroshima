@@ -1,0 +1,1942 @@
+{
+  "name": "projects/hiroshima-a0177/databases/(default)/documents/trip/main",
+  "fields": {
+    "subtitle": {
+      "stringValue": "2泊3日 満喫旅行プラン"
+    },
+    "note": {
+      "stringValue": ""
+    },
+    "title": {
+      "stringValue": "広島・宮島"
+    },
+    "startDate": {
+      "stringValue": "2026-09-06"
+    },
+    "days": {
+      "arrayValue": {
+        "values": [
+          {
+            "mapValue": {
+              "fields": {
+                "label": {
+                  "stringValue": "1日目"
+                },
+                "id": {
+                  "integerValue": "1"
+                },
+                "events": {
+                  "arrayValue": {
+                    "values": [
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "time": {
+                              "stringValue": "05:30"
+                            },
+                            "description": {
+                              "stringValue": "家族全員・荷物を乗せて羽田空港第2ターミナルへ。"
+                            },
+                            "duration": {
+                              "stringValue": "55分"
+                            },
+                            "title": {
+                              "stringValue": "自宅を出発"
+                            },
+                            "icon": {
+                              "stringValue": "🚗"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "text": {
+                                    "stringValue": "羽田空港第2ターミナルへ 車で約55分"
+                                  },
+                                  "icon": {
+                                    "stringValue": "🚗"
+                                  }
+                                }
+                              }
+                            },
+                            "spot": {
+                              "nullValue": null
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": "カーブサイドで家族と荷物を降ろし、家族はチェックインカウンターで手荷物預けへ。なおきはエイトパーキングで駐車後、送迎バス（15分間隔）で07:10に家族と合流し、保安検査場へ。"
+                            },
+                            "time": {
+                              "stringValue": "06:25"
+                            },
+                            "duration": {
+                              "stringValue": "1時間45分"
+                            },
+                            "title": {
+                              "stringValue": "羽田空港第2ターミナル到着・チェックイン手続き"
+                            },
+                            "icon": {
+                              "stringValue": "🧳"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "name": {
+                                    "stringValue": "羽田空港第2ターミナル"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 139.788415
+                                  },
+                                  "lat": {
+                                    "doubleValue": 35.551377
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "time": {
+                              "stringValue": "08:10"
+                            },
+                            "description": {
+                              "stringValue": "朝ごはんは羽田または機内で。"
+                            },
+                            "duration": {
+                              "stringValue": "1時間20分"
+                            },
+                            "title": {
+                              "stringValue": "羽田空港を出発（ANA673便）"
+                            },
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "icon": {
+                              "stringValue": "🛫"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "time": {
+                              "stringValue": "09:30"
+                            },
+                            "duration": {
+                              "stringValue": "30分"
+                            },
+                            "description": {
+                              "stringValue": ""
+                            },
+                            "title": {
+                              "stringValue": "広島空港に到着"
+                            },
+                            "icon": {
+                              "stringValue": "🛬"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "name": {
+                                    "stringValue": "広島空港"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.9195
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/R13GsfjNss4FHnu1A"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.4361
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "icon": {
+                              "stringValue": "🚗"
+                            },
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚗"
+                                  },
+                                  "text": {
+                                    "stringValue": "宮島口へ 車で約55分〜1時間15分"
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "レンタカー受け渡し → 宮島口へ直行"
+                            },
+                            "duration": {
+                              "stringValue": "1時間25分"
+                            },
+                            "description": {
+                              "stringValue": "スーツケースはトランクへ。"
+                            },
+                            "time": {
+                              "stringValue": "10:00"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "text": {
+                                    "stringValue": "フェリーで宮島へ 約15分"
+                                  },
+                                  "icon": {
+                                    "stringValue": "🚢"
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🅿️"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.3122
+                                  },
+                                  "name": {
+                                    "stringValue": "宮島口駐車場"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3029
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "宮島口駐車場に到着"
+                            },
+                            "time": {
+                              "stringValue": "11:25"
+                            },
+                            "description": {
+                              "stringValue": "スーツケースごと全荷物を持ってフェリーへ向かいます。"
+                            },
+                            "duration": {
+                              "stringValue": "35分"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lng": {
+                                    "doubleValue": 132.3225
+                                  },
+                                  "name": {
+                                    "stringValue": "ホテル宮島別荘"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.302
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/3CK2tJakJyS8JTVW9"
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🏨"
+                            },
+                            "title": {
+                              "stringValue": "宮島桟橋着 → ホテル宮島別荘へ直行"
+                            },
+                            "time": {
+                              "stringValue": "12:00"
+                            },
+                            "description": {
+                              "stringValue": "桟橋からすぐのホテル宮島別荘に立ち寄り、正式チェックイン前にスーツケースだけを預けます。"
+                            },
+                            "duration": {
+                              "stringValue": "10分"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": "徒歩3〜4分。電話・メール予約は不可で発券機のみ。発券時に電話番号を登録すると順番が近づいた際に店から着信があるので、離れた場所で待てます。"
+                            },
+                            "time": {
+                              "stringValue": "12:10"
+                            },
+                            "duration": {
+                              "stringValue": "5分"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "name": {
+                                    "stringValue": "穴子と牡蠣 まめたぬき"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3212
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/HbyawTwBxwqNFBb18"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.2988
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🎫"
+                            },
+                            "title": {
+                              "stringValue": "まめたぬきの発券機で番号を取る"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "caption": {
+                              "stringValue": "宮島名物グルメが並ぶ表参道"
+                            },
+                            "title": {
+                              "stringValue": "発券待ちの間、表参道で食べ歩き・散策"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.2975
+                                  },
+                                  "name": {
+                                    "stringValue": "表参道商店街"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3207
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🚶"
+                            },
+                            "image": {
+                              "stringValue": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Omote-Sando_of_Itsukushima_Shrine_2.jpg/500px-Omote-Sando_of_Itsukushima_Shrine_2.jpg"
+                            },
+                            "time": {
+                              "stringValue": "12:15"
+                            },
+                            "duration": {
+                              "stringValue": "30分"
+                            },
+                            "description": {
+                              "stringValue": "待ち時間の実績は日曜昼で30分前後（繁忙期以外は10〜30分程度）。焼き牡蠣やもみじ饅頭を楽しみながら電話呼び出しを待ちます。"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "title": {
+                              "stringValue": "まめたぬきであなごめしランチ"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚌"
+                                  },
+                                  "text": {
+                                    "stringValue": "紅葉谷駅へ 送迎バス約10分 or 徒歩20〜25分"
+                                  }
+                                }
+                              }
+                            },
+                            "time": {
+                              "stringValue": "12:45"
+                            },
+                            "duration": {
+                              "stringValue": "1時間"
+                            },
+                            "description": {
+                              "stringValue": "電話呼び出しで入店。高温スチームの陶器で蒸したあなごめしが名物。"
+                            },
+                            "image": {
+                              "stringValue": "https://www.miyajima-mametanuki.com/images/mametanuki.jpg"
+                            },
+                            "caption": {
+                              "stringValue": "陶器蒸しのあなごめし"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.2988
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/HbyawTwBxwqNFBb18"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3212
+                                  },
+                                  "name": {
+                                    "stringValue": "穴子と牡蠣 まめたぬき"
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🥢"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "duration": {
+                              "stringValue": "30分"
+                            },
+                            "description": {
+                              "stringValue": "無料送迎バス（9:50〜約20分間隔）または徒歩約20〜25分。"
+                            },
+                            "time": {
+                              "stringValue": "13:45"
+                            },
+                            "title": {
+                              "stringValue": "紅葉谷駅へ移動"
+                            },
+                            "icon": {
+                              "stringValue": "🚌"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚡"
+                                  },
+                                  "text": {
+                                    "stringValue": "宮島ロープウエー 上り"
+                                  }
+                                }
+                              }
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.2954
+                                  },
+                                  "name": {
+                                    "stringValue": "紅葉谷駅"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3231
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "image": {
+                              "stringValue": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Miyajima_Ropeway%2C_Momijidani_Line_001.jpg/500px-Miyajima_Ropeway%2C_Momijidani_Line_001.jpg"
+                            },
+                            "time": {
+                              "stringValue": "14:15"
+                            },
+                            "description": {
+                              "stringValue": "紅葉谷線（8人乗り・1分間隔）で榧谷駅へ、獅子岩線（35人乗り）に乗り継ぎます。往復大人2,000円。9/6は要予約の特定日ではなく通常運行日。台風シーズンのため当日朝に公式サイトで運行状況を確認。"
+                            },
+                            "duration": {
+                              "stringValue": "35分"
+                            },
+                            "icon": {
+                              "stringValue": "🚡"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.2954
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/TEgPM1e6fuiTZiL46"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3231
+                                  },
+                                  "name": {
+                                    "stringValue": "宮島ロープウエー"
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "宮島ロープウエーで獅子岩へ（上り）"
+                            },
+                            "caption": {
+                              "stringValue": "紅葉谷線から獅子岩線へ乗り継ぎ"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": "標高433mの展望台から瀬戸内海に浮かぶ島々を一望できます。"
+                            },
+                            "time": {
+                              "stringValue": "14:50"
+                            },
+                            "duration": {
+                              "stringValue": "30分"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lng": {
+                                    "doubleValue": 132.3166
+                                  },
+                                  "name": {
+                                    "stringValue": "獅子岩展望台"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.282
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🏔️"
+                            },
+                            "title": {
+                              "stringValue": "獅子岩展望台から瀬戸内海の多島美を一望"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "title": {
+                              "stringValue": "ロープウエー下り乗車"
+                            },
+                            "icon": {
+                              "stringValue": "🚡"
+                            },
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚶"
+                                  },
+                                  "text": {
+                                    "stringValue": "表参道へ"
+                                  }
+                                }
+                              }
+                            },
+                            "description": {
+                              "stringValue": "休日午後は下り待ちが出やすい時間帯ですが、最終16:30まで余裕あり。"
+                            },
+                            "duration": {
+                              "stringValue": "40分"
+                            },
+                            "time": {
+                              "stringValue": "15:20"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "duration": {
+                              "stringValue": "45分"
+                            },
+                            "description": {
+                              "stringValue": "17時前後に閉まる店が多いので、この日最後の表参道タイム。"
+                            },
+                            "time": {
+                              "stringValue": "16:00"
+                            },
+                            "title": {
+                              "stringValue": "紅葉谷駅着 → 表参道で食べ歩き＆お土産回収をしながらホテルへ"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.2975
+                                  },
+                                  "name": {
+                                    "stringValue": "表参道商店街"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3207
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🚶"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": "この時点でディナー18:30枠を指定（もっと遅くするなら19:00枠）。"
+                            },
+                            "time": {
+                              "stringValue": "16:45"
+                            },
+                            "duration": {
+                              "stringValue": "15分"
+                            },
+                            "title": {
+                              "stringValue": "ホテル宮島別荘へ正式チェックイン"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lng": {
+                                    "doubleValue": 132.3225
+                                  },
+                                  "name": {
+                                    "stringValue": "ホテル宮島別荘"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.302
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/3CK2tJakJyS8JTVW9"
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🏨"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": "ディナーまでの自由時間。"
+                            },
+                            "duration": {
+                              "stringValue": "1時間30分"
+                            },
+                            "time": {
+                              "stringValue": "17:00"
+                            },
+                            "title": {
+                              "stringValue": "畳敷きの温泉・部屋でひと休み"
+                            },
+                            "icon": {
+                              "stringValue": "🛋️"
+                            },
+                            "spot": {
+                              "nullValue": null
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "title": {
+                              "stringValue": "ホテル宮島別荘でディナービュッフェ"
+                            },
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "icon": {
+                              "stringValue": "🍷"
+                            },
+                            "time": {
+                              "stringValue": "18:30"
+                            },
+                            "duration": {
+                              "stringValue": "2時間15分"
+                            },
+                            "description": {
+                              "stringValue": "開始枠は17:30/18:00/18:30/19:00から指定・席は2時間まで。アルコールを含むフリードリンクと一緒に贅沢な欧風料理ブッフェを満喫。"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "image": {
+                              "stringValue": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Itsukushima-jinja_torii_at_sunset%2C_Miyajima%2C_Japan%2C_20240816_1812_4144.jpg/500px-Itsukushima-jinja_torii_at_sunset%2C_Miyajima%2C_Japan%2C_20240816_1812_4144.jpg"
+                            },
+                            "time": {
+                              "stringValue": "20:45"
+                            },
+                            "duration": {
+                              "stringValue": "約1時間"
+                            },
+                            "description": {
+                              "stringValue": "点灯は日没約30分後〜23:00（年中無休・センサー自動点灯）。日帰り客が引いたあとの静かな時間帯に、宿泊者だけの特権で大鳥居をゆっくり堪能。"
+                            },
+                            "caption": {
+                              "stringValue": "宿泊者だけの特権！"
+                            },
+                            "title": {
+                              "stringValue": "静まり返った夜の厳島神社ライトアップ散策"
+                            },
+                            "icon": {
+                              "stringValue": "🌙"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/57u5FdTBosaCoCyH8"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.296
+                                  },
+                                  "name": {
+                                    "stringValue": "厳島神社（ライトアップ）"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3198
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "theme": {
+                  "stringValue": "宮島直行 ＆ 幻想ライトアップ"
+                }
+              }
+            }
+          },
+          {
+            "mapValue": {
+              "fields": {
+                "label": {
+                  "stringValue": "2日目"
+                },
+                "events": {
+                  "arrayValue": {
+                    "values": [
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "icon": {
+                              "stringValue": "⛩️"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.296
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/57u5FdTBosaCoCyH8"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3198
+                                  },
+                                  "name": {
+                                    "stringValue": "厳島神社"
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "朝の澄んだ空気の中で厳島神社を早朝参拝"
+                            },
+                            "caption": {
+                              "stringValue": "朝の静けさは格別"
+                            },
+                            "duration": {
+                              "stringValue": "1時間"
+                            },
+                            "time": {
+                              "stringValue": "06:30"
+                            },
+                            "description": {
+                              "stringValue": "観光客がほとんどいない静かな本殿や回廊を贅沢に巡ります。"
+                            },
+                            "image": {
+                              "stringValue": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Itsukushima_Shrine_Torii_seen_from_the_east_corridor_at_low_tide_-_spring_2019.jpg/500px-Itsukushima_Shrine_Torii_seen_from_the_east_corridor_at_low_tide_-_spring_2019.jpg"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "icon": {
+                              "stringValue": "🍳"
+                            },
+                            "title": {
+                              "stringValue": "ホテルで朝食"
+                            },
+                            "time": {
+                              "stringValue": "07:30"
+                            },
+                            "description": {
+                              "stringValue": ""
+                            },
+                            "duration": {
+                              "stringValue": "1時間"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": "湯上がりにもう一風呂、売店でお土産チェックなど、チェックアウトまで思い思いに。"
+                            },
+                            "duration": {
+                              "stringValue": "1時間30分"
+                            },
+                            "time": {
+                              "stringValue": "08:30"
+                            },
+                            "title": {
+                              "stringValue": "ホテルでゆったり自由時間"
+                            },
+                            "icon": {
+                              "stringValue": "🛋️"
+                            },
+                            "spot": {
+                              "nullValue": null
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "title": {
+                              "stringValue": "チェックアウト（スーツケースを受け取ってフェリーへ）"
+                            },
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "icon": {
+                              "stringValue": "🧳"
+                            },
+                            "description": {
+                              "stringValue": "預けていたスーツケースを受け取り、そのまま持ってフェリーへ。"
+                            },
+                            "duration": {
+                              "stringValue": "15分"
+                            },
+                            "time": {
+                              "stringValue": "10:00"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "title": {
+                              "stringValue": "フェリーで宮島口へ・車を回収"
+                            },
+                            "icon": {
+                              "stringValue": "🚢"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.3122
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.3029
+                                  },
+                                  "name": {
+                                    "stringValue": "宮島口駐車場"
+                                  }
+                                }
+                              }
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "text": {
+                                    "stringValue": "広島市内へ 車で約28〜55分"
+                                  },
+                                  "icon": {
+                                    "stringValue": "🚗"
+                                  }
+                                }
+                              }
+                            },
+                            "description": {
+                              "stringValue": "スーツケースをトランクに積み込みます。"
+                            },
+                            "duration": {
+                              "stringValue": "1時間25分"
+                            },
+                            "time": {
+                              "stringValue": "10:15"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": "以降は徒歩回遊、車は置いたままにします。"
+                            },
+                            "duration": {
+                              "stringValue": "5分"
+                            },
+                            "time": {
+                              "stringValue": "11:40"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "name": {
+                                    "stringValue": "八丁堀"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.4635
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.3957
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🅿️"
+                            },
+                            "title": {
+                              "stringValue": "八丁堀近辺の駐車場に駐車"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "name": {
+                                    "stringValue": "みっちゃん総本店 八丁堀本店"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.463525
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/J9tsnxbdUh8KxvPP9"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.395682
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🍳"
+                            },
+                            "caption": {
+                              "stringValue": "鉄板で焼き上げる広島風お好み焼き"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚶"
+                                  },
+                                  "text": {
+                                    "stringValue": "平和記念公園へ 徒歩15分"
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "みっちゃん総本店 八丁堀本店でお好み焼きランチ"
+                            },
+                            "image": {
+                              "stringValue": "https://www.okonomi.co.jp/images/shop/hatchobori/main.jpg"
+                            },
+                            "duration": {
+                              "stringValue": "1時間20分"
+                            },
+                            "time": {
+                              "stringValue": "11:45"
+                            },
+                            "description": {
+                              "stringValue": "定休日は火曜（月〜金11:30〜14:30/17:30〜21:00）。"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/SHRDsazTJmcBrJZR7"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.3955
+                                  },
+                                  "name": {
+                                    "stringValue": "平和記念公園・原爆ドーム"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.4536
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🕊️"
+                            },
+                            "caption": {
+                              "stringValue": "世界遺産を心に刻む"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚶"
+                                  },
+                                  "text": {
+                                    "stringValue": "徒歩約10分"
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "平和記念公園・原爆ドーム ＆ 平和記念資料館"
+                            },
+                            "image": {
+                              "stringValue": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/A-Bomb_Dome.jpg/500px-A-Bomb_Dome.jpg"
+                            },
+                            "duration": {
+                              "stringValue": "2時間20分"
+                            },
+                            "time": {
+                              "stringValue": "13:05"
+                            },
+                            "description": {
+                              "stringValue": "アソビューで13:00〜13:30の入館枠を事前購入し、事前購入者専用レーンで当日券列（混雑期は1時間待ちの実績も）をスキップ。"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "name": {
+                                    "stringValue": "広島もとまち水族館"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.457
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/HdiSRUTpS43JZYEn6"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.3967
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🐠"
+                            },
+                            "caption": {
+                              "stringValue": "水と森とアートが融合した都市型水族館"
+                            },
+                            "description": {
+                              "stringValue": "基町のパセーラ7Fにある都市型水族館。水と森とアートが融合した空間。最終入場18:30に余裕を持って。"
+                            },
+                            "time": {
+                              "stringValue": "15:25"
+                            },
+                            "duration": {
+                              "stringValue": "1時間30分"
+                            },
+                            "image": {
+                              "stringValue": "https://hit-product-resources-public.s3.ap-northeast-1.amazonaws.com/images/4713/lGmN6ebmBcOVdPkuQSRX/original.jpg"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚶"
+                                  },
+                                  "text": {
+                                    "stringValue": "徒歩約8分"
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "広島もとまち水族館"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "badge": {
+                              "stringValue": "7-9月は営業10:00-20:00・最終入場19:00"
+                            },
+                            "caption": {
+                              "stringValue": "頂上から瀬戸内海を一望"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.3957
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/6Kcx3iVYhR89W4sb7"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.4547
+                                  },
+                                  "name": {
+                                    "stringValue": "おりづるタワー"
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🗼"
+                            },
+                            "image": {
+                              "stringValue": "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmEWcZT6EexTLkAuesOgC6knbyvdVBN7TtX3av5MapGUkArWwZ0qHiQGLqKDj4Rtnyz6xTvoCOXzk7_ObfkauE-gknQ1kQmhClwv5hFJErKmW-7EPlJsq4hmzzYrjrouc3vyV8s5w=s680-w680-h510-rw"
+                            },
+                            "duration": {
+                              "stringValue": "1時間"
+                            },
+                            "time": {
+                              "stringValue": "16:55"
+                            },
+                            "description": {
+                              "stringValue": "原爆ドームのすぐ隣。7-9月は10:00-20:00・最終入場19:00。夕暮れ前の光線で広島市街と瀬戸内海を一望します。"
+                            },
+                            "title": {
+                              "stringValue": "おりづるタワーで景色を楽しむ"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "text": {
+                                    "stringValue": "ヒルトンへ 徒歩12分＋運転5分"
+                                  },
+                                  "icon": {
+                                    "stringValue": "🚗"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": ""
+                            },
+                            "time": {
+                              "stringValue": "17:55"
+                            },
+                            "duration": {
+                              "stringValue": "20分"
+                            },
+                            "icon": {
+                              "stringValue": "🚗"
+                            },
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "title": {
+                              "stringValue": "徒歩で駐車場へ → 車でヒルトンへ"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "duration": {
+                              "stringValue": "45分"
+                            },
+                            "description": {
+                              "stringValue": "身支度を整えてディナーへ。"
+                            },
+                            "time": {
+                              "stringValue": "18:15"
+                            },
+                            "icon": {
+                              "stringValue": "🏨"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚶"
+                                  },
+                                  "text": {
+                                    "stringValue": "UMAMIへ 徒歩11分（タクシーなら約4分）"
+                                  }
+                                }
+                              }
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/DQEiCE7icVwU1p4c8"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.3866
+                                  },
+                                  "name": {
+                                    "stringValue": "ヒルトン広島"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.4682
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "ヒルトン広島チェックイン・身支度"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": "フードL.O.21:00まで最大2時間。不定休のため9/7(月)の営業状況と予約を事前に確認してください。"
+                            },
+                            "duration": {
+                              "stringValue": "約1時間30分"
+                            },
+                            "time": {
+                              "stringValue": "19:00"
+                            },
+                            "image": {
+                              "stringValue": "https://oomin77.com/wp-content/uploads/2025/10/IMG_3355-e1761445174665.jpeg"
+                            },
+                            "title": {
+                              "stringValue": "パスタレストラン UMAMI Hiroshimaでディナー"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/KDmvN1eLgxTKuTdd8"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.3902
+                                  },
+                                  "name": {
+                                    "stringValue": "パスタレストラン UMAMI Hiroshima"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.4583
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🍝"
+                            },
+                            "caption": {
+                              "stringValue": "出汁の効いたクリームパスタが名物"
+                            },
+                            "badge": {
+                              "stringValue": "予約推奨・不定休のため要確認"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "theme": {
+                  "stringValue": "早朝参拝・自由時間 ＆ 広島市内たっぷり観光"
+                },
+                "id": {
+                  "integerValue": "2"
+                }
+              }
+            }
+          },
+          {
+            "mapValue": {
+              "fields": {
+                "events": {
+                  "arrayValue": {
+                    "values": [
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "text": {
+                                    "stringValue": "広島城へ 車で約10分"
+                                  },
+                                  "icon": {
+                                    "stringValue": "🚗"
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🏨"
+                            },
+                            "title": {
+                              "stringValue": "ヒルトン広島 チェックアウト"
+                            },
+                            "duration": {
+                              "stringValue": "15分"
+                            },
+                            "time": {
+                              "stringValue": "10:00"
+                            },
+                            "description": {
+                              "stringValue": "スーツケースはすべて車のトランクへ。"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "name": {
+                                    "stringValue": "広島城"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.4594
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.4026
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🏯"
+                            },
+                            "caption": {
+                              "stringValue": "別名は「鯉城」"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚗"
+                                  },
+                                  "text": {
+                                    "stringValue": "尾道へ 車で約1時間35分（実測1時間33分）"
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "広島城 外観鑑賞＆三の丸散策"
+                            },
+                            "image": {
+                              "stringValue": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Keep%2C_Hiroshima_Castle%2C_South_view_20190417_2.jpg/500px-Keep%2C_Hiroshima_Castle%2C_South_view_20190417_2.jpg"
+                            },
+                            "duration": {
+                              "stringValue": "2時間5分"
+                            },
+                            "time": {
+                              "stringValue": "10:15"
+                            },
+                            "description": {
+                              "stringValue": "天守は2026年3月22日で閉城済みのため内部見学は不可。堀端からの天守外観と、三の丸の新しい土産店エリアを楽しみます。"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "caption": {
+                              "stringValue": "背脂とろける尾道の名物"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lng": {
+                                    "doubleValue": 133.1989
+                                  },
+                                  "name": {
+                                    "stringValue": "しょうや飯店（尾道）"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.4066
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/hGcGFwoarWLRKiwU7"
+                                  }
+                                }
+                              }
+                            },
+                            "icon": {
+                              "stringValue": "🍜"
+                            },
+                            "description": {
+                              "stringValue": "尾道駅から徒歩5分。継ぎ足しの熟成醤油が決め手の尾道ラーメンをゆっくり堪能。無休。"
+                            },
+                            "time": {
+                              "stringValue": "12:20"
+                            },
+                            "duration": {
+                              "stringValue": "1時間20分"
+                            },
+                            "image": {
+                              "stringValue": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Onomichi_ramen_and_Karaage.jpg/500px-Onomichi_ramen_and_Karaage.jpg"
+                            },
+                            "title": {
+                              "stringValue": "しょうや飯店で尾道ラーメン"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚗"
+                                  },
+                                  "text": {
+                                    "stringValue": "しまなみ海道で瀬戸田へ 車で約40分"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "time": {
+                              "stringValue": "13:40"
+                            },
+                            "duration": {
+                              "stringValue": "1時間25分"
+                            },
+                            "description": {
+                              "stringValue": "実業家が母への感謝を込めて建てた寺院。大理石だけで作られた白亜の庭園「未来心の丘」から瀬戸内海を一望。丘まで境内奥へ徒歩10〜15分あり、境内＋未来心の丘＋金剛館で所要1〜1.5時間が実勢。拝観9:00〜17:00（入館16:30まで）、拝観料大人1,800円。"
+                            },
+                            "image": {
+                              "stringValue": "https://image.dive-hiroshima.com/wp-content/uploads/2026/02/52738058135_a52dc45b4f_c.jpg"
+                            },
+                            "title": {
+                              "stringValue": "耕三寺・未来心の丘"
+                            },
+                            "caption": {
+                              "stringValue": "大理石の白亜の庭園「未来心の丘」"
+                            },
+                            "icon": {
+                              "stringValue": "⛩️"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.304
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/xvQKj51yaxG9bfx47"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 133.0904
+                                  },
+                                  "name": {
+                                    "stringValue": "耕三寺・未来心の丘"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "image": {
+                              "stringValue": "https://www.setoda-dolce.com/menu/gelato/gelato-slide-1.jpg"
+                            },
+                            "duration": {
+                              "stringValue": "1時間55分"
+                            },
+                            "time": {
+                              "stringValue": "15:05"
+                            },
+                            "description": {
+                              "stringValue": "耕三寺のすぐ近く、生口島・瀬戸田にある人気ジェラート店。瀬戸内レモンなど地元素材のフレーバーが名物。営業10:00〜17:00、年中無休。"
+                            },
+                            "travelAfter": {
+                              "mapValue": {
+                                "fields": {
+                                  "icon": {
+                                    "stringValue": "🚗"
+                                  },
+                                  "text": {
+                                    "stringValue": "広島空港へ 車で約53分（安全マージン込みで見積り約1時間10分）"
+                                  }
+                                }
+                              }
+                            },
+                            "title": {
+                              "stringValue": "しまなみドルチェ 瀬戸田本店でジェラート休憩"
+                            },
+                            "icon": {
+                              "stringValue": "🍨"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/Myarbkx55CcR2STaA"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.3062
+                                  },
+                                  "name": {
+                                    "stringValue": "しまなみドルチェ 瀬戸田本店（生口島）"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 133.0892
+                                  }
+                                }
+                              }
+                            },
+                            "caption": {
+                              "stringValue": "しまなみ海道を渡って生口島へ"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "title": {
+                              "stringValue": "レンタカー返却・空港チェックイン"
+                            },
+                            "icon": {
+                              "stringValue": "🧳"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lng": {
+                                    "doubleValue": 132.9195
+                                  },
+                                  "name": {
+                                    "stringValue": "広島空港"
+                                  },
+                                  "lat": {
+                                    "doubleValue": 34.4361
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/R13GsfjNss4FHnu1A"
+                                  }
+                                }
+                              }
+                            },
+                            "time": {
+                              "stringValue": "17:00"
+                            },
+                            "duration": {
+                              "stringValue": "30分"
+                            },
+                            "description": {
+                              "stringValue": "トランクからすべての荷物を回収し、飛行機の搭乗手続きを済ませて身軽になります。"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "icon": {
+                              "stringValue": "🛍️"
+                            },
+                            "title": {
+                              "stringValue": "お土産ハント（空港2階フロア）"
+                            },
+                            "description": {
+                              "stringValue": "にしき堂の「生もみじ」や八天堂のクリームパンなど、定番みやげが手ぶらで揃います。"
+                            },
+                            "time": {
+                              "stringValue": "17:30"
+                            },
+                            "duration": {
+                              "stringValue": "40分"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "description": {
+                              "stringValue": "最後の最後まで広島の生牡蠣・焼き牡蠣と地酒で乾杯。空港内オイスターバー。"
+                            },
+                            "time": {
+                              "stringValue": "18:10"
+                            },
+                            "duration": {
+                              "stringValue": "1時間"
+                            },
+                            "badge": {
+                              "stringValue": "営業8:00-21:00・L.O.20:00"
+                            },
+                            "title": {
+                              "stringValue": "OYSTER FARMでディナー"
+                            },
+                            "icon": {
+                              "stringValue": "🦪"
+                            },
+                            "spot": {
+                              "mapValue": {
+                                "fields": {
+                                  "lat": {
+                                    "doubleValue": 34.4361
+                                  },
+                                  "mapUrl": {
+                                    "stringValue": "https://maps.app.goo.gl/Bn8vSUC1r8mywkne9"
+                                  },
+                                  "lng": {
+                                    "doubleValue": 132.9195
+                                  },
+                                  "name": {
+                                    "stringValue": "OYSTER FARM（空港内）"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "title": {
+                              "stringValue": "空港内 自由時間"
+                            },
+                            "icon": {
+                              "stringValue": "🛋️"
+                            },
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "time": {
+                              "stringValue": "19:10"
+                            },
+                            "duration": {
+                              "stringValue": "1時間10分"
+                            },
+                            "description": {
+                              "stringValue": "ラウンジで一息、追加のお土産探しなど、搭乗まで思い思いに。"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "mapValue": {
+                          "fields": {
+                            "spot": {
+                              "nullValue": null
+                            },
+                            "icon": {
+                              "stringValue": "🛫"
+                            },
+                            "title": {
+                              "stringValue": "広島空港を出発（ANA686便・羽田 21:50着）"
+                            },
+                            "duration": {
+                              "stringValue": "1時間30分"
+                            },
+                            "time": {
+                              "stringValue": "20:20"
+                            },
+                            "description": {
+                              "stringValue": ""
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "id": {
+                  "integerValue": "3"
+                },
+                "theme": {
+                  "stringValue": "尾道・しまなみ海道ドライブ ＆ 空港フィナーレ"
+                },
+                "label": {
+                  "stringValue": "3日目"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "packingList": {
+      "arrayValue": {
+        "values": [
+          {
+            "stringValue": "着替え（3日分）"
+          },
+          {
+            "stringValue": "運転免許証"
+          },
+          {
+            "stringValue": "ETCカード"
+          },
+          {
+            "stringValue": "健康保険証"
+          },
+          {
+            "stringValue": "モバイルバッテリー・充電ケーブル"
+          },
+          {
+            "stringValue": "日焼け止め・帽子"
+          },
+          {
+            "stringValue": "常備薬"
+          },
+          {
+            "stringValue": "折りたたみ傘"
+          },
+          {
+            "stringValue": "エコバッグ（お土産用）"
+          },
+          {
+            "stringValue": "歩きやすい靴"
+          }
+        ]
+      }
+    },
+    "lodging": {
+      "arrayValue": {
+        "values": [
+          {
+            "mapValue": {
+              "fields": {
+                "notes": {
+                  "stringValue": "表参道商店街まで徒歩圏。ディナービュッフェは館内（開始枠17:30/18:00/18:30/19:00から指定・席2時間まで）。今回はサブバッグに分けず、スーツケースごと全荷物を持ってフェリーで宮島へ渡り、桟橋からすぐのホテルに到着後すぐ荷物だけ預けます。正式チェックインは観光のあと16:45。"
+                },
+                "checkIn": {
+                  "stringValue": "16:45"
+                },
+                "day": {
+                  "stringValue": "1日目〜2日目"
+                },
+                "spot": {
+                  "mapValue": {
+                    "fields": {
+                      "lat": {
+                        "doubleValue": 34.302
+                      },
+                      "mapUrl": {
+                        "stringValue": "https://maps.app.goo.gl/3CK2tJakJyS8JTVW9"
+                      },
+                      "lng": {
+                        "doubleValue": 132.3225
+                      },
+                      "name": {
+                        "stringValue": "ホテル宮島別荘"
+                      }
+                    }
+                  }
+                },
+                "roomNumber": {
+                  "stringValue": "111"
+                },
+                "checkOut": {
+                  "stringValue": "10:00"
+                },
+                "name": {
+                  "stringValue": "ホテル宮島別荘"
+                },
+                "phone": {
+                  "stringValue": "0829-44-1180"
+                },
+                "image": {
+                  "stringValue": "https://images.trvl-media.com/lodging/7000000/6140000/6133900/6133886/71d782f3.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill"
+                },
+                "address": {
+                  "stringValue": "〒739-0505 広島県廿日市市宮島町1165"
+                },
+                "wifi": {
+                  "mapValue": {
+                    "fields": {
+                      "ssid": {
+                        "stringValue": "naoki"
+                      },
+                      "password": {
+                        "stringValue": "TBD（未入力）"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "mapValue": {
+              "fields": {
+                "name": {
+                  "stringValue": "ヒルトン広島"
+                },
+                "checkOut": {
+                  "stringValue": "10:00"
+                },
+                "wifi": {
+                  "mapValue": {
+                    "fields": {
+                      "ssid": {
+                        "stringValue": "aaa"
+                      },
+                      "password": {
+                        "stringValue": "bbb"
+                      }
+                    }
+                  }
+                },
+                "phone": {
+                  "stringValue": "082-243-2700"
+                },
+                "image": {
+                  "stringValue": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyCESvppgoNJ3UzYNMXAfXtqJYEgQIXpKOC1uTpjcLzA&s=10"
+                },
+                "address": {
+                  "stringValue": "〒730-0043 広島県広島市中区富士見町11-12"
+                },
+                "spot": {
+                  "mapValue": {
+                    "fields": {
+                      "lat": {
+                        "doubleValue": 34.3866
+                      },
+                      "mapUrl": {
+                        "stringValue": "https://maps.app.goo.gl/DQEiCE7icVwU1p4c8"
+                      },
+                      "lng": {
+                        "doubleValue": 132.4682
+                      },
+                      "name": {
+                        "stringValue": "ヒルトン広島"
+                      }
+                    }
+                  }
+                },
+                "roomNumber": {
+                  "stringValue": "TBD（未入力）"
+                },
+                "checkIn": {
+                  "stringValue": "18:15"
+                },
+                "notes": {
+                  "stringValue": "レンタカーはホテル駐車場を利用。"
+                },
+                "day": {
+                  "stringValue": "2日目〜3日目"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "createTime": "2026-07-11T13:25:32.440055Z",
+  "updateTime": "2026-08-06T14:15:48.529750Z"
+}
