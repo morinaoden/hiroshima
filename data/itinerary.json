@@ -416,31 +416,32 @@
           "caption": "世界遺産を心に刻む",
           "travelAfter": {
             "icon": "🚶",
-            "text": "徒歩約10分"
+            "text": "広島城へ 徒歩約20分"
           },
           "duration": "2時間20分"
         },
         {
-          "time": "15:25",
-          "icon": "🐠",
-          "title": "広島もとまち水族館",
-          "description": "基町のパセーラ7Fにある都市型水族館。水と森とアートが融合した空間。最終入場18:30に余裕を持って。",
+          "time": "15:45",
+          "icon": "🏯",
+          "title": "広島城（外観・二の丸・三の丸）",
+          "description": "水堀越しに天守の外観を鑑賞します（天守内部は非公開）。伝統工法で復元された二の丸復元建物は無料・入館17:00まで。本丸の広島護国神社にお参りし、三の丸の土産店・カフェでひと休み。",
           "spot": {
-            "name": "広島もとまち水族館",
-            "lat": 34.3967,
-            "lng": 132.457,
-            "mapUrl": "https://maps.app.goo.gl/HdiSRUTpS43JZYEn6"
+            "name": "広島城",
+            "lat": 34.4027,
+            "lng": 132.4591,
+            "mapUrl": "https://maps.app.goo.gl/sTPobvU8x5QbvcDj7"
           },
-          "image": "https://hit-product-resources-public.s3.ap-northeast-1.amazonaws.com/images/4713/lGmN6ebmBcOVdPkuQSRX/original.jpg",
-          "caption": "水と森とアートが融合した都市型水族館",
+          "image": "https://image.dive-hiroshima.com/wp-content/uploads/2025/03/original-5-1024x735.jpg",
+          "caption": "水堀越しに望む天守",
+          "badge": "二の丸復元建物は無料・入館17:00まで",
           "travelAfter": {
             "icon": "🚶",
-            "text": "徒歩約8分"
+            "text": "おりづるタワーへ 徒歩約12分"
           },
-          "duration": "1時間30分"
+          "duration": "約1時間"
         },
         {
-          "time": "16:55",
+          "time": "17:05",
           "icon": "🗼",
           "title": "おりづるタワーで景色を楽しむ",
           "description": "原爆ドームのすぐ隣。7-9月は10:00-20:00・最終入場19:00。夕暮れ前の光線で広島市街と瀬戸内海を一望します。",
@@ -460,7 +461,7 @@
           "duration": "1時間"
         },
         {
-          "time": "17:55",
+          "time": "18:05",
           "icon": "🚗",
           "title": "徒歩で駐車場へ → 車でヒルトンへ",
           "description": "",
@@ -468,7 +469,7 @@
           "duration": "20分"
         },
         {
-          "time": "18:15",
+          "time": "18:25",
           "icon": "🏨",
           "title": "ヒルトン広島チェックイン・身支度",
           "description": "身支度を整えてディナーへ。",
@@ -482,7 +483,7 @@
             "icon": "🚶",
             "text": "UMAMIへ 徒歩11分（タクシーなら約4分）"
           },
-          "duration": "45分"
+          "duration": "35分"
         },
         {
           "time": "19:00",
