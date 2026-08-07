@@ -380,29 +380,34 @@
             "lat": 34.3957,
             "lng": 132.4635
           },
+          "travelAfter": {
+            "icon": "🚶",
+            "text": "おりづるタワーへ 徒歩約15分"
+          },
           "duration": "5分"
         },
         {
-          "time": "11:45",
+          "time": "12:15",
           "icon": "🍳",
-          "title": "みっちゃん総本店 八丁堀本店でお好み焼きランチ",
-          "description": "定休日は火曜（月〜金11:30〜14:30/17:30〜21:00）。",
+          "title": "みっちゃん総本店 おりづるタワー店でお好み焼きランチ",
+          "description": "おりづるタワー1F・原爆ドームのすぐ隣。鉄板前のカウンター席は事前の電話予約が確実（082-541-5510・座席指定は電話のみ）。予約なしの場合はタッチパネルで発券し、電話呼び出し・LINEで順番確認ができます。無休・11:00〜21:00。",
           "spot": {
-            "name": "みっちゃん総本店 八丁堀本店",
-            "lat": 34.395682,
-            "lng": 132.463525,
-            "mapUrl": "https://maps.app.goo.gl/J9tsnxbdUh8KxvPP9"
+            "name": "みっちゃん総本店 おりづるタワー店",
+            "lat": 34.3957,
+            "lng": 132.4547,
+            "mapUrl": "https://maps.app.goo.gl/c8HwZTVHGSDMiQpJA"
           },
-          "image": "https://www.okonomi.co.jp/images/shop/hatchobori/main.jpg",
-          "caption": "鉄板で焼き上げる広島風お好み焼き",
+          "image": "https://www.okonomi.co.jp/images/shop/orizurutower/main.jpg",
+          "caption": "鉄板前のカウンターで焼きたてを",
+          "badge": "カウンター席は事前の電話予約が確実・遅れる時は要電話",
           "travelAfter": {
             "icon": "🚶",
-            "text": "平和記念公園へ 徒歩15分"
+            "text": "平和記念資料館へ 徒歩1分"
           },
-          "duration": "1時間20分"
+          "duration": "約1時間"
         },
         {
-          "time": "13:05",
+          "time": "13:20",
           "icon": "🕊️",
           "title": "平和記念公園・原爆ドーム ＆ 平和記念資料館",
           "description": "アソビューで13:00〜13:30の入館枠を事前購入し、事前購入者専用レーンで当日券列（混雑期は1時間待ちの実績も）をスキップ。",
@@ -418,7 +423,7 @@
             "icon": "🚶",
             "text": "広島城へ 徒歩約20分"
           },
-          "duration": "2時間20分"
+          "duration": "2時間5分"
         },
         {
           "time": "15:45",
